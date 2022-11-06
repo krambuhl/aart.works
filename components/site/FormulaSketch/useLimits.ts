@@ -1,5 +1,6 @@
-import { useMemo } from 'react'
 import type { Formula } from './types'
+
+import { useMemo } from 'react'
 
 const lerp = (x: number, y: number, a: number) => x * (1 - a) + y * a
 

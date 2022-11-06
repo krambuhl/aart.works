@@ -1,5 +1,6 @@
-import styled from 'styled-components'
 import type { AutoGridProps, GridProps } from './types'
+
+import styled from 'styled-components'
 
 export const Grid = styled.div<GridProps>`
   display: grid;

@@ -1,11 +1,11 @@
 import type { Directions } from './types'
 import type { SizeToken } from 'types/tokens'
 
-import { tokens } from 'tokens'
 import {
   convertToResponsive,
   Responsive,
 } from 'lib/responsive'
+import { tokens } from 'tokens'
 
 export function generateSpace({
   a,

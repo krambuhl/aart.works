@@ -1,8 +1,7 @@
+import type { LazyResponsive } from 'lib/responsive'
+import type { CoreComponent } from 'types/core'
 import type { SizeToken } from 'types/tokens'
-
-import { LazyResponsive } from 'lib/responsive'
-import { CoreComponent } from 'types/core'
-import { PartialFor } from 'types/utils'
+import type { PartialFor } from 'types/utils'
 
 export type Directions = 't' | 'r' | 'b' | 'l' | 'h' | 'v' | 'a'
 

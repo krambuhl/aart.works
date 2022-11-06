@@ -1,5 +1,5 @@
-import { useEffect } from 'react'
 import { useThree } from '@react-three/fiber'
+import { useEffect } from 'react'
 import { OrbitControls } from 'three-stdlib'
 
 export function CameraController() {

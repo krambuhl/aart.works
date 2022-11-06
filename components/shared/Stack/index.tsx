@@ -1,9 +1,10 @@
 import type { StackProps } from './types'
-import styled from 'styled-components'
 import type { SizeToken } from 'types/tokens'
 
-import { tokens } from 'tokens'
+import styled from 'styled-components'
+
 import { responsiveProp, responsiveToken } from 'lib/responsive'
+import { tokens } from 'tokens'
 
 export const Stack = styled.div<StackProps>`
   display: flex;

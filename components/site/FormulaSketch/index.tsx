@@ -1,9 +1,10 @@
-import { useMemo } from 'react'
-import styled from 'styled-components'
 import type { FormulaSketchProps } from './types'
 
-import { BodyText, HeadingText } from 'components/shared/Text'
+import { useMemo } from 'react'
+import styled from 'styled-components'
+
 import { Card, CardPadding } from 'components/shared/Card'
+import { BodyText, HeadingText } from 'components/shared/Text'
 import { Sketch } from 'components/site/Sketch'
 
 import { useLimits } from './useLimits'

@@ -1,8 +1,7 @@
-import { PropertiesHyphen } from 'csstype'
+import type { PropertiesHyphen } from 'csstype'
+import type { LazyResponsive } from 'lib/responsive'
+import type { CoreComponent } from 'types/core'
 import type { SizeToken } from 'types/tokens'
-
-import { LazyResponsive } from 'lib/responsive'
-import { CoreComponent } from 'types/core'
 
 export type StackDirection = 'vertical' | 'horizontal'
 

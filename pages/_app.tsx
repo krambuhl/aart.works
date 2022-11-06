@@ -1,9 +1,10 @@
-import Head from 'next/head'
-import Script from 'next/script'
 import type { AppProps } from 'next/app'
 
-import { HtmlTitle } from 'components/shared/HtmlTitle'
+import Head from 'next/head'
+import Script from 'next/script'
+
 import { AppLayout } from 'components/shared/AppLayout'
+import { HtmlTitle } from 'components/shared/HtmlTitle'
 
 import 'the-new-css-reset/css/reset.css'
 import 'tokens/tokens.css'

@@ -1,4 +1,5 @@
-import { PropertiesHyphen } from 'csstype'
+import type { PropertiesHyphen } from 'csstype'
+
 import { css } from 'styled-components'
 
 export const breakpoints = {

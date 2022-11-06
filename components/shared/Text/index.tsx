@@ -3,6 +3,7 @@ import type {
   BodyTextProps,
   DataTextProps,
 } from './types'
+
 import styled, { css } from 'styled-components'
 
 import { tokens } from 'tokens'

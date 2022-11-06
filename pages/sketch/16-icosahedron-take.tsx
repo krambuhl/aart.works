@@ -2,16 +2,17 @@ import type {
   MeshProps,
   ThreeElements,
 } from '@react-three/fiber'
-import { useRef, useState } from 'react'
-import { useFrame } from '@react-three/fiber'
 
+import { useFrame } from '@react-three/fiber'
+import { useRef, useState } from 'react'
+
+import { Area } from 'components/shared/Area'
+import { HtmlTitle } from 'components/shared/HtmlTitle'
 import { PageHeader } from 'components/shared/PageHeader'
 import { Stack } from 'components/shared/Stack'
-import { HtmlTitle } from 'components/shared/HtmlTitle'
-import { tokens } from 'tokens'
-import { Area } from 'components/shared/Area'
 import { Canvas } from 'components/site/Canvas'
 import { rainbow } from 'data/colorMaps'
+import { tokens } from 'tokens'
 
 const size = 35
 

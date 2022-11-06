@@ -1,8 +1,9 @@
 import type { File } from 'types/files'
-import fs from 'fs/promises'
-import path from 'path'
+
 import json from 'dirty-json'
 import glob from 'fast-glob'
+import fs from 'fs/promises'
+import path from 'path'
 
 export async function listDirectory(source: string): Promise<File[]> {
   const files = await glob(source)

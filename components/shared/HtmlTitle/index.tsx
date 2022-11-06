@@ -1,5 +1,6 @@
-import Head from 'next/head'
 import type { HtmlTitleProps } from './types'
+
+import Head from 'next/head'
 
 import { constants } from 'data'
 

@@ -1,10 +1,11 @@
-import NextLink from 'next/link'
-import styled from 'styled-components'
 import type { AppLayoutProps } from './types'
 
-import { Stack } from 'components/shared/Stack'
-import { Space } from 'components/shared/Space'
+import NextLink from 'next/link'
+import styled from 'styled-components'
+
 import { Area } from 'components/shared/Area'
+import { Space } from 'components/shared/Space'
+import { Stack } from 'components/shared/Stack'
 import { HeadingText } from 'components/shared/Text'
 import { constants } from 'data'
 import { tokens } from 'tokens'

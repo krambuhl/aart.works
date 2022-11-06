@@ -7,7 +7,10 @@ module.exports = {
       "error",
       {
         "newlines-between": "always",
-        groups: [["type", "builtin", "external"], ["internal"]],
+        groups: ["type", ["builtin", "external"], ["internal"]],
+        alphabetize: {
+          order: "asc",
+        },
       },
     ],
     "import/first": "error",

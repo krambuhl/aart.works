@@ -1,4 +1,5 @@
 import type { SpaceProps } from './types'
+
 import styled, { css } from 'styled-components'
 
 import { responsiveProp } from 'lib/responsive'

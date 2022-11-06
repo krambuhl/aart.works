@@ -1,5 +1,5 @@
-import type { WidthToken } from 'types/tokens'
 import type { CoreComponent } from 'types/core'
+import type { WidthToken } from 'types/tokens'
 
 export interface AppLayoutProps extends CoreComponent {
   width?: WidthToken

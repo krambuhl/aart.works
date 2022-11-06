@@ -1,5 +1,6 @@
-import styled from 'styled-components'
 import type { AreaProps } from './types'
+
+import styled from 'styled-components'
 
 import { tokens } from 'tokens'
 

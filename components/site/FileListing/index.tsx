@@ -1,12 +1,13 @@
-import NextLink from 'next/link'
 import type { FileListingProps } from './types'
+
 import classNames from 'classnames'
+import NextLink from 'next/link'
 import { useMemo } from 'react'
 import styled from 'styled-components'
 
-import { BodyText, HeadingText } from 'components/shared/Text'
 import { Area } from 'components/shared/Area'
 import { Stack } from 'components/shared/Stack'
+import { BodyText, HeadingText } from 'components/shared/Text'
 import { tokens } from 'tokens'
 
 export function FileListing({ files, className, ...props }: FileListingProps) {
