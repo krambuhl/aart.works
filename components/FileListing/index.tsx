@@ -36,37 +36,35 @@ export function FileListing({ files, className, ...props }: FileListingProps) {
             .filter(({ name }) => name !== 'index')
             .sort((a, b) => (a.date < b.date ? 1 : -1))
             .map(({ title, date, url }) => (
-              <NextLink key={title} href={url} passHref>
-                <FileAnchor>
-                  <FileStack
-                    gap={tokens.size.x16}
-                    direction={{ xs: 'vertical', sm: 'horizontal' }}
-                    className="file-listing--stack"
+              <FileAnchor key={title} href={url}>
+                <FileStack
+                  gap={tokens.size.x16}
+                  direction={{ xs: 'vertical', sm: 'horizontal' }}
+                  className="file-listing--stack"
+                >
+                  <HeadingText
+                    as="h3"
+                    size="xs"
+                    className="file-listing--title"
                   >
-                    <HeadingText
-                      as="h3"
-                      size="xs"
-                      className="file-listing--title"
-                    >
-                      {title}
-                    </HeadingText>
+                    {title}
+                  </HeadingText>
 
-                    <BodyText as="div" size="xs">
-                      {new Date(date).toLocaleDateString('en-US')}
-                    </BodyText>
-                  </FileStack>
-                </FileAnchor>
-              </NextLink>
+                  <BodyText as="div" size="xs">
+                    {new Date(date).toLocaleDateString('en-US')}
+                  </BodyText>
+                </FileStack>
+              </FileAnchor>
             ))
         ) : (
           <div>No Files</div>
         )}
       </Stack>
     </Area>
-  )
+  );
 }
 
-const FileAnchor = styled.a`
+const FileAnchor = styled(NextLink)`
   width: 100%;
 `
 

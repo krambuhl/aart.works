@@ -44,13 +44,13 @@ export function AppLayout({
       {showHeader && (
         <Header as="header" direction="horizontal">
           <NextLink href="/">
-            <a>
-              <Space pa={tokens.size.x20}>
-                <HeadingText as="h1" size="xs">
-                  {SITE_NAME}
-                </HeadingText>
-              </Space>
-            </a>
+
+            <Space pa={tokens.size.x20}>
+              <HeadingText as="h1" size="xs">
+                {SITE_NAME}
+              </HeadingText>
+            </Space>
+
           </NextLink>
 
           {menu ?? <div />}
@@ -72,7 +72,7 @@ export function AppLayout({
 
       {showFooter && <Footer />}
     </Root>
-  )
+  );
 }
 
 AppLayout.StyledRoot = Root
