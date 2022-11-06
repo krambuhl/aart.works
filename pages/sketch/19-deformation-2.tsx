@@ -1,18 +1,18 @@
 import type { MeshProps, ThreeElements } from '@react-three/fiber'
-import type { FrameProps } from 'components/site/Frames/types'
+import type { FrameProps } from 'components/app/Frames/types'
 
 import { animated, useSpring } from '@react-spring/three'
 import { RoundedBox, MeshDistortMaterial } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import React, { useRef, useState } from 'react'
 
+import { CameraController } from 'components/app/CameraController'
+import { Canvas } from 'components/app/Canvas'
+import { Frames } from 'components/app/Frames'
 import { Area } from 'components/shared/Area'
 import { HtmlTitle } from 'components/shared/HtmlTitle'
 import { PageHeader } from 'components/shared/PageHeader'
 import { Stack } from 'components/shared/Stack'
-import { CameraController } from 'components/site/CameraController'
-import { Canvas } from 'components/site/Canvas'
-import { Frames } from 'components/site/Frames'
 import { rainbow } from 'data/colorMaps'
 import { tokens } from 'tokens'
 

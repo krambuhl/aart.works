@@ -4,11 +4,11 @@ import { useFrame, useThree } from '@react-three/fiber'
 import React, { useEffect, useRef, useState } from 'react'
 import { OrbitControls } from 'three-stdlib'
 
+import { Canvas } from 'components/app/Canvas'
 import { Area } from 'components/shared/Area'
 import { HtmlTitle } from 'components/shared/HtmlTitle'
 import { PageHeader } from 'components/shared/PageHeader'
 import { Stack } from 'components/shared/Stack'
-import { Canvas } from 'components/site/Canvas'
 import { rainbow } from 'data/colorMaps'
 import { tokens } from 'tokens'
 

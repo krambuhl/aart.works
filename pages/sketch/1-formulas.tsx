@@ -1,13 +1,13 @@
-import type { FormulaSketchProps } from 'components/site/FormulaSketch/types'
+import type { FormulaSketchProps } from 'components/app/FormulaSketch/types'
 
 import { useMemo } from 'react'
 
+import { FormulaSketch } from 'components/app/FormulaSketch'
 import { Area } from 'components/shared/Area'
 import { AutoGrid } from 'components/shared/Grid'
 import { HtmlTitle } from 'components/shared/HtmlTitle'
 import { PageHeader } from 'components/shared/PageHeader'
 import { Stack } from 'components/shared/Stack'
-import { FormulaSketch } from 'components/site/FormulaSketch'
 import { tokens } from 'tokens'
 
 export const meta = {

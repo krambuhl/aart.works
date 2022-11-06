@@ -1,8 +1,8 @@
+import { GridSketch } from 'components/app/GridSketch'
 import { Area } from 'components/shared/Area'
 import { HtmlTitle } from 'components/shared/HtmlTitle'
 import { PageHeader } from 'components/shared/PageHeader'
 import { Stack } from 'components/shared/Stack'
-import { GridSketch } from 'components/site/GridSketch'
 import { rainbow } from 'data/colorMaps'
 import { tokens } from 'tokens'
 

@@ -3,9 +3,9 @@ import type { FormulaSketchProps } from './types'
 import { useMemo } from 'react'
 import styled from 'styled-components'
 
+import { Sketch } from 'components/app/Sketch'
 import { Card, CardPadding } from 'components/shared/Card'
 import { BodyText, HeadingText } from 'components/shared/Text'
-import { Sketch } from 'components/site/Sketch'
 
 import { useLimits } from './useLimits'
 

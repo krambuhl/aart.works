@@ -1,10 +1,10 @@
 import type { P5Color } from 'types/p5'
 
+import { Sketch } from 'components/app/Sketch'
 import { Area } from 'components/shared/Area'
 import { HtmlTitle } from 'components/shared/HtmlTitle'
 import { PageHeader } from 'components/shared/PageHeader'
 import { Stack } from 'components/shared/Stack'
-import { Sketch } from 'components/site/Sketch'
 import { rainbow } from 'data/colorMaps'
 import { tokens } from 'tokens'
 

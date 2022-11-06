@@ -6,11 +6,11 @@ import type {
 import { useFrame } from '@react-three/fiber'
 import { useRef, useState } from 'react'
 
+import { Canvas } from 'components/app/Canvas'
 import { Area } from 'components/shared/Area'
 import { HtmlTitle } from 'components/shared/HtmlTitle'
 import { PageHeader } from 'components/shared/PageHeader'
 import { Stack } from 'components/shared/Stack'
-import { Canvas } from 'components/site/Canvas'
 import { rainbow } from 'data/colorMaps'
 import { tokens } from 'tokens'
 
