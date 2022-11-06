@@ -1,7 +1,7 @@
-import dynamic from "next/dynamic";
-import styled from "styled-components";
+import dynamic from 'next/dynamic'
+import styled from 'styled-components'
 
-import { BodyText } from "components/Text";
+import { BodyText } from 'components/shared/Text'
 
 const Loading = styled(BodyText)`
   align-self: center;
@@ -13,7 +13,7 @@ const StyledScene = styled.div`
 
 const CanvasWrapper = dynamic(
   async () => {
-    const mod = await import("@react-three/fiber");
+    const mod = await import('@react-three/fiber');
     return mod.Canvas;
   },
   {

@@ -2,18 +2,14 @@ import { useMemo } from 'react'
 import styled from 'styled-components'
 import type { FormulaSketchProps } from './types'
 
-import { BodyText, HeadingText } from 'components/Text'
-import { tokens } from 'tokens'
-import { Card, CardPadding } from 'components/Card'
-import { Sketch } from 'components/Sketch'
+import { BodyText, HeadingText } from 'components/shared/Text'
+import { Card, CardPadding } from 'components/shared/Card'
+import { Sketch } from 'components/site/Sketch'
 
 import { useLimits } from './useLimits'
 
 const round = (x: number) => Math.ceil(x * 1000) / 1000
 const interpolate = (a: number, b: number, t: number) => t / (b - a)
-
-// @ts-expect-error produces complex types
-const throwaway = styled(styled.div)``
 
 const Root = styled(Card)`
   display: grid;

@@ -1,15 +1,14 @@
 import type { MeshProps, ThreeElements } from '@react-three/fiber'
 import React, { useEffect, useRef, useState } from 'react'
-import { extend, useFrame, useThree } from '@react-three/fiber'
-import { RoundedBox } from '@react-three/drei'
+import { useFrame, useThree } from '@react-three/fiber'
 import { OrbitControls } from 'three-stdlib'
 
-import { PageHeader } from 'components/PageHeader'
-import { Stack } from 'components/Stack'
-import { HtmlTitle } from 'components/HtmlTitle'
+import { PageHeader } from 'components/shared/PageHeader'
+import { Stack } from 'components/shared/Stack'
+import { HtmlTitle } from 'components/shared/HtmlTitle'
+import { Area } from 'components/shared/Area'
+import { Canvas } from 'components/site/Canvas'
 import { tokens } from 'tokens'
-import { Area } from 'components/Area'
-import { Canvas } from 'components/Canvas'
 import { rainbow } from 'data/colorMaps'
 
 const startingFrame = 1

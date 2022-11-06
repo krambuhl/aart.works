@@ -4,9 +4,9 @@ import classNames from 'classnames'
 import { useMemo } from 'react'
 import styled from 'styled-components'
 
-import { BodyText, HeadingText } from 'components/Text'
-import { Area } from 'components/Area'
-import { Stack } from 'components/Stack'
+import { BodyText, HeadingText } from 'components/shared/Text'
+import { Area } from 'components/shared/Area'
+import { Stack } from 'components/shared/Stack'
 import { tokens } from 'tokens'
 
 export function FileListing({ files, className, ...props }: FileListingProps) {

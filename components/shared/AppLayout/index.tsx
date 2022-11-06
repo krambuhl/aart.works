@@ -2,11 +2,11 @@ import NextLink from 'next/link'
 import styled from 'styled-components'
 import type { AppLayoutProps } from './types'
 
+import { Stack } from 'components/shared/Stack'
+import { Space } from 'components/shared/Space'
+import { Area } from 'components/shared/Area'
+import { HeadingText } from 'components/shared/Text'
 import { constants } from 'data'
-import { Stack } from 'components/Stack'
-import { Space } from 'components/Space'
-import { HeadingText } from 'components/Text'
-import { Area } from 'components/Area'
 import { tokens } from 'tokens'
 
 const Root = styled(Area)`
@@ -43,14 +43,12 @@ export function AppLayout({
     <Root width={width} {...props}>
       {showHeader && (
         <Header as="header" direction="horizontal">
-          <NextLink href="/">
-
+          <NextLink href="/" passHref>
             <Space pa={tokens.size.x20}>
               <HeadingText as="h1" size="xs">
                 {SITE_NAME}
               </HeadingText>
             </Space>
-
           </NextLink>
 
           {menu ?? <div />}

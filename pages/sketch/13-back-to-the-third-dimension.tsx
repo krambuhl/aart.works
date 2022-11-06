@@ -1,11 +1,11 @@
 import type { P5Color } from 'types/p5'
 
-import { PageHeader } from 'components/PageHeader'
-import { Stack } from 'components/Stack'
-import { HtmlTitle } from 'components/HtmlTitle'
+import { PageHeader } from 'components/shared/PageHeader'
+import { Stack } from 'components/shared/Stack'
+import { HtmlTitle } from 'components/shared/HtmlTitle'
 import { tokens } from 'tokens'
-import { Area } from 'components/Area'
-import { Sketch } from 'components/Sketch'
+import { Area } from 'components/shared/Area'
+import { Sketch } from 'components/site/Sketch'
 // import { rainbow } from 'data/colorMaps'
 
 const baseBg: P5Color = [0 / 255, 0 / 255, 0 / 255, 255]

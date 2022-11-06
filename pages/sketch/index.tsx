@@ -2,11 +2,11 @@ import type { GetStaticProps } from 'next'
 import type { File } from 'types/files'
 
 import { listDirectory } from 'lib/directory'
-import { FileListing } from 'components/FileListing'
-import { PageHeader } from 'components/PageHeader'
-import { Stack } from 'components/Stack'
-import { Space } from 'components/Space'
-import { HtmlTitle } from 'components/HtmlTitle'
+import { FileListing } from 'components/site/FileListing'
+import { PageHeader } from 'components/shared/PageHeader'
+import { Stack } from 'components/shared/Stack'
+import { Space } from 'components/shared/Space'
+import { HtmlTitle } from 'components/shared/HtmlTitle'
 import { tokens } from 'tokens'
 
 interface Props {

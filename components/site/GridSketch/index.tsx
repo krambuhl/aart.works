@@ -1,6 +1,6 @@
 import type { GridSketchProps } from './types'
 
-import { Sketch } from 'components/Sketch'
+import { Sketch } from 'components/site/Sketch'
 
 export function GridSketch({
   bg,

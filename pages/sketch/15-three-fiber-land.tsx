@@ -1,20 +1,16 @@
 import type {
   MeshProps,
-  Euler,
-  Vector3,
-  Color,
   ThreeElements,
 } from '@react-three/fiber'
 import { useRef, useState } from 'react'
-import { extend, useFrame } from '@react-three/fiber'
-import { MeshReflectorMaterial } from '@react-three/drei'
+import { useFrame } from '@react-three/fiber'
 
-import { PageHeader } from 'components/PageHeader'
-import { Stack } from 'components/Stack'
-import { HtmlTitle } from 'components/HtmlTitle'
+import { PageHeader } from 'components/shared/PageHeader'
+import { Stack } from 'components/shared/Stack'
+import { HtmlTitle } from 'components/shared/HtmlTitle'
 import { tokens } from 'tokens'
-import { Area } from 'components/Area'
-import { Canvas } from 'components/Canvas'
+import { Area } from 'components/shared/Area'
+import { Canvas } from 'components/site/Canvas'
 import { rainbow } from 'data/colorMaps'
 
 export const meta = {

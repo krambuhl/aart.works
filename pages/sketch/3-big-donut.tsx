@@ -1,10 +1,10 @@
 import type { P5Color } from 'types/p5'
 
-import { Sketch } from 'components/Sketch'
-import { PageHeader } from 'components/PageHeader'
-import { Stack } from 'components/Stack'
-import { HtmlTitle } from 'components/HtmlTitle'
-import { Area } from 'components/Area'
+import { Sketch } from 'components/site/Sketch'
+import { PageHeader } from 'components/shared/PageHeader'
+import { Stack } from 'components/shared/Stack'
+import { HtmlTitle } from 'components/shared/HtmlTitle'
+import { Area } from 'components/shared/Area'
 import { tokens } from 'tokens'
 
 const baseBg: P5Color = [0 / 255, 0 / 255, 0 / 255, 255]

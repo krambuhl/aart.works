@@ -1,13 +1,13 @@
 import { useMemo } from 'react'
-import type { FormulaSketchProps } from 'components/FormulaSketch/types'
+import type { FormulaSketchProps } from 'components/site/FormulaSketch/types'
 
-import { FormulaSketch } from 'components/FormulaSketch'
-import { Area } from 'components/Area'
-import { PageHeader } from 'components/PageHeader'
-import { Stack } from 'components/Stack'
-import { HtmlTitle } from 'components/HtmlTitle'
+import { FormulaSketch } from 'components/site/FormulaSketch'
+import { Area } from 'components/shared/Area'
+import { PageHeader } from 'components/shared/PageHeader'
+import { Stack } from 'components/shared/Stack'
+import { HtmlTitle } from 'components/shared/HtmlTitle'
 import { tokens } from 'tokens'
-import { AutoGrid } from 'components/Grid'
+import { AutoGrid } from 'components/shared/Grid'
 
 export const meta = {
   title: 'Formulas',

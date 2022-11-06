@@ -1,10 +1,10 @@
-import { useCallback, useState } from 'react'
+import { useCallback } from 'react'
 import dynamic from 'next/dynamic'
 import type { SketchProps } from './types'
 import type { P5CanvasInstance, Sketch as SketchType } from 'react-p5-wrapper'
 import styled from 'styled-components'
 
-import { BodyText } from 'components/Text'
+import { BodyText } from 'components/shared/Text'
 import { tokens } from 'tokens'
 
 const Loading = styled(BodyText)`
@@ -36,8 +36,6 @@ const SketchWrapper = dynamic(
     loading: () => <Loading size="sm">loading...</Loading>,
   }
 )
-
-type PlayState = 'play' | 'pause'
 
 export function Sketch({ setup, draw, ...props }: SketchProps) {
   const sketch: SketchType = useCallback(

@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic'
 import styled from 'styled-components'
 
-import { BodyText } from 'components/Text'
+import { BodyText } from 'components/shared/Text'
 
 const Loading = styled(BodyText)`
   align-self: center;

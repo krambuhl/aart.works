@@ -1,7 +1,7 @@
 import type { PageHeaderProps } from './types'
 
-import { Stack } from 'components/Stack'
-import { DataText, HeadingText } from 'components/Text'
+import { Stack } from 'components/shared/Stack'
+import { DataText, HeadingText } from 'components/shared/Text'
 import { tokens } from 'tokens'
 
 export function PageHeader({
