@@ -62,7 +62,7 @@ function Box({ frame, ...props }: MeshProps & FrameProps) {
   return (
     <mesh {...props} ref={ref}>
       {/* @ts-ignore */}
-      <AnimatedShape args={[1.5, 144, 144]}>
+      <AnimatedShape args={[1.5, 142, 142]}>
         <AnimatedMeshDistortMaterial
           color={color}
           speed={2}
