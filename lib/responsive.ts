@@ -65,26 +65,10 @@ export function responsiveProp(
   const values = convertToResponsive<string>(rawValues)
   return css`
     ${values.xs ? `${name}: ${transform(values.xs)};` : ''}
-    ${createPropertyQuery({
-      name,
-      value: transform(values.sm),
-      breakpoint: 'sm',
-    })}
-    ${createPropertyQuery({
-      name,
-      value: transform(values.md),
-      breakpoint: 'md',
-    })}
-    ${createPropertyQuery({
-      name,
-      value: transform(values.lg),
-      breakpoint: 'lg',
-    })}
-    ${createPropertyQuery({
-      name,
-      value: transform(values.xl),
-      breakpoint: 'xl',
-    })}
+    ${createPropertyQuery({ name, value: transform(values.sm), breakpoint: 'sm' })}
+    ${createPropertyQuery({ name, value: transform(values.md), breakpoint: 'md' })}
+    ${createPropertyQuery({ name, value: transform(values.lg), breakpoint: 'lg' })}
+    ${createPropertyQuery({ name, value: transform(values.xl), breakpoint: 'xl' })}
   `
 }
 

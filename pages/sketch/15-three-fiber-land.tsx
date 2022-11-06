@@ -60,6 +60,7 @@ function Scene() {
         return cellY.map((_, y) => {
           return (
             <Box
+              key={`${x}${y}`}
               position={[-3 + 0.25 * x, -3 + 0.25 * y, 0]}
               scale={0.25}
               x={x}

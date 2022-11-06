@@ -82,10 +82,6 @@ function Box(props: MeshProps & FrameProps) {
     <mesh {...props} ref={ref}>
       <boxBufferGeometry />
       <meshStandardMaterial color={color} />
-      {/* @ts-ignore */}
-      {/* <RoundedBox args={[1, 1, 1]} radius={0.35} smoothness={4}>
-        <meshStandardMaterial color={color} />
-      </RoundedBox> */}
     </mesh>
   )
 }
@@ -110,6 +106,7 @@ function Scene() {
         return cellY.map((_, y) => {
           return (
             <Box
+              key={`${x}${y}`}
               position={[-3 + offset * x, -3 + offset * y, 0]}
               scale={scale}
               x={x}
