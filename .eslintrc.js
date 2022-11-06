@@ -1,21 +1,23 @@
 module.exports = {
-  extends: ["next", "prettier"],
+  extends: ['next', 'prettier'],
   rules: {
-    indent: ["error", 2, { SwitchCase: 1 }],
-    "import/order": [
-      "error",
+    semi: ['error', 'never'],
+    quotes: ['error', 'single'],
+    indent: ['error', 2, { SwitchCase: 1 }],
+    'import/order': [
+      'error',
       {
-        "newlines-between": "always",
-        groups: ["type", ["builtin", "external"], ["internal"]],
+        'newlines-between': 'always',
+        groups: ['type', ['builtin', 'external'], ['internal']],
         alphabetize: {
-          order: "asc",
+          order: 'asc',
         },
       },
     ],
-    "import/first": "error",
-    "import/newline-after-import": "error",
-    "import/no-duplicates": "error",
-    "import/no-anonymous-default-export": [2, { allowObject: true }],
-    "no-multiple-empty-lines": ["error", { max: 1, maxEOF: 0 }],
+    'import/first': 'error',
+    'import/newline-after-import': 'error',
+    'import/no-duplicates': 'error',
+    'import/no-anonymous-default-export': [2, { allowObject: true }],
+    'no-multiple-empty-lines': ['error', { max: 1, maxEOF: 0 }],
   },
-};
+}

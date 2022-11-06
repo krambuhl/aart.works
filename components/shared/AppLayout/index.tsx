@@ -71,7 +71,7 @@ export function AppLayout({
 
       {showFooter && <Footer />}
     </Root>
-  );
+  )
 }
 
 AppLayout.StyledRoot = Root

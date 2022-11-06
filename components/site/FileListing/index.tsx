@@ -62,7 +62,7 @@ export function FileListing({ files, className, ...props }: FileListingProps) {
         )}
       </Stack>
     </Area>
-  );
+  )
 }
 
 const FileAnchor = styled(NextLink)`
