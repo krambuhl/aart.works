@@ -1,7 +1,7 @@
 import type { MeshProps, ThreeElements } from '@react-three/fiber'
 import React, { useRef, useState } from 'react'
 import { useFrame } from '@react-three/fiber'
-import { RoundedBox, MeshDistortMaterial } from '@react-three/drei'
+import { MeshDistortMaterial, Sphere } from '@react-three/drei'
 import { animated, useSpring } from '@react-spring/three'
 import type { FrameProps } from 'components/Frames/types'
 
@@ -18,7 +18,7 @@ import { rainbow } from 'data/colorMaps'
 const startingFrame = 1
 
 const AnimatedMeshDistortMaterial = animated(MeshDistortMaterial)
-const AnimatedRoundedBox = animated(RoundedBox)
+const AnimatedShape = animated(Sphere)
 
 export const meta = {
   title: 'Deformation',
@@ -62,14 +62,14 @@ function Box({ frame, ...props }: MeshProps & FrameProps) {
   return (
     <mesh {...props} ref={ref}>
       {/* @ts-ignore */}
-      <AnimatedRoundedBox radius={0.2} smoothness={10}>
+      <AnimatedShape args={[1.5, 144, 144]}>
         <AnimatedMeshDistortMaterial
           color={color}
           speed={2}
-          distort={0.8}
+          distort={0.5}
           radius={1.1}
         />
-      </AnimatedRoundedBox>
+      </AnimatedShape>
     </mesh>
   )
 }
@@ -84,7 +84,7 @@ function Scene() {
 
       <ambientLight />
       <pointLight position={[10, 10, 10]} />
-      <Box position={[0, 0, 0]} scale={3} frame={frame} />
+      <Box position={[0, 0, 0]} scale={1} frame={frame} />
     </Canvas>
   )
 }
