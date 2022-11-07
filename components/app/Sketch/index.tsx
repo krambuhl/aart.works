@@ -41,16 +41,16 @@ const SketchWrapper = dynamic(
 
 export function Sketch({ setup, draw, ...props }: SketchProps) {
   const sketch: SketchType = useCallback(
-    (p) => {
+    (p: P5CanvasInstance) => {
       const store = new Map()
 
       p.setup = () => {
         p.frameRate(60)
-        setup && setup(p as P5CanvasInstance, store)
+        setup && setup(p, store)
       }
 
       p.draw = () => {
-        draw && draw(p as P5CanvasInstance, store)
+        draw && draw(p, store)
       }
     },
     [setup, draw]
