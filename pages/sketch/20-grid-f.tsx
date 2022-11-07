@@ -55,8 +55,8 @@ export default function Output() {
             draw={(p, store) => {
               // reset
               p.clear(...baseBg)
-              p.noStroke()
-              p.orbitControl()
+              // p.noStroke()
+              // p.orbitControl()
               p.normalMaterial()
 
               const start = p.frameCount
@@ -69,8 +69,8 @@ export default function Output() {
                 const pos = store.frames[i]
                 const time = start / 5
 
-                const color = (pos.x + offset) * (pos.y + offset) + time
-                const fill = p.color(rainbow[Math.floor(color % rainbow.length)])
+                // const color = (pos.x + offset) * (pos.y + offset) + time
+                // const fill = p.color(rainbow[Math.floor(color % rainbow.length)])
 
                 const x = (pos.x - sides / 2) * size
                 const y = (pos.y - sides / 2) * size
@@ -84,11 +84,14 @@ export default function Output() {
                 // p.pointLight(fill, 0, 0, 100)
                 // p.pointLight(fill, 0, 0, -100)
                 // p.ambientMaterial(255)
-                p.translate(x, y)
-                p.rotateX(p.sin(x / size / 2) + p.cos(time / 12))
-                p.rotateY(p.sin(y / size / 2) + p.cos(time / 16))
+                p.translate(x, y, (p.sin((x * y) + time / 10)) * ((p.sin(x * 0.2) * p.cos(y * 0.1)) * 4))
+                // p.translate(x, y)
+                p.rotateX(p.sin(x / size / 4) + p.cos(time / 12))
+                p.rotateY(p.sin(y / size / 8) + p.cos(time / 16))
                 p.rotateZ((x * y) + (time / 10))
-                p.sphere(scale)
+                p.torus(scale * 0.5, scale * 0.4)
+                // p.box(scale * 1.8, scale * 1.8, scale * 1.8, 420, 420)
+                // p.sphere(scale)
 
                 p.pop()
               }
@@ -114,10 +117,10 @@ const vs = `
   varying vec3 vNormal;
   void main() {
     vec4 positionVec4 = vec4(aPosition, 2.0);
-    float frequency = 1.0;
+    float frequency = 2.0;
     float amplitude = 1.;
     float distortion = sin(positionVec4.x * frequency + 1.0 * 0.1);
-    positionVec4.x += distortion * ((1.) / 3.01) * aNormal.x * amplitude;
+    // positionVec4.x += distortion * ((1.) / 3.01) * aNormal.x * amplitude;
     vNormal = aNormal;
     gl_Position = uProjectionMatrix * uModelViewMatrix * positionVec4;
     vTexCoord = aTexCoord;
