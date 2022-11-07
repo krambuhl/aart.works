@@ -17,6 +17,7 @@ export function FileListing({ files, className, ...props }: FileListingProps) {
       .sort((a, b) => (a.date < b.date ? 1 : -1))
       .map((file) => {
         const date = new Date(file.date)
+
         return {
           ...file,
           year: date.getFullYear(),

@@ -10,6 +10,7 @@ const Loading = styled(BodyText)`
 export const Sketch = dynamic(
   async () => {
     const mod = await import('.')
+
     return mod.Sketch
   },
   {

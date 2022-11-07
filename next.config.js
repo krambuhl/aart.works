@@ -5,6 +5,6 @@ module.exports = {
     styledComponents: true,
   },
   eslint: {
-    dirs: ["components", "data", "lib", "pages", "styles"],
+    dirs: ['app', 'components', 'data', 'hooks', 'lib', 'styles', 'tokens', 'types'],
   },
-};
+}

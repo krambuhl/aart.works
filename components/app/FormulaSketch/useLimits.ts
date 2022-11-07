@@ -23,8 +23,12 @@ export function useLimits(
       const input = lerp(start, end, progress)
       const output = fn(input)
 
-      if (output < min) min = output
-      if (output > max) max = output
+      if (output < min) {
+        min = output
+      }
+      if (output > max) {
+        max = output
+      }
     }
 
     return { min, max }

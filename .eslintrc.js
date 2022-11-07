@@ -1,8 +1,26 @@
 module.exports = {
-  extends: ['next', 'prettier'],
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:@typescript-eslint/recommended',
+    'next',
+    'prettier',
+  ],
+  parser: '@typescript-eslint/parser',
   rules: {
     semi: ['error', 'never'],
     quotes: ['error', 'single'],
+    'block-spacing': ['error', 'always'],
+    'no-trailing-spaces': ['error'],
+    'no-multi-spaces': ['error'],
+    'padded-blocks': ['error', 'never'],
+    'newline-before-return': 'error',
+    'comma-dangle': ['error', 'always-multiline'],
+    curly: ['error', 'all'],
+    'brace-style': 'error',
+    'func-style': ['error', 'declaration', { allowArrowFunctions: true }],
+    'default-case': ['error'],
     indent: ['error', 2, { SwitchCase: 1 }],
     'import/order': [
       'error',

@@ -34,10 +34,12 @@ function CameraController() {
 
     controls.minDistance = 3
     controls.maxDistance = 20
+
     return () => {
       controls.dispose()
     }
   }, [camera, gl])
+
   return null
 }
 
@@ -61,7 +63,9 @@ function Box(props: MeshProps & FrameProps) {
   useFrame(() => {
     const frame = props.frame.current
 
-    if (!ref.current) return
+    if (!ref.current) {
+      return
+    }
 
     ref.current.rotation.x = frame * 2 * sx
     ref.current.rotation.y = frame * 2 * sy

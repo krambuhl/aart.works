@@ -30,6 +30,7 @@ const StyledSketch = styled.div`
 const SketchWrapper = dynamic(
   async () => {
     const mod = await import('react-p5-wrapper')
+
     return mod.ReactP5Wrapper
   },
   {
@@ -41,7 +42,7 @@ const SketchWrapper = dynamic(
 export function Sketch({ setup, draw, ...props }: SketchProps) {
   const sketch: SketchType = useCallback(
     (p) => {
-      let store = new Map()
+      const store = new Map()
 
       p.setup = () => {
         p.frameRate(60)

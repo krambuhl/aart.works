@@ -41,7 +41,6 @@ export default function Output() {
               const length = store.history.length
 
               for (let i = 0; i < length; i++) {
-                const pos = i / length
                 const offset = store.history[i]
                 const input = (start - offset) / 60
 

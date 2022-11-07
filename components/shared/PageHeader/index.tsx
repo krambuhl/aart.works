@@ -8,7 +8,6 @@ export function PageHeader({
   title,
   subtitle,
   date,
-  className,
   ...props
 }: PageHeaderProps) {
   return (

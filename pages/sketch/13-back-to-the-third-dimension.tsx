@@ -6,7 +6,6 @@ import { HtmlTitle } from 'components/shared/HtmlTitle'
 import { PageHeader } from 'components/shared/PageHeader'
 import { Stack } from 'components/shared/Stack'
 import { tokens } from 'tokens'
-// import { rainbow } from 'data/colorMaps'
 
 const baseBg: P5Color = [0 / 255, 0 / 255, 0 / 255, 255]
 const size = 512
@@ -42,14 +41,13 @@ export default function Output() {
               const length = store.history.length
 
               for (let i = 0; i < length; i++) {
-                const pos = i / length
                 const offset = store.history[i]
                 const time = start / 1000
                 const input =
                   (start - offset) /
                   p.lerp(30, 45, p.norm(Math.sin(time), -1, 1))
 
-                let x =
+                const x =
                   Math.sin(input / 20) * (Math.cos(time * 40) * (size / 9)) +
                   Math.sin(i) * (size / 4)
                 const y =

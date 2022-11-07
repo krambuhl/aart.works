@@ -11,7 +11,7 @@ export const Stack = styled.div<StackProps>`
   width: 100%;
 
   ${({ direction = 'vertical' }) =>
-    responsiveProp('flex-direction', direction, (value) =>
+    responsiveProp('flex-direction', direction, () =>
       direction === 'vertical' ? 'column' : 'row'
     )};
 

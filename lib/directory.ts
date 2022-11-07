@@ -7,6 +7,7 @@ import path from 'path'
 
 export async function listDirectory(source: string): Promise<File[]> {
   const files = await glob(source)
+
   return await Promise.all(files.map(processFile))
 }
 
@@ -42,6 +43,7 @@ export async function processFile(file: string): Promise<File> {
 
       if (metaMatch) {
         const meta = json.parse(metaMatch[0])
+
         return {
           ...res,
           ...meta,

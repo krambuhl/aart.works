@@ -48,7 +48,7 @@ export default function Output() {
                   (start - offset) /
                   p.lerp(30, 45, p.norm(Math.sin(time), -1, 1))
 
-                let x =
+                const x =
                   Math.sin(input) * (Math.cos(time) * (size / 4)) +
                   Math.sin(i) * (size / 6)
                 const y =

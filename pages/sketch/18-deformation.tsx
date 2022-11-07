@@ -30,10 +30,11 @@ function Box({ frame, ...props }: MeshProps & FrameProps) {
   const ref = useRef<ThreeElements['mesh']>()
   const [newColor, setNewColor] = useState(rainbow[0])
   const [prevColor, setPrevColor] = useState(rainbow[0])
-  const [state, setState] = useState()
 
   useFrame(() => {
-    if (!ref.current) return
+    if (!ref.current) {
+      return
+    }
 
     const currentFrame = frame.current / 100
 
@@ -62,6 +63,7 @@ function Box({ frame, ...props }: MeshProps & FrameProps) {
   // Return the view, these are regular Threejs elements expressed in JSX
   return (
     <mesh {...props} ref={ref}>
+      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
       {/* @ts-ignore */}
       <AnimatedShape args={[1.5, 142, 142]}>
         <AnimatedMeshDistortMaterial

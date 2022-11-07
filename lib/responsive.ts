@@ -63,6 +63,7 @@ export function responsiveProp(
 ) {
   const name = rawName.replace(/[A-Z]/g, (m) => '-' + m.toLowerCase())
   const values = convertToResponsive<string>(rawValues)
+
   return css`
     ${values.xs ? `${name}: ${transform(values.xs)};` : ''}
     ${createPropertyQuery({ name, value: transform(values.sm), breakpoint: 'sm' })}
@@ -89,6 +90,7 @@ export function responsiveToken<T>(
   rawValues: LazyResponsive<T>
 ) {
   const values = convertToResponsive<T>(rawValues)
+
   return css`
     ${values.xs ? `${name}: ${values.xs};` : ''}
     ${createTokenQuery<T>({ name, token: values.sm, breakpoint: 'sm' })}

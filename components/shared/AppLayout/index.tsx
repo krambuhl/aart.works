@@ -27,14 +27,9 @@ const Main = styled.main`
   width: 100%;
 `
 
-const Footer = styled.footer``
-
 export function AppLayout({
   width = tokens.width.x1280,
-  showHeader = false,
-  showFooter = false,
   menu,
-  footer,
   children,
   ...props
 }: AppLayoutProps) {
@@ -42,19 +37,17 @@ export function AppLayout({
 
   return (
     <Root width={width} {...props}>
-      {showHeader && (
-        <Header as="header" direction="horizontal">
-          <NextLink href="/" passHref>
-            <Space pa={tokens.size.x20}>
-              <HeadingText as="h1" size="xs">
-                {SITE_NAME}
-              </HeadingText>
-            </Space>
-          </NextLink>
+      <Header as="header" direction="horizontal">
+        <NextLink href="/" passHref>
+          <Space pa={tokens.size.x20}>
+            <HeadingText as="h1" size="xs">
+              {SITE_NAME}
+            </HeadingText>
+          </Space>
+        </NextLink>
 
-          {menu ?? <div />}
-        </Header>
-      )}
+        {menu ?? <div />}
+      </Header>
 
       <Main id="content">
         <Space
@@ -68,8 +61,6 @@ export function AppLayout({
           {children}
         </Space>
       </Main>
-
-      {showFooter && <Footer />}
     </Root>
   )
 }

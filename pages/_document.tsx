@@ -14,6 +14,7 @@ export default class CustomDocument extends Document {
         })
 
       const initialProps = await Document.getInitialProps(ctx)
+
       return {
         ...initialProps,
         styles: [initialProps.styles, sheet.getStyleElement()],

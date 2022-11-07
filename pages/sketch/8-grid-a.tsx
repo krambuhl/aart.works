@@ -59,9 +59,6 @@ export default function Output() {
                 const pos = store.frames[i]
                 const time = start / 2.5
 
-                const x = pos.x * size
-                const y = pos.y * size
-
                 const color = (pos.x + offset) * (pos.y + offset) + time
 
                 p.fill(p.color(rainbow[Math.floor(color % rainbow.length)]))

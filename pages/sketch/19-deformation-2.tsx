@@ -2,7 +2,7 @@ import type { MeshProps, ThreeElements } from '@react-three/fiber'
 import type { FrameProps } from 'components/app/Frames/types'
 
 import { animated, useSpring } from '@react-spring/three'
-import { RoundedBox, MeshDistortMaterial } from '@react-three/drei'
+import { MeshDistortMaterial } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import React, { useRef, useState } from 'react'
 
@@ -28,19 +28,13 @@ function Box({ frame, ...props }: MeshProps & FrameProps) {
   const ref = useRef<ThreeElements['mesh']>()
   const [newColor, setNewColor] = useState(rainbow[0])
   const [prevColor, setPrevColor] = useState(rainbow[0])
-  const [state, setState] = useState()
 
   useFrame(() => {
-    if (!ref.current) return
+    if (!ref.current) {
+      return
+    }
 
     const currentFrame = frame.current / 100
-
-    // ref.current.rotation.x = currentFrame
-    // ref.current.rotation.y = currentFrame
-    // ref.current.rotation.z = currentFrame
-
-    const { x, y } = ref.current.rotation
-
     const colorIndex = currentFrame / 10
     const color =
       rainbow[
@@ -62,6 +56,7 @@ function Box({ frame, ...props }: MeshProps & FrameProps) {
     <mesh {...props} ref={ref}>
       <sphereGeometry attach="geometry" args={[1, 64, 64]} />
       {/* <boxGeometry /> */}
+      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
       {/* @ts-ignore */}
       <AnimatedMeshDistortMaterial
         color={color}

@@ -31,6 +31,7 @@ export default function Output() {
               const y = pos.y + 29
 
               const colorIndex = x * ((y + 1) * time)
+
               return rainbow[Math.floor(Math.abs(colorIndex) % rainbow.length)]
             }}
           />

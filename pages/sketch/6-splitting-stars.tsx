@@ -40,11 +40,11 @@ export default function Output() {
               const length = store.history.length
 
               const sin1 = p.norm(Math.sin(start / 100), -1, 1)
-              const sin2 = p.norm(Math.sin(start / 10), -1, 1)
-              const sin3 = p.norm(Math.sin(start / 1), -1, 1)
-              const sin4 = p.norm(Math.sin(start * 10), -1, 1)
-              const cos1 = p.norm(Math.cos(start / 100), -1, 1)
-              const cos2 = p.norm(Math.cos(start / 10), -1, 1)
+              // const sin2 = p.norm(Math.sin(start / 10), -1, 1)
+              // const sin3 = p.norm(Math.sin(start / 1), -1, 1)
+              // const sin4 = p.norm(Math.sin(start * 10), -1, 1)
+              // const cos1 = p.norm(Math.cos(start / 100), -1, 1)
+              // const cos2 = p.norm(Math.cos(start / 10), -1, 1)
               const cos3 = p.norm(Math.cos(start / 1), -1, 1)
               const cos4 = p.norm(Math.cos(start * 10), -1, 1)
 

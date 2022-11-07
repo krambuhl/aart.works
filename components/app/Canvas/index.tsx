@@ -14,6 +14,7 @@ const StyledScene = styled.div`
 const CanvasWrapper = dynamic(
   async () => {
     const mod = await import('@react-three/fiber')
+
     return mod.Canvas
   },
   {
@@ -22,6 +23,7 @@ const CanvasWrapper = dynamic(
   }
 )
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function Canvas(props: any) {
   return (
     <StyledScene>

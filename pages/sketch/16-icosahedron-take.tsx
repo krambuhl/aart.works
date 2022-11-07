@@ -25,19 +25,16 @@ function Box(props: MeshProps) {
   const ref = useRef<ThreeElements['mesh']>()
   const [color, setColor] = useState(rainbow[0])
 
-  useFrame((state, delta) => {
+  useFrame(() => {
+    /* eslint-disable @typescript-eslint/no-non-null-assertion */
     ref.current!.rotation.x -= (size - props.x) * 0.0005
     ref.current!.rotation.y += (size - props.y) * 0.0005
-
     const x = ref.current!.rotation.x
     const y = ref.current!.rotation.y
     const colorIndex = (Math.sin(x) + Math.cos(y)) * rainbow.length
-
-    // const colorIndex =
-    //   Math.sin(ref.current!.rotation.x * ref.current!.rotation.y) *
-    //   rainbow.length
     const color = rainbow[Math.floor(Math.abs(colorIndex) % rainbow.length)]
     setColor(color)
+    /* eslint-enable @typescript-eslint/no-non-null-assertion */
   })
 
   // Return the view, these are regular Threejs elements expressed in JSX
@@ -51,8 +48,6 @@ function Box(props: MeshProps) {
 
 // extend({ OrbitControls })
 function Scene() {
-  const [frame, setFrame] = useState(6)
-
   const cellX = Array(size)
     .fill(null)
     .map((_, i) => i)
