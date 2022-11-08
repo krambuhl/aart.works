@@ -7,7 +7,6 @@ import { Area } from 'components/shared/Area'
 import { HtmlTitle } from 'components/shared/HtmlTitle'
 import { PageHeader } from 'components/shared/PageHeader'
 import { Stack } from 'components/shared/Stack'
-import { rainbow } from 'data/colorMaps'
 import { tokens } from 'tokens'
 
 const baseBg: P5Color = [0 / 255, 0 / 255, 0 / 255, 255]
@@ -19,7 +18,6 @@ const canvasSize = 512
 
 const sides = 29
 const padding = 32
-const offset = 2
 
 const gutter = -0.5
 const size = (canvasSize - padding * 2) / sides
@@ -29,6 +27,7 @@ export const meta = {
   date: '2022-11-07T00:00:00',
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 let shader: any
 export default function Output() {
   return (
@@ -53,9 +52,8 @@ export default function Output() {
                 }))
             }}
             draw={(p, store) => {
-              // reset
               p.clear(...baseBg)
-              // p.noStroke()
+              p.noStroke()
               // p.orbitControl()
               p.normalMaterial()
 
@@ -81,17 +79,13 @@ export default function Output() {
                 shader.setUniform('x', x)
                 shader.setUniform('y', y)
 
-                // p.pointLight(fill, 0, 0, 100)
-                // p.pointLight(fill, 0, 0, -100)
-                // p.ambientMaterial(255)
                 p.translate(x, y, (p.sin((x * y) + time / 10)) * ((p.sin(x * 0.2) * p.cos(y * 0.1)) * 4))
-                // p.translate(x, y)
                 p.rotateX(p.sin(x / size / 4) + p.cos(time / 12))
                 p.rotateY(p.sin(y / size / 8) + p.cos(time / 16))
                 p.rotateZ((x * y) + (time / 10))
-                p.torus(scale * 0.5, scale * 0.4)
+                // p.torus(scale * 0.5, scale * 0.4)
                 // p.box(scale * 1.8, scale * 1.8, scale * 1.8, 420, 420)
-                // p.sphere(scale)
+                p.sphere(scale)
 
                 p.pop()
               }
