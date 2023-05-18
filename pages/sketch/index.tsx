@@ -1,6 +1,8 @@
 import type { GetStaticProps } from 'next'
 import type { File } from 'types/files'
 
+import styled from 'styled-components'
+
 import { FileListing } from 'components/app/FileListing'
 import { HtmlTitle } from 'components/shared/HtmlTitle'
 import { PageHeader } from 'components/shared/PageHeader'

@@ -7,7 +7,11 @@ import { responsiveProp } from 'lib/responsive'
 import { generateSpace } from './lib'
 
 export const Space = styled.div.withConfig({
-  shouldForwardProp: (prop) => !['height', 'width'].includes(prop),
+  shouldForwardProp: (prop) => ![
+    'height', 'width',
+    'ma', 'mh', 'mv', 'mt', 'mr', 'mb', 'ml',
+    'pa', 'ph', 'pv', 'pt', 'pr', 'pb', 'pl',
+  ].includes(prop),
 })<SpaceProps>`
   width: 100%;
 

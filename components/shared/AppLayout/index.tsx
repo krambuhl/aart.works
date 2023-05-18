@@ -22,7 +22,7 @@ const Header = styled(Stack)`
   border-bottom: ${tokens.size.x2} solid ${tokens.bg.alt.default};
 `
 
-const Main = styled.main`
+const Main = styled(Space)`
   flex-grow: 1;
   width: 100%;
 `
@@ -37,29 +37,16 @@ export function AppLayout({
 
   return (
     <Root width={width} {...props}>
-      <Header as="header" direction="horizontal">
-        <NextLink href="/" passHref>
-          <Space pa={tokens.size.x20}>
-            <HeadingText as="h1" size="xs">
-              {SITE_NAME}
-            </HeadingText>
-          </Space>
-        </NextLink>
-
-        {menu ?? <div />}
-      </Header>
-
-      <Main id="content">
-        <Space
-          pv={{
-            xs: tokens.size.x32,
-            sm: tokens.size.x56,
-            md: tokens.size.x72,
-          }}
-          ph={tokens.size.x24}
-        >
-          {children}
-        </Space>
+      <Main
+        id="content"
+        pv={{
+          xs: tokens.size.x32,
+          sm: tokens.size.x56,
+          md: tokens.size.x72,
+        }}
+        ph={tokens.size.x24}
+      >
+        {children}
       </Main>
     </Root>
   )

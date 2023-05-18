@@ -7,4 +7,6 @@ export interface SketchProps extends Omit<CoreComponent, 'children'> {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   draw: (p: P5CanvasInstance, store: any) => void
+
+  aspectRatio?: number
 }
