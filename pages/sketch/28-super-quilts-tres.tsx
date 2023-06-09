@@ -6,6 +6,7 @@ import { HtmlTitle } from 'components/shared/HtmlTitle'
 import { PageHeader } from 'components/shared/PageHeader'
 import { Stack } from 'components/shared/Stack'
 import { tokens } from 'tokens'
+import { WidthToken } from 'types/tokens'
 
 const bgColor: P5Color = [0 / 255, 0 / 255, 0 / 255, 255]
 const canvasSizeX = 960
@@ -27,16 +28,20 @@ export const meta = {
 }
 
 interface Cords {
-  x: number
-  y: number
+  x: number;
+  y: number;
 }
 
-interface Cell extends Cords { meta?: object }
+interface Cell extends Cords {
+  meta?: object;
+}
 
-type Vector = [number, number]
+type Vector = [number, number];
 
-interface BandTranslateProps extends Cords { size: number }
-type BandTranslate = (props: BandTranslateProps) => [number, number]
+interface BandTranslateProps extends Cords {
+  size: number;
+}
+type BandTranslate = (props: BandTranslateProps) => [number, number];
 
 const jump = 2
 const directions = [
@@ -65,7 +70,9 @@ function spiralGrid(cells: Cell[]) {
   const walkedCells = [] as Cell[]
 
   function getCellIndex({ x, y }: Cords) {
-    return unwalkedCells.findIndex((cell: Cell) => cell.x === x && cell.y === y)
+    return unwalkedCells.findIndex(
+      (cell: Cell) => cell.x === x && cell.y === y
+    )
   }
 
   function popCell({ x, y }: Cords) {
@@ -115,7 +122,11 @@ function spiralGrid(cells: Cell[]) {
           nextCell.meta = { direction: [dx, dy] }
         } else {
           if (currentBandCount >= bandSize - 1) {
-            const [rx, ry] = getRotationTranslates(currentDirIndex)({ x, y, size: currentSize })
+            const [rx, ry] = getRotationTranslates(currentDirIndex)({
+              x,
+              y,
+              size: currentSize,
+            })
             const bandNextIndex = getCellIndex({ x: rx, y: ry })
 
             currentDirIndex += 1
@@ -127,7 +138,11 @@ function spiralGrid(cells: Cell[]) {
             }
             // return walkedCells
           } else {
-            const [bx, by] = getBandTranslates(currentDirIndex)({ x, y, size: currentSize - 1 })
+            const [bx, by] = getBandTranslates(currentDirIndex)({
+              x,
+              y,
+              size: currentSize - 1,
+            })
 
             const bandNextIndex = getCellIndex({ x: bx, y: by })
             currentBandCount += 1
@@ -166,7 +181,7 @@ export default function Output() {
 
       <Stack gap={tokens.size.x24}>
         {/* <PageHeader title={meta.title} date={meta.date} /> */}
-        <Area width={'700px'}>
+        <Area width={'700px' as WidthToken}>
           <Sketch
             aspectRatio={aspectRatio}
             setup={(p, store) => {
@@ -198,12 +213,17 @@ export default function Output() {
                 const x = frame.x * sizeX
                 const y = frame.y * sizeY
 
-                const colorIndex0 = ((i + x) * (time) * 3.4) % (length) / length
-                const colorIndex1 = ((i + y) * (time) * 5) % (length) / length
+                const colorIndex0 = (((i + x) * time * 3.4) % length) / length
+                const colorIndex1 = (((i + y) * time * 5) % length) / length
 
                 p.colorMode(p.RGB, 1)
                 p.fill(1, colorIndex0, colorIndex1)
-                p.rect(x + padding, y + padding, sizeX - gutter, sizeY - gutter)
+                p.rect(
+                  x + padding,
+                  y + padding,
+                  sizeX - gutter,
+                  sizeY - gutter
+                )
               }
             }}
           />
