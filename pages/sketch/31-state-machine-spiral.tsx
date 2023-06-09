@@ -78,7 +78,7 @@ const rotations = [
   ({ cell: [x, y] }) => [x + 1, y],
 ] as Translation[]
 
-const getCell = (translationList: Translate[], config: Config) => {
+const getCell = (translationList: Translation[], config: Config) => {
   const { currentDirection } = config
 
   return translationList[currentDirection % translationList.length](config)
