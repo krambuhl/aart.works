@@ -101,7 +101,7 @@ const restarts = [
   ({ firstCell: [x, y], bandCount }) => [x, y + bandCount + 1],
 ] as Translation[]
 
-const getCell = (translationList: Translate[], config: Config) => {
+const getCell = (translationList: Translation[], config: Config) => {
   const { currentDirection } = config
 
   return translationList[currentDirection % translationList.length](config)
