@@ -2,7 +2,7 @@ import type { SketchProps } from './types'
 import type { P5CanvasInstance, Sketch as SketchType } from 'react-p5-wrapper'
 
 import dynamic from 'next/dynamic'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useState } from 'react'
 import styled from 'styled-components'
 
 import { BodyText } from 'components/shared/Text'
