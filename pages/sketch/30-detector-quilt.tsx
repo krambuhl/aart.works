@@ -3,9 +3,9 @@ import type { P5Color } from 'types/p5'
 import { Sketch } from 'components/app/Sketch'
 import { Area } from 'components/shared/Area'
 import { HtmlTitle } from 'components/shared/HtmlTitle'
-import { PageHeader } from 'components/shared/PageHeader'
 import { Stack } from 'components/shared/Stack'
 import { tokens } from 'tokens'
+import { WidthToken } from 'types/tokens'
 
 const bgColor: P5Color = [0 / 255, 0 / 255, 0 / 255, 255]
 const canvasSizeX = 960
@@ -26,34 +26,36 @@ export const meta = {
   date: '2023-04-10T14:00:00',
 }
 
-type Cell = [number, number]
-type Translate = (c: Cell) => Cell
+type Cell = [number, number];
+type Translate = (c: Cell) => Cell;
 
 const stepSize = 1
 const directions = [
-  ([x, y]) => [x + stepSize, y ],
-  ([x, y]) => [x, y + stepSize ],
-  ([x, y]) => [x - stepSize, y ],
-  ([x, y]) => [x, y - stepSize ],
+  ([x, y]) => [x + stepSize, y],
+  ([x, y]) => [x, y + stepSize],
+  ([x, y]) => [x - stepSize, y],
+  ([x, y]) => [x, y - stepSize],
 ] as Translate[]
 const getNextCell = (i: number) => directions[i % directions.length]
 
 const detectorSize = bandSize
 const detectorTranslates = [
-  ([x, y]) => [x + detectorSize, y ],
-  ([x, y]) => [x, y + detectorSize ],
-  ([x, y]) => [x - detectorSize, y ],
-  ([x, y]) => [x, y - detectorSize ],
+  ([x, y]) => [x + detectorSize, y],
+  ([x, y]) => [x, y + detectorSize],
+  ([x, y]) => [x - detectorSize, y],
+  ([x, y]) => [x, y - detectorSize],
 ] as Translate[]
-const getDetectorCell = (i: number) => detectorTranslates[i % detectorTranslates.length]
+const getDetectorCell = (i: number) =>
+  detectorTranslates[i % detectorTranslates.length]
 
 const rotationTranslates = [
-  ([x, y]) => [x, y + 1 ],
-  ([x, y]) => [x - 1, y ],
-  ([x, y]) => [x, y - 1 ],
-  ([x, y]) => [x + 1, y ],
+  ([x, y]) => [x, y + 1],
+  ([x, y]) => [x - 1, y],
+  ([x, y]) => [x, y - 1],
+  ([x, y]) => [x + 1, y],
 ] as Translate[]
-const getRotationCell = (i: number) => rotationTranslates[i % rotationTranslates.length]
+const getRotationCell = (i: number) =>
+  rotationTranslates[i % rotationTranslates.length]
 
 function spiralGrid(cells: Cell[]) {
   const unwalkedCells = [...cells] as Cell[]
@@ -101,7 +103,7 @@ function spiralGrid(cells: Cell[]) {
         if (nextIndex >= 0 && detectorIndex === -1) {
           nextCell = unwalkedCells[nextIndex]
           // size += 1
-        // } else if (detectorIndex >= 0) {
+          // } else if (detectorIndex >= 0) {
         } else {
           const [rx, ry] = getRotationCell(currentDirIndex)([x, y])
           const bandNextIndex = getUnwalkedCellIndex([rx, ry])
@@ -144,7 +146,7 @@ export default function Output() {
 
       <Stack gap={tokens.size.x24}>
         {/* <PageHeader title={meta.title} date={meta.date} /> */}
-        <Area width={'700px'}>
+        <Area width={'700px' as WidthToken}>
           <Sketch
             aspectRatio={aspectRatio}
             setup={(p, store) => {
@@ -172,12 +174,20 @@ export default function Output() {
                 const x = fx * sizeX
                 const y = fy * sizeY
 
-                const colorIndex0 = ((i + (x * 0.1) * Math.sin(x * i)) + time * 0.89) % (length) / length
-                const colorIndex1 = ((i + (y * 2) * Math.cos(y * i)) + time) % (length) / length
+                const colorIndex0 =
+                  ((i + x * 0.1 * Math.sin(x * i) + time * 0.89) % length) /
+                  length
+                const colorIndex1 =
+                  ((i + y * 2 * Math.cos(y * i) + time) % length) / length
 
                 p.colorMode(p.RGB, 1)
                 p.fill(1, colorIndex1, colorIndex0)
-                p.rect(x + padding, y + padding, sizeX - gutter, sizeY - gutter)
+                p.rect(
+                  x + padding,
+                  y + padding,
+                  sizeX - gutter,
+                  sizeY - gutter
+                )
               }
             }}
           />
