@@ -1,6 +1,6 @@
-import type { PropertiesHyphen } from 'csstype'
+import type { PropertiesHyphen } from 'csstype';
 
-import { css } from 'styled-components'
+import { css } from 'styled-components';
 
 export const breakpoints = {
   xs: 0,
@@ -8,7 +8,7 @@ export const breakpoints = {
   md: 736,
   lg: 992,
   xl: 1248,
-} as const
+} as const;
 
 export type Breakpoint = keyof typeof breakpoints
 export type Responsive<T = string> = Partial<Record<Breakpoint, T>>
@@ -26,14 +26,14 @@ export function convertToResponsive<T>(
       'lg' in value ||
       'xl' in value)
   ) {
-    return value
+    return value;
   }
 
   if (typeof value === 'string') {
-    return { xs: value }
+    return { xs: value };
   }
 
-  return {}
+  return {};
 }
 
 function createPropertyQuery({
@@ -51,18 +51,18 @@ function createPropertyQuery({
           ${name}: ${value};
         }
       `
-    : undefined
+    : undefined;
 }
 
-const defaultValue = (value?: string) => value
+const defaultValue = (value?: string) => value;
 
 export function responsiveProp(
   rawName: keyof PropertiesHyphen,
   rawValues: LazyResponsive<string>,
   transform = defaultValue
 ) {
-  const name = rawName.replace(/[A-Z]/g, (m) => '-' + m.toLowerCase())
-  const values = convertToResponsive<string>(rawValues)
+  const name = rawName.replace(/[A-Z]/g, (m) => '-' + m.toLowerCase());
+  const values = convertToResponsive<string>(rawValues);
 
   return css`
     ${values.xs ? `${name}: ${transform(values.xs)};` : ''}
@@ -70,7 +70,7 @@ export function responsiveProp(
     ${createPropertyQuery({ name, value: transform(values.md), breakpoint: 'md' })}
     ${createPropertyQuery({ name, value: transform(values.lg), breakpoint: 'lg' })}
     ${createPropertyQuery({ name, value: transform(values.xl), breakpoint: 'xl' })}
-  `
+  `;
 }
 
 function createTokenQuery<T>({
@@ -82,14 +82,14 @@ function createTokenQuery<T>({
   token?: T
   breakpoint: Breakpoint
 }) {
-  return createPropertyQuery({ name, value: token as string, breakpoint })
+  return createPropertyQuery({ name, value: token as string, breakpoint });
 }
 
 export function responsiveToken<T>(
   name: keyof PropertiesHyphen,
   rawValues: LazyResponsive<T>
 ) {
-  const values = convertToResponsive<T>(rawValues)
+  const values = convertToResponsive<T>(rawValues);
 
   return css`
     ${values.xs ? `${name}: ${values.xs};` : ''}
@@ -97,5 +97,5 @@ export function responsiveToken<T>(
     ${createTokenQuery<T>({ name, token: values.md, breakpoint: 'md' })}
     ${createTokenQuery<T>({ name, token: values.lg, breakpoint: 'lg' })}
     ${createTokenQuery<T>({ name, token: values.xl, breakpoint: 'xl' })}
-  `
+  `;
 }

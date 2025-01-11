@@ -1,20 +1,20 @@
-import dynamic from 'next/dynamic'
-import styled from 'styled-components'
+import dynamic from 'next/dynamic';
+import styled from 'styled-components';
 
-import { BodyText } from 'components/shared/Text'
+import { BodyText } from 'components/shared/Text';
 
 const Loading = styled(BodyText)`
   align-self: center;
-`
+`;
 
 export const Sketch = dynamic(
   async () => {
-    const mod = await import('.')
+    const mod = await import('.');
 
-    return mod.Sketch
+    return mod.Sketch;
   },
   {
     ssr: false,
     loading: () => <Loading size="sm">loading...</Loading>,
   }
-)
+);

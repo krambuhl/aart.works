@@ -1,4 +1,5 @@
 import { generateGridPositions, getNextCell, getNextDirection } from 'lib/grid';
+
 import {
   enrichAndFlattenCellData,
   generateUnwalkedCellData,

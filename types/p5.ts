@@ -1,1 +1,1 @@
-export type P5Color = [number, number, number, number]
+export type P5Color = [number, number, number, number];

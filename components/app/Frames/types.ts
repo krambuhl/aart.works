@@ -1,5 +1,5 @@
-import React from 'react'
+import React from 'react';
 
 export interface FrameProps {
-  frame: React.MutableRefObject<number>
+  frame: React.MutableRefObject<number>;
 }

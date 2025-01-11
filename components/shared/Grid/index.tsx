@@ -1,6 +1,6 @@
-import type { AutoGridProps, GridProps } from './types'
+import type { AutoGridProps, GridProps } from './types';
 
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const Grid = styled.div<GridProps>`
   display: grid;
@@ -9,7 +9,7 @@ export const Grid = styled.div<GridProps>`
   ${({ gap }) => (gap ? `gap: ${gap}` : '')};
   ${({ columns }) => (columns ? `grid-template-columns: ${columns}` : '')};
   ${({ rows }) => (rows ? `grid-template-rows: ${rows}` : '')};
-`
+`;
 
 export const AutoGrid = styled.div<AutoGridProps>`
   display: grid;
@@ -20,4 +20,4 @@ export const AutoGrid = styled.div<AutoGridProps>`
   );
 
   ${({ gap }) => (gap ? `gap: ${gap}` : '')};
-`
+`;

@@ -1,5 +1,5 @@
-import type { CoreComponent } from 'types/core'
+import type { CoreComponent } from 'types/core';
 
 export interface CardProps extends CoreComponent {
-  padding?: 'default' | 'none'
+  padding?: 'default' | 'none';
 }

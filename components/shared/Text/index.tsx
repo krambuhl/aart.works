@@ -1,12 +1,8 @@
-import type {
-  HeadingTextProps,
-  BodyTextProps,
-  DataTextProps,
-} from './types'
+import type { HeadingTextProps, BodyTextProps, DataTextProps } from './types';
 
-import styled, { css } from 'styled-components'
+import styled, { css } from 'styled-components';
 
-import { tokens } from 'tokens'
+import { tokens } from 'tokens';
 
 export const HeadingText = styled.div<HeadingTextProps>`
   ${({ size = 'md' }) =>
@@ -16,7 +12,7 @@ export const HeadingText = styled.div<HeadingTextProps>`
       font-size: ${tokens.fontSize.heading[size]};
       line-height: ${tokens.lineHeight.heading};
     `}
-`
+`;
 
 export const BodyText = styled.div.attrs<BodyTextProps>({
   as: 'p',
@@ -28,7 +24,7 @@ export const BodyText = styled.div.attrs<BodyTextProps>({
       font-size: ${tokens.fontSize.body[size]};
       line-height: ${tokens.lineHeight.body};
     `}
-`
+`;
 
 export const DataText = styled.div<DataTextProps>`
   ${({ size = 'md' }) =>
@@ -38,4 +34,4 @@ export const DataText = styled.div<DataTextProps>`
       font-size: ${tokens.fontSize.data[size]};
       line-height: ${tokens.lineHeight.data};
     `}
-`
+`;

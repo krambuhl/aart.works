@@ -1,8 +1,8 @@
-import styled, { css } from 'styled-components'
+import styled, { css } from 'styled-components';
 
-import { tokens } from 'tokens'
+import { tokens } from 'tokens';
 
-import { ButtonLinkProps, ButtonProps } from './types'
+import { ButtonLinkProps, ButtonProps } from './types';
 
 const sharedButtonStyles = css`
   display: inline-block;
@@ -12,7 +12,7 @@ const sharedButtonStyles = css`
   border: 2px solid ${tokens.fg.muted.default};
   color: ${tokens.fg.muted.default};
   border-radius: ${tokens.size.x8};
-`
+`;
 
 const interactiveButtonStyles = css`
   &:hover {
@@ -26,7 +26,7 @@ const interactiveButtonStyles = css`
     border-color: ${tokens.fg.muted.pressed};
     color: ${tokens.fg.muted.pressed};
   }
-`
+`;
 
 const disabledButtonStyled = css`
   background-color: ${tokens.bg.alt.default};
@@ -34,16 +34,16 @@ const disabledButtonStyled = css`
   color: ${tokens.fg.muted.default};
   cursor: not-allowed;
   opacity: 0.6;
-`
+`;
 
 export const Button = styled.button<ButtonProps>`
   ${sharedButtonStyles};
 
   ${({ disabled }) =>
     disabled ? disabledButtonStyled : interactiveButtonStyles}
-`
+`;
 
 export const ButtonLink = styled.a<ButtonLinkProps>`
   ${sharedButtonStyles};
   ${interactiveButtonStyles}
-`
+`;

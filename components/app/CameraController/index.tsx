@@ -1,20 +1,20 @@
-import { useThree } from '@react-three/fiber'
-import { useEffect } from 'react'
-import { OrbitControls } from 'three-stdlib'
+import { useThree } from '@react-three/fiber';
+import { useEffect } from 'react';
+import { OrbitControls } from 'three-stdlib';
 
 export function CameraController() {
-  const { camera, gl } = useThree()
+  const { camera, gl } = useThree();
 
   useEffect(() => {
-    const controls = new OrbitControls(camera, gl.domElement)
+    const controls = new OrbitControls(camera, gl.domElement);
 
-    controls.minDistance = 3
-    controls.maxDistance = 20
+    controls.minDistance = 3;
+    controls.maxDistance = 20;
 
     return () => {
-      controls.dispose()
-    }
-  }, [camera, gl])
+      controls.dispose();
+    };
+  }, [camera, gl]);
 
-  return null
+  return null;
 }

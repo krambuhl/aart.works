@@ -1,5 +1,6 @@
 import { generateGridPositions } from 'lib/grid';
 import { Cell } from 'lib/grid/types';
+
 import {
   CellData,
   EnrichedCellData,

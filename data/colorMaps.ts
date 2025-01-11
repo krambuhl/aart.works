@@ -17,7 +17,7 @@ export const paint = {
   DeepSea: '#294056',
   White: '#fff',
   Black: '#000',
-}
+};
 
 export const rainbow = [
   paint.Lavender,
@@ -28,4 +28,4 @@ export const rainbow = [
   paint.LawnGreen,
   paint.Malachite,
   paint.SkyBlue,
-]
+];

@@ -1,4 +1,4 @@
-import { tokens } from 'tokens'
+import { tokens } from 'tokens';
 
 export type SizeToken = typeof tokens.size[keyof typeof tokens.size]
 export type WidthToken = typeof tokens.width[keyof typeof tokens.width]

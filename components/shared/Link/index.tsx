@@ -1,7 +1,7 @@
-import NextLink from 'next/link'
-import styled from 'styled-components'
+import NextLink from 'next/link';
+import styled from 'styled-components';
 
-import { tokens } from 'tokens'
+import { tokens } from 'tokens';
 
 export const Link = styled(NextLink)`
   text-decoration: underline;
@@ -16,4 +16,4 @@ export const Link = styled(NextLink)`
     color: ${tokens.primary.action.pressed};
     text-decoration-color: var(--primary-action-default);
   }
-`
+`;

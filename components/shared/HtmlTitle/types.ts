@@ -1,4 +1,4 @@
 export interface HtmlTitleProps {
-  title?: string
-  siteName?: string
+  title?: string;
+  siteName?: string;
 }

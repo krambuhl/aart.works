@@ -1,4 +1,4 @@
-import type { ComponentProps } from './types'
+import type { ComponentProps } from './types';
 
 export function Component({ children, ...props }: ComponentProps) {
   return (
@@ -11,5 +11,5 @@ export function Component({ children, ...props }: ComponentProps) {
         }
       `}</style>
     </div>
-  )
+  );
 }
