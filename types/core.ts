@@ -4,5 +4,5 @@ export interface CoreComponent<T extends HTMLElement = HTMLElement>
   extends React.HTMLAttributes<T>,
     AriaAttributes {
   className?: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
