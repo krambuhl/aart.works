@@ -1,19 +1,21 @@
 import type { SketchProps } from './types';
 import type P5 from 'p5';
-import type { P5CanvasInstance, Sketch as SketchType } from 'react-p5-wrapper';
+import type { Sketch as SketchType } from 'react-p5-wrapper';
 
 import dynamic from 'next/dynamic';
 import { useCallback, useState } from 'react';
 import styled from 'styled-components';
 
 import { BodyText } from 'components/shared/Text';
-import { tokens } from 'tokens';
 
 const Loading = styled(BodyText)`
   align-self: center;
 `;
 
-const StyledSketch = styled.div<{ aspectRatio?: number }>`
+const StyledSketch = styled.div<{
+  aspectRatio?: number;
+  children: React.ReactNode;
+}>`
   display: flex;
   flex-direction: column;
   justify-content: center;

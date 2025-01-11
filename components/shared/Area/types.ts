@@ -1,6 +1,6 @@
 import type { CoreComponent } from 'types/core';
-import type { WidthToken } from 'types/tokens';
+import type { SizeToken } from 'types/tokens';
 
 export interface AreaProps extends CoreComponent {
-  width?: WidthToken;
+  width?: SizeToken;
 }

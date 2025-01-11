@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
+
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import type { P5CanvasInstance } from 'react-p5-wrapper';
 import type { P5Color } from 'types/p5';

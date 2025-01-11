@@ -92,8 +92,6 @@ const spiralGrid = walkGrid({
   gridSize: [stepsX, stepsY],
   initialCell: [0, 0],
   initialDirection: 'right',
-  stepSize: 1,
-  detectorSize: 0,
 });
 
 export default function Output() {

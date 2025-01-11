@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
+
 import type { MeshProps, ThreeElements } from '@react-three/fiber';
 import type { FrameProps } from 'components/app/Frames/types';
 

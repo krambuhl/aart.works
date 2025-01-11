@@ -1,6 +1,6 @@
 import type { PropertiesHyphen } from 'csstype';
 import type { CoreComponent } from 'types/core';
-import type { SizeToken, WidthToken } from 'types/tokens';
+import type { SizeToken } from 'types/tokens';
 
 export interface GridProps extends CoreComponent {
   gap?: SizeToken;
@@ -10,5 +10,5 @@ export interface GridProps extends CoreComponent {
 
 export interface AutoGridProps extends CoreComponent {
   gap?: SizeToken;
-  width: WidthToken;
+  width: SizeToken;
 }

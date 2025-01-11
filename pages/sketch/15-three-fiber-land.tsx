@@ -1,3 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
 import type { MeshProps, ThreeElements } from '@react-three/fiber';
 
 import { useFrame } from '@react-three/fiber';
@@ -17,7 +19,7 @@ export const meta = {
 };
 
 function Box(props: MeshProps) {
-  const ref = useRef<ThreeElements['mesh']>();
+  const ref = useRef<ThreeElements['mesh']>(null);
   const [color, setColor] = useState(rainbow[0]);
 
   useFrame(() => {

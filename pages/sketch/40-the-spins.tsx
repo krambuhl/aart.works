@@ -35,9 +35,8 @@ import {
   Gray14,
   Gray15,
 } from 'data/paint';
-import { tokens } from 'tokens';
-
 import { walkGrid } from 'lib/spin-walker';
+import { tokens } from 'tokens';
 
 export const meta = {
   title: 'The Spins',

@@ -104,8 +104,6 @@ const spiralGrid = walkGrid({
   gridSize: [stepsX, stepsY],
   initialCell: [0, 0],
   initialDirection: 'right',
-  stepSize: 1,
-  detectorSize: 0,
 });
 
 export default function Output() {
@@ -144,6 +142,7 @@ export default function Output() {
                 const xo = x - stepsX / 2;
                 const yo = y - stepsY / 2;
 
+                // eslint-disable-next-line no-constant-condition
                 if (true) {
                   const res =
                     Math.tan(time * yo + 10) *
