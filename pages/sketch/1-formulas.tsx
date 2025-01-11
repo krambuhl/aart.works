@@ -1,22 +1,22 @@
-import type { FormulaSketchProps } from 'components/app/FormulaSketch/types'
+import type { FormulaSketchProps } from 'components/app/FormulaSketch/types';
 
-import { useMemo } from 'react'
+import { useMemo } from 'react';
 
-import { FormulaSketch } from 'components/app/FormulaSketch'
-import { Area } from 'components/shared/Area'
-import { AutoGrid } from 'components/shared/Grid'
-import { HtmlTitle } from 'components/shared/HtmlTitle'
-import { PageHeader } from 'components/shared/PageHeader'
-import { Stack } from 'components/shared/Stack'
-import { tokens } from 'tokens'
+import { FormulaSketch } from 'components/app/FormulaSketch';
+import { Area } from 'components/shared/Area';
+import { AutoGrid } from 'components/shared/Grid';
+import { HtmlTitle } from 'components/shared/HtmlTitle';
+import { PageHeader } from 'components/shared/PageHeader';
+import { Stack } from 'components/shared/Stack';
+import { tokens } from 'tokens';
 
 export const meta = {
   title: 'Formulas',
   date: '2022-04-03',
-}
+};
 
 export default function FormulaList() {
-  const formulaList = useMemo(() => getFormulas(), [])
+  const formulaList = useMemo(() => getFormulas(), []);
 
   return (
     <>
@@ -24,8 +24,8 @@ export default function FormulaList() {
 
       <Stack gap={{ xs: tokens.size.x32, sm: tokens.size.x48 }}>
         <PageHeader title={meta.title} date={meta.date} />
-        <Area width={tokens.width.x768}>
-          <AutoGrid gap={tokens.size.x16} width={tokens.width.x256}>
+        <Area width={tokens.size.x768}>
+          <AutoGrid gap={tokens.size.x16} width={tokens.size.x256}>
             {formulaList.map((config, i) => (
               <FormulaSketch key={i} {...config} />
             ))}
@@ -33,7 +33,7 @@ export default function FormulaList() {
         </Area>
       </Stack>
     </>
-  )
+  );
 }
 
 function getFormulas(): FormulaSketchProps[] {
@@ -57,5 +57,5 @@ function getFormulas(): FormulaSketchProps[] {
       formula: (x: number) => Math.log(x),
       min: 0,
     },
-  ]
+  ];
 }

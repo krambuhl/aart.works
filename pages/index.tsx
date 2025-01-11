@@ -1,15 +1,15 @@
-import type { GetStaticProps } from 'next'
-import type { File } from 'types/files'
+import type { GetStaticProps } from 'next';
+import type { File } from 'types/files';
 
-import { FileListing } from 'components/app/FileListing'
-import { PageHeader } from 'components/shared/PageHeader'
-import { Space } from 'components/shared/Space'
-import { Stack } from 'components/shared/Stack'
-import { listDirectory } from 'lib/directory'
-import { tokens } from 'tokens'
+import { FileListing } from 'components/app/FileListing';
+import { PageHeader } from 'components/shared/PageHeader';
+import { Space } from 'components/shared/Space';
+import { Stack } from 'components/shared/Stack';
+import { listDirectory } from 'lib/directory';
+import { tokens } from 'tokens';
 
 interface Props {
-  entryList: File[]
+  entryList: File[];
 }
 
 export default function SketchIndex({ entryList }: Props) {
@@ -23,15 +23,15 @@ export default function SketchIndex({ entryList }: Props) {
         <FileListing files={entryList} />
       </Space>
     </Stack>
-  )
+  );
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const entryList = await listDirectory('pages/sketch/**/*.tsx')
+  const entryList = await listDirectory('pages/sketch/**/*.tsx');
 
   return {
     props: {
       entryList,
     },
-  }
-}
+  };
+};

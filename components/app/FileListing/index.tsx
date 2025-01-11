@@ -1,14 +1,14 @@
-import type { FileListingProps } from './types'
+import type { FileListingProps } from './types';
 
-import classNames from 'classnames'
-import NextLink from 'next/link'
-import { useMemo } from 'react'
-import styled from 'styled-components'
+import classNames from 'classnames';
+import NextLink from 'next/link';
+import { useMemo } from 'react';
+import styled from 'styled-components';
 
-import { Area } from 'components/shared/Area'
-import { Stack } from 'components/shared/Stack'
-import { BodyText, HeadingText } from 'components/shared/Text'
-import { tokens } from 'tokens'
+import { Area } from 'components/shared/Area';
+import { Stack } from 'components/shared/Stack';
+import { BodyText, HeadingText } from 'components/shared/Text';
+import { tokens } from 'tokens';
 
 export function FileListing({ files, className, ...props }: FileListingProps) {
   const fileList = useMemo(() => {
@@ -16,18 +16,18 @@ export function FileListing({ files, className, ...props }: FileListingProps) {
       .filter(({ name }) => name !== 'index')
       .sort((a, b) => (a.date < b.date ? 1 : -1))
       .map((file) => {
-        const date = new Date(file.date)
+        const date = new Date(file.date);
 
         return {
           ...file,
           year: date.getFullYear(),
           month: date.getMonth(),
-        }
-      })
-  }, [files])
+        };
+      });
+  }, [files]);
 
   return (
-    <Area width={tokens.width.x384}>
+    <Area width={tokens.size.x384}>
       <Stack
         gap={{ xs: tokens.size.x6, sm: tokens.size.x12 }}
         className={classNames('file-listing', className)}
@@ -63,13 +63,13 @@ export function FileListing({ files, className, ...props }: FileListingProps) {
         )}
       </Stack>
     </Area>
-  )
+  );
 }
 
 const FileAnchor = styled(NextLink)`
   width: 100%;
-`
+`;
 
 const FileStack = styled(Stack)`
   justify-content: space-between;
-`
+`;

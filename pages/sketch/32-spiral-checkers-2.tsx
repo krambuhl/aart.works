@@ -1,11 +1,11 @@
-import type { P5Color } from 'types/p5'
+import type { P5Color } from 'types/p5';
 
-import { Sketch } from 'components/app/Sketch'
-import { Area } from 'components/shared/Area'
-import { HtmlTitle } from 'components/shared/HtmlTitle'
-import { Stack } from 'components/shared/Stack'
-import { paint } from 'data/colorMaps'
-import { tokens } from 'tokens'
+import { Sketch } from 'components/app/Sketch';
+import { Area } from 'components/shared/Area';
+import { HtmlTitle } from 'components/shared/HtmlTitle';
+import { Stack } from 'components/shared/Stack';
+import { paint } from 'data/colorMaps';
+import { tokens } from 'tokens';
 
 const rainbow = [
   paint.Lavender,
@@ -16,42 +16,42 @@ const rainbow = [
   paint.Malachite,
   paint.YellowCab,
   paint.BloodOrange,
-]
+];
 
-type Cell = [number, number]
-type Translation = (config: Config) => Cell
+type Cell = [number, number];
+type Translation = (config: Config) => Cell;
 
 interface Config {
-  cell: Cell
-  firstCell: Cell
-  currentTurnCount: number
-  currentDirection: number
-  currentArmLength: number
-  currentSnakeLength: number
-  stepsX: number
-  stepsY: number
-  stepSize: number
-  detectorSize: number
-  maxTurnCount: number
-  isFirstPass: boolean
-  bandCount: number
-  bandGap: number
-  bandSize: number
+  cell: Cell;
+  firstCell: Cell;
+  currentTurnCount: number;
+  currentDirection: number;
+  currentArmLength: number;
+  currentSnakeLength: number;
+  stepsX: number;
+  stepsY: number;
+  stepSize: number;
+  detectorSize: number;
+  maxTurnCount: number;
+  isFirstPass: boolean;
+  bandCount: number;
+  bandGap: number;
+  bandSize: number;
 }
 
-type Instruction = () => void
+type Instruction = () => void;
 
-const bgColor: P5Color = [0 / 255, 0 / 255, 0 / 255, 255]
-const canvasSizeX = 960
-const canvasSizeY = 960 * (4 / 4)
+const bgColor: P5Color = [0 / 255, 0 / 255, 0 / 255, 255];
+const canvasSizeX = 960;
+const canvasSizeY = 960 * (4 / 4);
 
-const padding = 40
-const gutter = -0.5
+const padding = 40;
+const gutter = -0.5;
 
-const stepsX = 4 * 20
-const stepsY = 4 * 20
-const sizeX = (canvasSizeX - padding * 2) / stepsX
-const sizeY = (canvasSizeY - padding * 2) / stepsY
+const stepsX = 4 * 20;
+const stepsY = 4 * 20;
+const sizeX = (canvasSizeX - padding * 2) / stepsX;
+const sizeY = (canvasSizeY - padding * 2) / stepsY;
 
 const initialConfig: Config = {
   cell: [4, 4],
@@ -69,59 +69,58 @@ const initialConfig: Config = {
   bandCount: 0,
   bandGap: 0,
   bandSize: 4,
-}
+};
 
 export const meta = {
   title: 'Spiral Checkers 2',
   date: '2023-04-15T01:00:00',
-}
+};
 
 const walks = [
   ({ cell: [x, y], stepSize }) => [x + stepSize, y],
   ({ cell: [x, y], stepSize }) => [x, y + stepSize],
   ({ cell: [x, y], stepSize }) => [x - stepSize, y],
   ({ cell: [x, y], stepSize }) => [x, y - stepSize],
-] as Translation[]
+] as Translation[];
 
 const detectors = [
   ({ cell: [x, y], detectorSize }) => [x + detectorSize, y],
   ({ cell: [x, y], detectorSize }) => [x, y + detectorSize],
   ({ cell: [x, y], detectorSize }) => [x - detectorSize, y],
   ({ cell: [x, y], detectorSize }) => [x, y - detectorSize],
-] as Translation[]
+] as Translation[];
 
 const rotations = [
   ({ cell: [x, y] }) => [x, y + 1],
   ({ cell: [x, y] }) => [x - 1, y],
   ({ cell: [x, y] }) => [x, y - 1],
   ({ cell: [x, y] }) => [x + 1, y],
-] as Translation[]
+] as Translation[];
 
 const restarts = [
   ({ firstCell: [x, y], bandCount }) => [x, y + bandCount + 1],
-] as Translation[]
+] as Translation[];
 
 const getCell = (translationList: Translation[], config: Config) => {
-  const { currentDirection } = config
+  const { currentDirection } = config;
 
-  return translationList[currentDirection % translationList.length](config)
-}
+  return translationList[currentDirection % translationList.length](config);
+};
 
-const isInteriorCell = ({ cell: [x, y], stepsX, stepsY }: Config) => (
-  (x >= 0 && x < stepsX) &&
-  (y >= 0 && y < stepsY)
-)
+const isInteriorCell = ({ cell: [x, y], stepsX, stepsY }: Config) =>
+  x >= 0 && x < stepsX && y >= 0 && y < stepsY;
 
-const getCellIndex = (cells: Cell[], [x, y]: Cell) => cells.findIndex(([cx, cy]) => cx === x && cy === y)
+const getCellIndex = (cells: Cell[], [x, y]: Cell) =>
+  cells.findIndex(([cx, cy]) => cx === x && cy === y);
 
 function spiralGrid(cells: Cell[]) {
-  const unwalkedCells = [...cells] as Cell[]
-  const walkedCells = [] as Cell[]
-  const walkedConfigs = [] as Config[]
-  const instructions = [] as Instruction[]
+  const unwalkedCells = [...cells] as Cell[];
+  const walkedCells = [] as Cell[];
+  const walkedConfigs = [] as Config[];
+  const instructions = [] as Instruction[];
 
   const restart = (config: Config) => () => {
-    const nextCell = getCell(restarts, config)
+    const nextCell = getCell(restarts, config);
 
     if (nextCell) {
       instructions.push(
@@ -136,58 +135,73 @@ function spiralGrid(cells: Cell[]) {
           isFirstPass: false,
           bandCount: config.bandCount + 1,
         })
-      )
+      );
     }
-  }
+  };
 
   const pop = (config: Config) => () => {
-    const { cell, bandCount, bandSize, bandGap, currentArmLength, currentSnakeLength } = config
+    const {
+      cell,
+      bandCount,
+      bandSize,
+      bandGap,
+      currentArmLength,
+      currentSnakeLength,
+    } = config;
 
-    const index = getCellIndex(unwalkedCells, cell)
+    const index = getCellIndex(unwalkedCells, cell);
 
     if (bandSize - bandCount <= bandGap) {
-      return
+      return;
     }
 
     if (index >= 0) {
-      const poppedCell = unwalkedCells.splice(index, 1)[0]
-      walkedCells.push(poppedCell)
-      walkedConfigs.push(config)
+      const poppedCell = unwalkedCells.splice(index, 1)[0];
+      walkedCells.push(poppedCell);
+      walkedConfigs.push(config);
 
       instructions.push(
         detect({
           ...config,
           currentSnakeLength: currentSnakeLength + 1,
           currentArmLength: currentArmLength + 1,
-        }),
-      )
+        })
+      );
     }
-  }
+  };
 
   const detect = (config: Config) => () => {
-    const { isFirstPass, currentTurnCount, maxTurnCount, bandCount, currentArmLength, detectorSize, bandSize } = config
+    const {
+      isFirstPass,
+      currentTurnCount,
+      maxTurnCount,
+      bandCount,
+      currentArmLength,
+      detectorSize,
+      bandSize,
+    } = config;
 
-    let computedDetectorSize = detectorSize + bandSize
+    let computedDetectorSize = detectorSize + bandSize;
     if (isFirstPass && currentTurnCount < 3) {
-      computedDetectorSize = detectorSize + 1
+      computedDetectorSize = detectorSize + 1;
     } else if (!isFirstPass && currentTurnCount >= maxTurnCount) {
-      computedDetectorSize = detectorSize + bandSize - bandCount + 3
+      computedDetectorSize = detectorSize + bandSize - bandCount + 3;
     } else if (!isFirstPass) {
-      computedDetectorSize = 1
+      computedDetectorSize = 1;
     }
 
-    const [nx, ny] = getCell(walks, config)
+    const [nx, ny] = getCell(walks, config);
     const [dx, dy] = getCell(detectors, {
       ...config,
       detectorSize: computedDetectorSize,
-    })
+    });
 
-    const hasNextCell = getCellIndex(unwalkedCells, [nx, ny]) >= 0
-    const hasDetectorCell = getCellIndex(walkedCells, [dx, dy]) >= 0
+    const hasNextCell = getCellIndex(unwalkedCells, [nx, ny]) >= 0;
+    const hasDetectorCell = getCellIndex(walkedCells, [dx, dy]) >= 0;
     const isDetectorInsideGrid = isInteriorCell({
       ...config,
       cell: [dx, dy],
-    })
+    });
 
     // console.log({ nx, ny, hasNextCell, dx, dy, hasDetectorCell, isDetectorInsideGrid})
 
@@ -197,27 +211,22 @@ function spiralGrid(cells: Cell[]) {
           ...config,
           cell: [nx, ny],
         })
-      )
+      );
     } else if (isFirstPass && currentArmLength < computedDetectorSize) {
-      instructions.push(
-        restart(config)
-      )
+      instructions.push(restart(config));
     } else if (!isFirstPass && currentTurnCount >= maxTurnCount) {
-      instructions.push(
-        restart(config)
-      )
+      instructions.push(restart(config));
     } else {
-      instructions.push(
-        rotate(config)
-      )
+      instructions.push(rotate(config));
     }
-  }
+  };
 
   const rotate = (config: Config) => () => {
-    const { currentDirection, currentTurnCount, isFirstPass, maxTurnCount } = config
+    const { currentDirection, currentTurnCount, isFirstPass, maxTurnCount } =
+      config;
 
-    const [rx, ry] = getCell(rotations, config)
-    const nextIndex = getCellIndex(unwalkedCells, [rx, ry])
+    const [rx, ry] = getCell(rotations, config);
+    const nextIndex = getCellIndex(unwalkedCells, [rx, ry]);
 
     if (nextIndex >= 0) {
       instructions.push(
@@ -229,27 +238,21 @@ function spiralGrid(cells: Cell[]) {
           cell: [rx, ry],
           maxTurnCount: isFirstPass ? maxTurnCount + 1 : maxTurnCount,
         })
-      )
+      );
     }
-  }
+  };
 
   // Progrim
-  instructions.push(
-    pop(initialConfig)
-  )
+  instructions.push(pop(initialConfig));
 
-  while(instructions.length > 0) {
-    const instruction = instructions.pop()
+  while (instructions.length > 0) {
+    const instruction = instructions.pop();
     if (instruction) {
-      instruction()
+      instruction();
     }
   }
 
-  return [
-    walkedCells,
-    unwalkedCells,
-    walkedConfigs,
-  ]
+  return [walkedCells, unwalkedCells, walkedConfigs];
 }
 
 export default function Output() {
@@ -259,68 +262,85 @@ export default function Output() {
 
       <Stack gap={tokens.size.x24}>
         {/* <PageHeader title={meta.title} date={meta.date} /> */}
-        <Area width={tokens.width.x512}>
+        <Area width={tokens.size.x512}>
           <Sketch
             aspectRatio={4 / 6}
             setup={(p, store) => {
-              p.createCanvas(canvasSizeX, canvasSizeY)
-              p.colorMode(p.HSL)
+              p.createCanvas(canvasSizeX, canvasSizeY);
+              p.colorMode(p.HSL);
 
               const grid = Array(stepsX * stepsY)
                 .fill(null)
-                .map((_, i) => [i % stepsX, Math.floor(i / stepsX)]) as Cell[]
+                .map((_, i) => [i % stepsX, Math.floor(i / stepsX)]) as Cell[];
 
-              const [spiral, checkers, walkedConfigs] = spiralGrid(grid)
-              store.frames = spiral
-              store.frameConfigs = walkedConfigs
-              store.checkers = checkers
+              const [spiral, checkers, walkedConfigs] = spiralGrid(grid);
+              store.frames = spiral;
+              store.frameConfigs = walkedConfigs;
+              store.checkers = checkers;
             }}
             draw={(p, store) => {
               // reset
-              p.clear(...bgColor)
-              p.noStroke()
+              p.clear(...bgColor);
+              p.noStroke();
 
-              const offset = 5.284
-              const start = p.frameCount + 10
-              const frameLength = store.frameConfigs.length
-              const time = start * 0.01
+              const offset = 5.284;
+              const start = p.frameCount + 10;
+              const frameLength = store.frameConfigs.length;
+              const time = start * 0.01;
               // const time = 1112 //31113
 
               for (let i = 0; i < frameLength; i++) {
-                const { cell: [fx, fy], bandCount, currentSnakeLength, currentTurnCount, currentArmLength } = store.frameConfigs[i]
+                const {
+                  cell: [fx, fy],
+                  bandCount,
+                  currentSnakeLength,
+                  currentTurnCount,
+                  currentArmLength,
+                } = store.frameConfigs[i];
 
-                const x = fx * sizeX
-                const y = fy * sizeY
+                const x = fx * sizeX;
+                const y = fy * sizeY;
 
                 // const colorIndex0 = (((i + (bandCount * 10)) + (x * 0.05) + (y * 5)) * time)
 
-                const res = (
-                  ((time + currentSnakeLength + (currentTurnCount * bandCount)) * offset ) %
-                  rainbow.length
-                )
+                const res =
+                  ((time + currentSnakeLength + currentTurnCount * bandCount) *
+                    offset) %
+                  rainbow.length;
 
-                const color = rainbow[Math.floor(Math.abs(res) % rainbow.length)]
+                const color =
+                  rainbow[Math.floor(Math.abs(res) % rainbow.length)];
 
-                p.colorMode(p.RGB, 1)
-                p.fill( color )
-                p.rect(x + padding, y + padding, sizeX - gutter, sizeY - gutter)
+                p.colorMode(p.RGB, 1);
+                p.fill(color);
+                p.rect(
+                  x + padding,
+                  y + padding,
+                  sizeX - gutter,
+                  sizeY - gutter
+                );
               }
 
-              const checkersLength = store.checkers.length
+              const checkersLength = store.checkers.length;
               for (let i = 0; i < checkersLength; i++) {
-                const [fx, fy] = store.checkers[i]
+                const [fx, fy] = store.checkers[i];
 
-                const x = fx * sizeX
-                const y = fy * sizeY
+                const x = fx * sizeX;
+                const y = fy * sizeY;
 
-                p.colorMode(p.RGB, 1)
-                p.fill((fy % 2 ? fx % 2 : (fx + 1) % 2) ? 'white' : 'black')
-                p.rect(x + padding, y + padding, sizeX - gutter, sizeY - gutter)
+                p.colorMode(p.RGB, 1);
+                p.fill((fy % 2 ? fx % 2 : (fx + 1) % 2) ? 'white' : 'black');
+                p.rect(
+                  x + padding,
+                  y + padding,
+                  sizeX - gutter,
+                  sizeY - gutter
+                );
               }
             }}
           />
         </Area>
       </Stack>
     </>
-  )
+  );
 }

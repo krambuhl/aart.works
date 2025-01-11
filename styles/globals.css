@@ -9,9 +9,9 @@ body {
 }
 
 body {
-  font-family: var(--font-family-body);
   background-color: var(--bg-base-default);
   color: var(--fg-regular-default);
+  font-family: var(--font-family-body);
 }
 
 a {

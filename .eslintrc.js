@@ -9,13 +9,13 @@ module.exports = {
   ],
   parser: '@typescript-eslint/parser',
   rules: {
-    semi: ['error', 'never'],
+    semi: ['error', 'always'],
     quotes: ['error', 'single'],
     'block-spacing': ['error', 'always'],
     'no-trailing-spaces': ['error'],
     'no-multi-spaces': ['error'],
     'padded-blocks': ['error', 'never'],
-    'newline-before-return': 'error',
+    // 'newline-before-return': 'error',w
     'comma-dangle': ['error', 'always-multiline'],
     curly: ['error', 'all'],
     'brace-style': 'error',
@@ -38,4 +38,4 @@ module.exports = {
     'import/no-anonymous-default-export': [2, { allowObject: true }],
     'no-multiple-empty-lines': ['error', { max: 1, maxEOF: 0 }],
   },
-}
+};

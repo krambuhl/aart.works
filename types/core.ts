@@ -1,6 +1,8 @@
-import { AriaAttributes } from 'react'
+import { AriaAttributes } from 'react';
 
-export interface CoreComponent extends React.HTMLAttributes<HTMLElement>, AriaAttributes {
-  className?: string
-  children: React.ReactNode | string
+export interface CoreComponent<T extends HTMLElement = HTMLElement>
+  extends React.HTMLAttributes<T>,
+    AriaAttributes {
+  className?: string;
+  children: React.ReactNode | string;
 }

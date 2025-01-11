@@ -1,0 +1,10 @@
+.root {
+  margin: auto;
+  width: 100%;
+}
+
+@each ($name, $var) in $tokens.width {
+  .width[$name] {
+    max-width: $var;
+  }
+}

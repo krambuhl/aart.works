@@ -1,14 +1,14 @@
-import type { AppProps } from 'next/app'
+import type { AppProps } from 'next/app';
 
-import Head from 'next/head'
+import Head from 'next/head';
 
-import { AppLayout } from 'components/shared/AppLayout'
-import { HtmlTitle } from 'components/shared/HtmlTitle'
+import { AppLayout } from 'components/shared/AppLayout';
+import { HtmlTitle } from 'components/shared/HtmlTitle';
 
-import 'the-new-css-reset/css/reset.css'
-import 'tokens/tokens.css'
-import 'styles/globals.css'
-import 'styles/tokens.css'
+import 'the-new-css-reset/css/reset.css';
+import 'tokens/tokens.css';
+import 'styles/globals.css';
+import 'styles/tokens.css';
 
 function CustomApp({ Component, pageProps }: AppProps) {
   return (
@@ -21,7 +21,7 @@ function CustomApp({ Component, pageProps }: AppProps) {
 
       <Component {...pageProps} />
     </AppLayout>
-  )
+  );
 }
 
-export default CustomApp
+export default CustomApp;

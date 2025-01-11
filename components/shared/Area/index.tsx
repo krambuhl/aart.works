@@ -1,11 +1,11 @@
-import type { AreaProps } from './types'
+import type { AreaProps } from './types';
 
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-import { tokens } from 'tokens'
+import { tokens } from 'tokens';
 
 export const Area = styled.div<AreaProps>`
   margin: auto;
-  max-width: ${({ width = tokens.width.x768 }) => width};
+  max-width: ${({ width = tokens.size.x768 }) => width};
   width: 100%;
-`
+`;

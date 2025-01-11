@@ -1,19 +1,19 @@
-import type { P5Color } from 'types/p5'
+import type { P5Color } from 'types/p5';
 
-import { Sketch } from 'components/app/Sketch'
-import { Area } from 'components/shared/Area'
-import { HtmlTitle } from 'components/shared/HtmlTitle'
-import { PageHeader } from 'components/shared/PageHeader'
-import { Stack } from 'components/shared/Stack'
-import { tokens } from 'tokens'
+import { Sketch } from 'components/app/Sketch';
+import { Area } from 'components/shared/Area';
+import { HtmlTitle } from 'components/shared/HtmlTitle';
+import { PageHeader } from 'components/shared/PageHeader';
+import { Stack } from 'components/shared/Stack';
+import { tokens } from 'tokens';
 
-const baseBg: P5Color = [0 / 255, 0 / 255, 0 / 255, 255]
-const size = 512
+const baseBg: P5Color = [0 / 255, 0 / 255, 0 / 255, 255];
+const size = 512;
 
 export const meta = {
   title: 'Big Donut',
   date: '2022-04-16',
-}
+};
 
 export default function Output() {
   return (
@@ -22,33 +22,33 @@ export default function Output() {
 
       <Stack gap={tokens.size.x24}>
         <PageHeader title={meta.title} date={meta.date} />
-        <Area width={tokens.width.x768}>
+        <Area width={tokens.size.x768}>
           <Sketch
             setup={(p, store) => {
-              p.createCanvas(size, size, p.WEBGL)
-              p.colorMode(p.HSL)
+              p.createCanvas(size, size, p.WEBGL);
+              p.colorMode(p.HSL);
 
               store.history = Array(377)
                 .fill(null)
-                .map((_, i) => i)
+                .map((_, i) => i);
             }}
             draw={(p, store) => {
               // reset
-              p.clear(...baseBg)
-              p.noStroke()
+              p.clear(...baseBg);
+              p.noStroke();
 
-              const start = p.frameCount
-              const length = store.history.length
+              const start = p.frameCount;
+              const length = store.history.length;
 
               for (let i = 0; i < length; i++) {
-                const offset = store.history[i]
-                const input = (start - offset) / 60
+                const offset = store.history[i];
+                const input = (start - offset) / 60;
 
-                const outside = size / p.lerp(6, 6, Math.sin(start / 100))
-                const inside = size / p.lerp(6, 8, Math.cos(start / 90))
+                const outside = size / p.lerp(6, 6, Math.sin(start / 100));
+                const inside = size / p.lerp(6, 8, Math.cos(start / 90));
 
-                const x = Math.sin(input) * outside + Math.sin(offset) * inside
-                const y = Math.cos(input) * outside + Math.cos(offset) * inside
+                const x = Math.sin(input) * outside + Math.sin(offset) * inside;
+                const y = Math.cos(input) * outside + Math.cos(offset) * inside;
 
                 p.fill(
                   p.lerpColor(
@@ -64,7 +64,7 @@ export default function Output() {
                     ),
                     p.norm(Math.sin((x * y) / 1000), -1, 1)
                   )
-                )
+                );
 
                 p.circle(
                   x,
@@ -78,12 +78,12 @@ export default function Output() {
                       1) /
                       2
                   )
-                )
+                );
               }
             }}
           />
         </Area>
       </Stack>
     </>
-  )
+  );
 }
