@@ -1,37 +1,88 @@
 import type { HeadingTextProps, BodyTextProps, DataTextProps } from './types';
 
-import styled, { css } from 'styled-components';
+import cx from 'classnames';
+import React from 'react';
 
 import { tokens } from 'tokens';
+import { responsiveClassList } from 'utilities/css-utils';
+import { wrapResponsive } from 'utilities/opaque-responsive';
 
-export const HeadingText = styled.div<HeadingTextProps>`
-  ${({ size = 'md' }) =>
-    css`
-      font-family: ${tokens.fontFamily.heading};
-      font-weight: ${tokens.fontWeight.heading};
-      font-size: ${tokens.fontSize.heading[size]};
-      line-height: ${tokens.lineHeight.heading};
-    `}
-`;
+import * as styles from './Text.module.css';
 
-export const BodyText = styled.div.attrs<BodyTextProps>({
-  as: 'p',
-})<BodyTextProps>`
-  ${({ size = 'xl' }) =>
-    css`
-      font-family: ${tokens.fontFamily.body};
-      font-weight: ${tokens.fontWeight.body};
-      font-size: ${tokens.fontSize.body[size]};
-      line-height: ${tokens.lineHeight.body};
-    `}
-`;
+export function HeadingText({
+  as: Component = 'h3',
+  size = 'md',
+  className,
+  children,
+  ...props
+}: HeadingTextProps) {
+  const responsiveSize = wrapResponsive(size);
+  const classList = cx(
+    styles.heading,
+    responsiveClassList(
+      styles,
+      'heading-size',
+      responsiveSize,
+      (size) => tokens.fontSize.heading[size]
+    ),
+    className
+  );
 
-export const DataText = styled.div<DataTextProps>`
-  ${({ size = 'md' }) =>
-    css`
-      font-family: ${tokens.fontFamily.data};
-      font-weight: ${tokens.fontWeight.data};
-      font-size: ${tokens.fontSize.data[size]};
-      line-height: ${tokens.lineHeight.data};
-    `}
-`;
+  return (
+    <Component className={classList} {...props}>
+      {children}
+    </Component>
+  );
+}
+
+export function BodyText({
+  as: Component = 'p',
+  size = 'md',
+  className,
+  children,
+  ...props
+}: BodyTextProps) {
+  const responsiveSize = wrapResponsive(size);
+  const classList = cx(
+    styles.body,
+    responsiveClassList(
+      styles,
+      'body-size',
+      responsiveSize,
+      (size) => tokens.fontSize.body[size]
+    ),
+    className
+  );
+
+  return (
+    <Component className={classList} {...props}>
+      {children}
+    </Component>
+  );
+}
+
+export function DataText({
+  as: Component = 'p',
+  size = 'md',
+  className,
+  children,
+  ...props
+}: DataTextProps) {
+  const responsiveSize = wrapResponsive(size);
+  const classList = cx(
+    styles.data,
+    responsiveClassList(
+      styles,
+      'data-size',
+      responsiveSize,
+      (size) => tokens.fontSize.data[size]
+    ),
+    className
+  );
+
+  return (
+    <Component className={classList} {...props}>
+      {children}
+    </Component>
+  );
+}

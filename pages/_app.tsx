@@ -6,9 +6,8 @@ import { AppLayout } from 'components/shared/AppLayout';
 import { HtmlTitle } from 'components/shared/HtmlTitle';
 
 import 'the-new-css-reset/css/reset.css';
-import 'tokens/tokens.css';
-import 'styles/globals.css';
 import 'styles/tokens.css';
+import 'styles/globals.css';
 
 function CustomApp({ Component, pageProps }: AppProps) {
   return (

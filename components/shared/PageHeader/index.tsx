@@ -11,8 +11,20 @@ export function PageHeader({
   ...props
 }: PageHeaderProps) {
   return (
-    <Stack as="header" gap={tokens.size.x12} {...props}>
-      <HeadingText as="h1" size="lg">
+    <Stack
+      as="header"
+      gap={{
+        xs: tokens.size.x8,
+        sm: tokens.size.x24,
+      }}
+      direction={{
+        xs: 'vertical',
+        sm: 'horizontal',
+      }}
+      justify="center"
+      {...props}
+    >
+      <HeadingText as="h1" size={{ xs: 'lg', sm: 'xl' }}>
         {title}
       </HeadingText>
 

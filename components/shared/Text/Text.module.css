@@ -1,0 +1,39 @@
+.heading {
+  font-family: token("fontFamily.heading");
+  font-weight: token("fontWeight.heading");
+  line-height: token("lineHeight.heading");
+}
+
+.body {
+  font-family: token("fontFamily.body");
+  font-weight: token("fontWeight.body");
+  line-height: token("lineHeight.body");
+}
+
+.data {
+  font-family: token("fontFamily.data");
+  font-weight: token("fontWeight.data");
+  line-height: token("lineHeight.data");
+}
+
+@each $breakpointName, $mediaQuery in map-breakpoints() {
+  @media $mediaQuery {
+    @each $tokenName, $tokenValue in map-tokens("fontSize.heading") {
+      .heading-size--$(tokenName)--$(breakpointName) {
+        font-size: $tokenValue;
+      }
+    }
+
+    @each $tokenName, $tokenValue in map-tokens("fontSize.body") {
+      .body-size--$(tokenName)--$(breakpointName) {
+        font-size: $tokenValue;
+      }
+    }
+
+    @each $tokenName, $tokenValue in map-tokens("fontSize.data") {
+      .data-size--$(tokenName)--$(breakpointName) {
+        font-size: $tokenValue;
+      }
+    }
+  }
+}

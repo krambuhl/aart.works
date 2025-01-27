@@ -1,17 +1,13 @@
 import type { AppLayoutProps } from './types';
 
+import cx from 'classnames';
 import styled from 'styled-components';
 
 import { Area } from 'components/shared/Area';
 import { Space } from 'components/shared/Space';
 import { tokens } from 'tokens';
 
-const Root = styled(Area)`
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  width: 100%;
-`;
+import * as styles from './AppLayout.module.css';
 
 const Main = styled(Space)`
   flex-grow: 1;
@@ -20,11 +16,13 @@ const Main = styled(Space)`
 
 export function AppLayout({
   width = tokens.size.x1280,
+  className,
   children,
   ...props
 }: AppLayoutProps) {
+  const classList = cx(styles.root, className);
   return (
-    <Root width={width} {...props}>
+    <Area width={width} {...props} className={classList}>
       <Main
         id="content"
         pv={{
@@ -36,8 +34,6 @@ export function AppLayout({
       >
         {children}
       </Main>
-    </Root>
+    </Area>
   );
 }
-
-AppLayout.StyledRoot = Root;

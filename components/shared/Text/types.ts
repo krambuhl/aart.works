@@ -1,5 +1,7 @@
 import type { CoreComponent } from 'types/core';
 
+import { ValueOrResponsive } from 'utilities/opaque-responsive';
+
 export type TextElement =
   | 'h1'
   | 'h2'
@@ -13,23 +15,17 @@ export type TextElement =
 export type TextType = 'heading' | 'body' | 'data';
 export type TextSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
-export interface TextProps extends CoreComponent {
-  as?: TextElement;
-  type?: TextType;
-  size?: TextSize;
-}
-
 export interface HeadingTextProps extends CoreComponent {
   as: TextElement;
-  size?: TextSize;
+  size?: ValueOrResponsive<TextSize>;
 }
 
 export interface BodyTextProps extends CoreComponent {
   as?: TextElement;
-  size?: TextSize;
+  size?: ValueOrResponsive<TextSize>;
 }
 
 export interface DataTextProps extends CoreComponent {
   as?: TextElement;
-  size?: TextSize;
+  size?: ValueOrResponsive<TextSize>;
 }

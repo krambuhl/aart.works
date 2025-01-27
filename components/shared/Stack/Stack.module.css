@@ -1,0 +1,46 @@
+.root {
+  display: flex;
+  width: 100%;
+}
+
+@each $breakpointName, $mediaQuery in map-breakpoints() {
+  @media $mediaQuery {
+    .direction--vertical--$(breakpointName) {
+      flex-direction: column;
+    }
+
+    .direction--horizontal--$(breakpointName) {
+      flex-direction: row;
+    }
+
+    .alignment--start--$(breakpointName) {
+      align-items: flex-start;
+    }
+
+    .alignment--center--$(breakpointName) {
+      align-items: center;
+    }
+
+    .alignment--end--$(breakpointName) {
+      align-items: flex-end;
+    }
+
+    .justify--start--$(breakpointName) {
+      justify-content: flex-start;
+    }
+
+    .justify--center--$(breakpointName) {
+      justify-content: center;
+    }
+
+    .justify--end--$(breakpointName) {
+      justify-content: flex-end;
+    }
+
+    @each $tokenName, $tokenValue in map-tokens("size") {
+      .gap--$(tokenName)--$(breakpointName) {
+        gap: $tokenValue;
+      }
+    }
+  }
+}

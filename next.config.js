@@ -5,6 +5,15 @@ module.exports = {
     styledComponents: true,
   },
   eslint: {
-    dirs: ['app', 'components', 'data', 'hooks', 'lib', 'styles', 'tokens', 'types'],
+    dirs: [
+      'app',
+      'components',
+      'data',
+      'hooks',
+      'lib',
+      'styles',
+      'tokens',
+      'types',
+    ],
   },
-}
+};

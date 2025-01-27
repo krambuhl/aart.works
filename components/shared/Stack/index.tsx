@@ -1,20 +1,40 @@
 import type { StackProps } from './types';
-import type { SizeToken } from 'types/tokens';
 
-import styled from 'styled-components';
+import cx from 'classnames';
+import React from 'react';
 
-import { responsiveProp, responsiveToken } from 'lib/responsive';
 import { tokens } from 'tokens';
+import { responsiveClassList } from 'utilities/css-utils';
+import { wrapResponsive } from 'utilities/opaque-responsive';
 
-export const Stack = styled.div<StackProps>`
-  display: flex;
-  width: 100%;
+import * as styles from './Stack.module.css';
 
-  ${({ direction = 'vertical' }) =>
-    responsiveProp('flex-direction', direction, () =>
-      direction === 'vertical' ? 'column' : 'row'
-    )};
+export function Stack({
+  as: Component = 'div',
+  direction = 'vertical',
+  alignment = 'center',
+  justify = 'start',
+  gap = tokens.size.x0,
+  className,
+  children,
+  ...props
+}: StackProps) {
+  const responsiveDirection = wrapResponsive(direction);
+  const responsiveAlignment = wrapResponsive(alignment);
+  const responsiveJustify = wrapResponsive(justify);
+  const responsiveGap = wrapResponsive(gap);
+  const classList = cx(
+    styles.root,
+    responsiveClassList(styles, 'direction', responsiveDirection),
+    responsiveClassList(styles, 'alignment', responsiveAlignment),
+    responsiveClassList(styles, 'justify', responsiveJustify),
+    responsiveClassList(styles, 'gap', responsiveGap),
+    className
+  );
 
-  ${({ alignment = 'center' }) => responsiveProp('align-items', alignment)};
-  ${({ gap = tokens.size.x0 }) => responsiveToken<SizeToken>('gap', gap)};
-`;
+  return (
+    <Component className={classList} {...props}>
+      {children}
+    </Component>
+  );
+}

@@ -1,0 +1,413 @@
+{
+  "breakpoint": {
+    "xs": {
+      "value": "0"
+    },
+    "sm": {
+      "value": "588px"
+    },
+    "md": {
+      "value": "796px"
+    },
+    "lg": {
+      "value": "978px"
+    },
+    "xl": {
+      "value": "1280px"
+    },
+    "xxl": {
+      "value": "1440px"
+    }
+  },
+  "size": {
+    "x0": {
+      "value": "0"
+    },
+    "x2": {
+      "value": "2px"
+    },
+    "x4": {
+      "value": "4px"
+    },
+    "x6": {
+      "value": "6px"
+    },
+    "x8": {
+      "value": "8px"
+    },
+    "x12": {
+      "value": "12px"
+    },
+    "x16": {
+      "value": "16px"
+    },
+    "x20": {
+      "value": "20px"
+    },
+    "x24": {
+      "value": "24px"
+    },
+    "x32": {
+      "value": "32px"
+    },
+    "x40": {
+      "value": "40px"
+    },
+    "x48": {
+      "value": "48px"
+    },
+    "x56": {
+      "value": "56px"
+    },
+    "x64": {
+      "value": "64px"
+    },
+    "x72": {
+      "value": "72px"
+    },
+    "x96": {
+      "value": "96px"
+    },
+    "x128": {
+      "value": "128px"
+    },
+    "x192": {
+      "value": "192px"
+    },
+    "x256": {
+      "value": "256px"
+    },
+    "x384": {
+      "value": "384px"
+    },
+    "x512": {
+      "value": "512px"
+    },
+    "x640": {
+      "value": "640px"
+    },
+    "x768": {
+      "value": "768px"
+    },
+    "x1024": {
+      "value": "1024px"
+    },
+    "x1280": {
+      "value": "1280px"
+    },
+    "x1440": {
+      "value": "1440px"
+    },
+    "x1600": {
+      "value": "1600px"
+    },
+    "x1920": {
+      "value": "1920px"
+    }
+  },
+  "shadow": {
+    "low": {
+      "value": "0 0 var(--size-4) hsl(0deg 0 0 / 10%)"
+    },
+    "mid": {
+      "value": "0 var(--size-4) var(--size-8) hsl(0deg 0 0 / 15%)"
+    },
+    "high": {
+      "value": "0 var(--size-8) var(--size-12) hsl(0deg 0 0 / 20%)"
+    }
+  },
+  "fontSize": {
+    "heading": {
+      "xs": {
+        "value": "clamp(0.85em, 1.2vw, 1em)"
+      },
+      "sm": {
+        "value": "clamp(1em, 1.5vw, 1.2em)"
+      },
+      "md": {
+        "value": "clamp(1.2em, 2vw, 1.6em)"
+      },
+      "lg": {
+        "value": "clamp(1.45em, 2.6vw, 2.2em)"
+      },
+      "xl": {
+        "value": "clamp(1.8em, 3.6vw, 3.2em)"
+      }
+    },
+    "body": {
+      "xs": {
+        "value": "clamp(0.7em, 1vw, 0.8em)"
+      },
+      "sm": {
+        "value": "clamp(0.9em, 1.2vw, 1em)"
+      },
+      "md": {
+        "value": "clamp(1em, 1.5vw, 1.2em)"
+      },
+      "lg": {
+        "value": "clamp(1.15em, 2vw, 1.6em)"
+      },
+      "xl": {
+        "value": "clamp(1.4em, 3vw, 2.4em)"
+      }
+    },
+    "data": {
+      "xs": {
+        "value": "clamp(0.7em, 1vw, 0.9em)"
+      },
+      "sm": {
+        "value": "clamp(0.85em, 1.2vw, 1em)"
+      },
+      "md": {
+        "value": "clamp(1em, 1.5vw, 1.2em)"
+      },
+      "lg": {
+        "value": "clamp(1.15em, 2vw, 1.6em)"
+      },
+      "xl": {
+        "value": "clamp(1.4em, 3vw, 2.4em)"
+      }
+    }
+  },
+  "fontWeight": {
+    "heading": {
+      "value": "700"
+    },
+    "body": {
+      "value": "400"
+    },
+    "data": {
+      "value": "400"
+    }
+  },
+  "fontFamily": {
+    "heading": {
+      "value": "menlo, consolas, monaco, \"liberation mono\", \"lucida console\", monospace"
+    },
+    "body": {
+      "value": "menlo, consolas, monaco, \"liberation mono\", \"lucida console\", monospace"
+    },
+    "data": {
+      "value": "menlo, consolas, monaco, \"liberation mono\", \"lucida console\", monospace"
+    }
+  },
+  "lineHeight": {
+    "heading": {
+      "value": "1.4"
+    },
+    "body": {
+      "value": "1.4"
+    },
+    "data": {
+      "value": "1.4"
+    }
+  },
+  "bg": {
+    "base": {
+      "default": {
+        "value": "hsl(0deg 2% 100%)",
+        "value@dark": "hsl(0deg 2% 0%)"
+      },
+      "hover": {
+        "value": "hsl(0deg 2% 93%)",
+        "value@dark": "hsl(0deg 2% 4%)"
+      },
+      "pressed": {
+        "value": "hsl(0deg 2% 88%)",
+        "value@dark": "hsl(0deg 2% 8%)"
+      }
+    },
+    "alt": {
+      "default": {
+        "value": "hsl(0deg 2% 93%)",
+        "value@dark": "hsl(0deg 2% 7%)"
+      },
+      "hover": {
+        "value": "hsl(0deg 2% 88%)",
+        "value@dark": "hsl(0deg 2% 12%)"
+      },
+      "pressed": {
+        "value": "hsl(0deg 2% 80%)",
+        "value@dark": "hsl(0deg 2% 20%)"
+      }
+    },
+    "inverted": {
+      "default": {
+        "value": "hsl(0deg 0% 8%)",
+        "value@dark": "hsl(0deg 0% 92%)"
+      },
+      "hover": {
+        "value": "hsl(0deg 0% 12%)",
+        "value@dark": "hsl(0deg 0% 88%)"
+      },
+      "pressed": {
+        "value": "hsl(0deg 0% 17%)",
+        "value@dark": "hsl(0deg 0% 83%)"
+      }
+    }
+  },
+  "fg": {
+    "regular": {
+      "default": {
+        "value": "hsl(0deg 0% 8%)",
+        "value@dark": "hsl(0deg 0% 92%)"
+      },
+      "hover": {
+        "value": "hsl(0deg 0% 12%)",
+        "value@dark": "hsl(0deg 0% 88%)"
+      },
+      "pressed": {
+        "value": "hsl(0deg 0% 17%)",
+        "value@dark": "hsl(0deg 0% 83%)"
+      }
+    },
+    "muted": {
+      "default": {
+        "value": "hsl(0deg 0% 22%)",
+        "value@dark": "hsl(0deg 0% 77%)"
+      },
+      "hover": {
+        "value": "hsl(0deg 0% 17%)",
+        "value@dark": "hsl(0deg 0% 85%)"
+      },
+      "pressed": {
+        "value": "hsl(0deg 0% 12%)",
+        "value@dark": "hsl(0deg 0% 94%)"
+      }
+    },
+    "inverted": {
+      "default": {
+        "value": "hsl(0deg 0% 97%)",
+        "value@dark": "hsl(0deg 0% 97%)"
+      },
+      "hover": {
+        "value": "hsl(0deg 0% 93%)",
+        "value@dark": "hsl(0deg 0% 93%)"
+      },
+      "pressed": {
+        "value": "hsl(0deg 0% 89%)",
+        "value@dark": "hsl(0deg 0% 89%)"
+      }
+    }
+  },
+  "primary": {
+    "action": {
+      "default": {
+        "value": "hsl(200deg 85% 40%)",
+        "value@dark": "hsl(200deg 85% 40%)"
+      },
+      "hover": {
+        "value": "hsl(200deg 90% 32%)",
+        "value@dark": "hsl(200deg 90% 32%)"
+      },
+      "pressed": {
+        "value": "hsl(200deg 95% 24%)",
+        "value@dark": "hsl(200deg 95% 24%)"
+      }
+    },
+    "muted": {
+      "default": {
+        "value": "hsl(200deg 30% 80%)",
+        "value@dark": "hsl(200deg 30% 80%)"
+      },
+      "hover": {
+        "value": "hsl(200deg 30% 65%)",
+        "value@dark": "hsl(200deg 30% 65%)"
+      },
+      "pressed": {
+        "value": "hsl(200deg 30% 50%)",
+        "value@dark": "hsl(200deg 30% 50%)"
+      }
+    }
+  },
+  "success": {
+    "action": {
+      "default": {
+        "value": "hsl(150deg 84% 18%)",
+        "value@dark": "hsl(150deg 84% 18%)"
+      },
+      "hover": {
+        "value": "hsl(150deg 90% 13%)",
+        "value@dark": "hsl(150deg 90% 13%)"
+      },
+      "pressed": {
+        "value": "hsl(150deg 95% 8%)",
+        "value@dark": "hsl(150deg 95% 8%)"
+      }
+    },
+    "muted": {
+      "default": {
+        "value": "hsl(150deg 30% 80%)",
+        "value@dark": "hsl(150deg 30% 80%)"
+      },
+      "hover": {
+        "value": "hsl(150deg 30% 65%)",
+        "value@dark": "hsl(150deg 30% 65%)"
+      },
+      "pressed": {
+        "value": "hsl(150deg 30% 50%)",
+        "value@dark": "hsl(150deg 30% 50%)"
+      }
+    }
+  },
+  "warning": {
+    "action": {
+      "default": {
+        "value": "hsl(40deg 100% 36%)",
+        "value@dark": "hsl(40deg 100% 36%)"
+      },
+      "hover": {
+        "value": "hsl(40deg 100% 32%)",
+        "value@dark": "hsl(40deg 100% 32%)"
+      },
+      "pressed": {
+        "value": "hsl(40deg 100% 26%)",
+        "value@dark": "hsl(40deg 100% 26%)"
+      }
+    },
+    "muted": {
+      "default": {
+        "value": "hsl(40deg 30% 80%)",
+        "value@dark": "hsl(40deg 30% 80%)"
+      },
+      "hover": {
+        "value": "hsl(40deg 30% 65%)",
+        "value@dark": "hsl(40deg 30% 65%)"
+      },
+      "pressed": {
+        "value": "hsl(40deg 30% 50%)",
+        "value@dark": "hsl(40deg 30% 50%)"
+      }
+    }
+  },
+  "critical": {
+    "action": {
+      "default": {
+        "value": "hsl(350deg 85% 35%)",
+        "value@dark": "hsl(350deg 85% 35%)"
+      },
+      "hover": {
+        "value": "hsl(350deg 90% 20%)",
+        "value@dark": "hsl(350deg 90% 20%)"
+      },
+      "pressed": {
+        "value": "hsl(350deg 95% 15%)",
+        "value@dark": "hsl(350deg 95% 15%)"
+      }
+    },
+    "muted": {
+      "default": {
+        "value": "hsl(350deg 30% 80%)",
+        "value@dark": "hsl(350deg 30% 80%)"
+      },
+      "hover": {
+        "value": "hsl(350deg 30% 65%)",
+        "value@dark": "hsl(350deg 30% 65%)"
+      },
+      "pressed": {
+        "value": "hsl(350deg 30% 50%)",
+        "value@dark": "hsl(350deg 30% 50%)"
+      }
+    }
+  }
+}

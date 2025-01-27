@@ -2,20 +2,14 @@ import type { PropertiesHyphen } from 'csstype';
 
 import { css } from 'styled-components';
 
-export const breakpoints = {
-  xs: 0,
-  sm: 480,
-  md: 736,
-  lg: 992,
-  xl: 1248,
-} as const;
+import { tokens } from 'tokens';
 
-export type Breakpoint = keyof typeof breakpoints
-export type Responsive<T = string> = Partial<Record<Breakpoint, T>>
-export type LazyResponsive<T> = T | Responsive<T>
+export type Breakpoint = keyof typeof tokens.breakpoint;
+export type Responsive<T> = Partial<Record<Breakpoint, T>>;
+export type LazyResponsive<T> = T | Responsive<T>;
 
 export function convertToResponsive<T>(
-  value: LazyResponsive<T>
+  value: LazyResponsive<T>,
 ): Responsive<T> {
   if (
     value !== null &&
@@ -29,7 +23,11 @@ export function convertToResponsive<T>(
     return value;
   }
 
-  if (typeof value === 'string') {
+  if (
+    typeof value === 'string' ||
+    typeof value === 'number' ||
+    typeof value === 'boolean'
+  ) {
     return { xs: value };
   }
 
@@ -41,13 +39,13 @@ function createPropertyQuery({
   value,
   breakpoint,
 }: {
-  name: string
-  value?: string
-  breakpoint: Breakpoint
+  name: string;
+  value?: string;
+  breakpoint: Breakpoint;
 }) {
   return value
     ? css`
-        @media (min-width: ${breakpoints[breakpoint]}px) {
+        @media ${tokens.breakpoint[breakpoint]} {
           ${name}: ${value};
         }
       `
@@ -59,17 +57,38 @@ const defaultValue = (value?: string) => value;
 export function responsiveProp(
   rawName: keyof PropertiesHyphen,
   rawValues: LazyResponsive<string>,
-  transform = defaultValue
+  transform = defaultValue,
 ) {
   const name = rawName.replace(/[A-Z]/g, (m) => '-' + m.toLowerCase());
   const values = convertToResponsive<string>(rawValues);
 
+  const sm = createPropertyQuery({
+    name,
+    value: transform(values.sm),
+    breakpoint: 'sm',
+  });
+  const md = createPropertyQuery({
+    name,
+    value: transform(values.md),
+    breakpoint: 'md',
+  });
+  const lg = createPropertyQuery({
+    name,
+    value: transform(values.lg),
+    breakpoint: 'lg',
+  });
+  const xl = createPropertyQuery({
+    name,
+    value: transform(values.xl),
+    breakpoint: 'xl',
+  });
+
   return css`
     ${values.xs ? `${name}: ${transform(values.xs)};` : ''}
-    ${createPropertyQuery({ name, value: transform(values.sm), breakpoint: 'sm' })}
-    ${createPropertyQuery({ name, value: transform(values.md), breakpoint: 'md' })}
-    ${createPropertyQuery({ name, value: transform(values.lg), breakpoint: 'lg' })}
-    ${createPropertyQuery({ name, value: transform(values.xl), breakpoint: 'xl' })}
+    ${sm}
+    ${md}
+    ${lg}
+    ${xl}
   `;
 }
 
@@ -78,16 +97,16 @@ function createTokenQuery<T>({
   token,
   breakpoint,
 }: {
-  name: keyof PropertiesHyphen
-  token?: T
-  breakpoint: Breakpoint
+  name: keyof PropertiesHyphen;
+  token?: T;
+  breakpoint: Breakpoint;
 }) {
   return createPropertyQuery({ name, value: token as string, breakpoint });
 }
 
 export function responsiveToken<T>(
   name: keyof PropertiesHyphen,
-  rawValues: LazyResponsive<T>
+  rawValues: LazyResponsive<T>,
 ) {
   const values = convertToResponsive<T>(rawValues);
 
