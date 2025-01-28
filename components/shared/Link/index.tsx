@@ -1,19 +1,17 @@
+import cx from 'classnames';
 import NextLink from 'next/link';
-import styled from 'styled-components';
 
-import { tokens } from 'tokens';
+import { CoreComponent } from 'types/core';
 
-export const Link = styled(NextLink)`
-  text-decoration: underline;
-  color: ${tokens.primary.action.default};
+import * as styles from './Link.module.css';
 
-  &:hover {
-    text-decoration-thickness: 0.2em;
-    color: ${tokens.primary.action.hover};
-  }
+export type LinkProps = CoreComponent;
 
-  &:active {
-    color: ${tokens.primary.action.pressed};
-    text-decoration-color: var(--primary-action-default);
-  }
-`;
+export function Link({ className, children, ...props }: LinkProps) {
+  const classList = cx(styles.root, className);
+  return (
+    <NextLink {...props} className={classList}>
+      {children}
+    </NextLink>
+  );
+}

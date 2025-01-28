@@ -1,0 +1,14 @@
+.root {
+  color: token("primary.action.default");
+  text-decoration: underline;
+
+  &:hover {
+    color: token("primary.action.hover");
+    text-decoration-thickness: 0.2em;
+  }
+
+  &:active {
+    color: token("primary.action.pressed");
+    text-decoration-color: currentcolor;
+  }
+}

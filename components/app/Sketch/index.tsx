@@ -3,32 +3,11 @@ import type P5 from 'p5';
 import type { Sketch as SketchType } from 'react-p5-wrapper';
 
 import dynamic from 'next/dynamic';
-import { useCallback, useState } from 'react';
-import styled from 'styled-components';
+import { CSSProperties, useCallback, useState } from 'react';
 
 import { BodyText } from 'components/shared/Text';
 
-const Loading = styled(BodyText)`
-  align-self: center;
-`;
-
-const StyledSketch = styled.div<{
-  aspectRatio?: number;
-  children: React.ReactNode;
-}>`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  aspect-ratio: ${(props) => props.aspectRatio ?? 1};
-  height: min-content;
-
-  canvas {
-    display: block;
-    height: auto !important;
-    width: 100% !important;
-    background-color: black;
-  }
-`;
+import * as styles from './Sketch.module.css';
 
 const SketchWrapper = dynamic(
   async () => {
@@ -38,7 +17,11 @@ const SketchWrapper = dynamic(
   },
   {
     ssr: false,
-    loading: () => <Loading size="sm">loading...</Loading>,
+    loading: () => (
+      <BodyText size="sm" className={styles.loading}>
+        loading...
+      </BodyText>
+    ),
   }
 );
 
@@ -63,8 +46,12 @@ export function Sketch({ setup, draw, aspectRatio, ...props }: SketchProps) {
   );
 
   return (
-    <StyledSketch aspectRatio={aspectRatio} {...props}>
+    <div
+      className={styles.sketch}
+      style={{ '--sketch-aspect-ratio': aspectRatio } as CSSProperties}
+      {...props}
+    >
       <SketchWrapper sketch={sketch} />
-    </StyledSketch>
+    </div>
   );
 }

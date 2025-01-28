@@ -1,18 +1,12 @@
 import type { AppLayoutProps } from './types';
 
 import cx from 'classnames';
-import styled from 'styled-components';
 
 import { Area } from 'components/shared/Area';
-import { Space } from 'components/shared/Space';
+import { Spacer } from 'components/shared/Spacer';
 import { tokens } from 'tokens';
 
 import * as styles from './AppLayout.module.css';
-
-const Main = styled(Space)`
-  flex-grow: 1;
-  width: 100%;
-`;
 
 export function AppLayout({
   width = tokens.size.x1280,
@@ -23,7 +17,7 @@ export function AppLayout({
   const classList = cx(styles.root, className);
   return (
     <Area width={width} {...props} className={classList}>
-      <Main
+      <Spacer
         id="content"
         pv={{
           xs: tokens.size.x32,
@@ -31,9 +25,10 @@ export function AppLayout({
           md: tokens.size.x72,
         }}
         ph={tokens.size.x24}
+        className={styles.main}
       >
         {children}
-      </Main>
+      </Spacer>
     </Area>
   );
 }

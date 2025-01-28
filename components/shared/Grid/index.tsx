@@ -1,23 +1,16 @@
-import type { AutoGridProps, GridProps } from './types';
+import cx from 'classnames';
 
-import styled from 'styled-components';
+import { CoreComponent } from 'types/core';
 
-export const Grid = styled.div<GridProps>`
-  display: grid;
-  width: 100%;
+import * as styles from './Grid.module.css';
 
-  ${({ gap }) => (gap ? `gap: ${gap}` : '')};
-  ${({ columns }) => (columns ? `grid-template-columns: ${columns}` : '')};
-  ${({ rows }) => (rows ? `grid-template-rows: ${rows}` : '')};
-`;
+export type GridProps = CoreComponent;
 
-export const AutoGrid = styled.div<AutoGridProps>`
-  display: grid;
-  width: 100%;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(min(${({ width }) => width}, 95vw), 1fr)
+export function Grid({ className, children, ...props }: GridProps) {
+  const classList = cx(styles.grid, className);
+  return (
+    <div {...props} className={classList}>
+      {children}
+    </div>
   );
-
-  ${({ gap }) => (gap ? `gap: ${gap}` : '')};
-`;
+}

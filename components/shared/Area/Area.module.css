@@ -8,6 +8,7 @@
     @each $tokenName, $tokenValue in map-tokens("size") {
       .width--$(tokenName)--$(breakpointName) {
         max-width: $tokenValue;
+        width: 100%;
       }
     }
   }

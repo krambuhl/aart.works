@@ -1,6 +1,5 @@
-import { Breakpoint } from 'lib/responsive';
-import { AnyToken } from 'types/tokens';
 import {
+  Breakpoint,
   OpaqueResponsive,
   reduceResponsive,
 } from 'utilities/opaque-responsive';

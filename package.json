@@ -20,7 +20,6 @@
     "react-dom": "^19.0.0",
     "react-is": "^18.2",
     "react-p5-wrapper": "^3.4.0",
-    "styled-components": "^6.1.14",
     "the-new-css-reset": "^1.6.0"
   },
   "devDependencies": {
@@ -30,7 +29,6 @@
     "@types/p5": "^1.7.6",
     "@types/react": "17.0.40",
     "@types/set-value": "^4.0.3",
-    "@types/styled-components": "^5.1.26",
     "@typescript-eslint/eslint-plugin": "^5.42.0",
     "@typescript-eslint/parser": "^5.42.0",
     "eslint": "^8",

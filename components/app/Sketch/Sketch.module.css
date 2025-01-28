@@ -1,0 +1,18 @@
+.loading {
+  align-self: center;
+}
+
+.sketch {
+  aspect-ratio: var(--sketch-aspect-ratio, 1);
+  display: flex;
+  flex-direction: column;
+  height: min-content;
+  justify-content: center;
+
+  & canvas {
+    background-color: black;
+    display: block;
+    height: auto !important;
+    width: 100% !important;
+  }
+}

@@ -5,36 +5,22 @@
 
 @each $breakpointName, $mediaQuery in map-breakpoints() {
   @media $mediaQuery {
-    .direction--vertical--$(breakpointName) {
-      flex-direction: column;
+    @each $direction, $value in (vertical, horizontal), (column, row) {
+      .direction--$(direction)--$(breakpointName) {
+        flex-direction: $value;
+      }
     }
 
-    .direction--horizontal--$(breakpointName) {
-      flex-direction: row;
+    @each $alignment, $value in (start, center, end), (flex-start, center, flex-end) {
+      .alignment--$(alignment)--$(breakpointName) {
+        align-items: $value;
+      }
     }
 
-    .alignment--start--$(breakpointName) {
-      align-items: flex-start;
-    }
-
-    .alignment--center--$(breakpointName) {
-      align-items: center;
-    }
-
-    .alignment--end--$(breakpointName) {
-      align-items: flex-end;
-    }
-
-    .justify--start--$(breakpointName) {
-      justify-content: flex-start;
-    }
-
-    .justify--center--$(breakpointName) {
-      justify-content: center;
-    }
-
-    .justify--end--$(breakpointName) {
-      justify-content: flex-end;
+    @each $justify, $value in (start, center, end), (flex-start, center, flex-end) {
+      .justify--$(justify)--$(breakpointName) {
+        justify-content: $value;
+      }
     }
 
     @each $tokenName, $tokenValue in map-tokens("size") {

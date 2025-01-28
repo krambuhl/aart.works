@@ -15,11 +15,7 @@ export function PageHeader({
       as="header"
       gap={{
         xs: tokens.size.x8,
-        sm: tokens.size.x24,
-      }}
-      direction={{
-        xs: 'vertical',
-        sm: 'horizontal',
+        sm: tokens.size.x12,
       }}
       justify="center"
       {...props}

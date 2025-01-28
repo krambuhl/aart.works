@@ -1,0 +1,19 @@
+.root {
+  background-color: black;
+  display: grid;
+  grid-template-rows: auto min-content;
+  text-align: center;
+}
+
+.graph {
+  aspect-ratio: 1;
+  margin: 1em 0;
+  overflow: hidden;
+  width: 100%;
+}
+
+.range {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}

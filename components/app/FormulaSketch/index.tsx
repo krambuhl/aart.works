@@ -1,36 +1,16 @@
 import type { FormulaSketchProps } from './types';
 
 import { useMemo } from 'react';
-import styled from 'styled-components';
 
 import { Sketch } from 'components/app/Sketch';
 import { Card, CardPadding } from 'components/shared/Card';
 import { BodyText, HeadingText } from 'components/shared/Text';
 
+import * as styles from './FormulaSketch.module.css';
 import { useLimits } from './useLimits';
 
 const round = (x: number) => Math.ceil(x * 1000) / 1000;
 const interpolate = (a: number, b: number, t: number) => t / (b - a);
-
-const Root = styled(Card)`
-  display: grid;
-  grid-template-rows: auto min-content;
-  text-align: center;
-  background-color: black;
-`;
-
-const Graph = styled.div`
-  aspect-ratio: 1;
-  margin: 1em 0;
-  overflow: hidden;
-  width: 100%;
-`;
-
-const Range = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-`;
 
 export function FormulaSketch({
   formulaName,
@@ -44,13 +24,13 @@ export function FormulaSketch({
   const size = 512;
 
   return (
-    <Root padding="none">
+    <Card padding="none" className={styles.root}>
       <CardPadding>
         <HeadingText as="h2" size="xs">
           {formulaName}
         </HeadingText>
       </CardPadding>
-      <Graph>
+      <div className={styles.graph}>
         <Sketch
           setup={(p, store) => {
             p.createCanvas(size, size, p.WEBGL);
@@ -107,9 +87,9 @@ export function FormulaSketch({
             p.ellipse(x, -y, 16);
           }}
         />
-      </Graph>
+      </div>
       <CardPadding>
-        <Range>
+        <div className={styles.range}>
           <BodyText size="xs">
             min:{' '}
             <strong>
@@ -126,8 +106,8 @@ export function FormulaSketch({
                 : limitMax}
             </strong>
           </BodyText>
-        </Range>
+        </div>
       </CardPadding>
-    </Root>
+    </Card>
   );
 }

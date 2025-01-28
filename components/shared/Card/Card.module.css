@@ -1,0 +1,14 @@
+.root {
+  border: token("size.x2") solid token("bg.inverted.default");
+  border-radius: token("size.x12");
+  box-shadow: token("shadow.mid");
+  color: token("fg.inverted.default");
+}
+
+.paddingNone {
+  padding: 0;
+}
+
+.paddingDefault {
+  padding: token("size.x16");
+}

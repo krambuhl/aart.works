@@ -1,0 +1,20 @@
+.root {
+  display: block;
+  width: 100%;
+}
+
+@each $breakpointName, $mediaQuery in map-breakpoints() {
+  @media $mediaQuery {
+    @each $direction in (top, bottom, left, right) {
+      @each $tokenName, $tokenValue in map-tokens("size") {
+        .padding-$(direction)--$(tokenName)--$(breakpointName) {
+          padding-$(direction): $tokenValue;
+        }
+
+        .margin-$(direction)--$(tokenName)--$(breakpointName) {
+          margin-$(direction): $tokenValue;
+        }
+      }
+    }
+  }
+}

@@ -4,7 +4,7 @@ import { useMemo } from 'react';
 
 import { FormulaSketch } from 'components/app/FormulaSketch';
 import { Area } from 'components/shared/Area';
-import { AutoGrid } from 'components/shared/Grid';
+import { Grid } from 'components/shared/Grid';
 import { HtmlTitle } from 'components/shared/HtmlTitle';
 import { PageHeader } from 'components/shared/PageHeader';
 import { Stack } from 'components/shared/Stack';
@@ -25,11 +25,11 @@ export default function FormulaList() {
       <Stack gap={{ xs: tokens.size.x32, sm: tokens.size.x48 }}>
         <PageHeader title={meta.title} date={meta.date} />
         <Area width={tokens.size.x768}>
-          <AutoGrid gap={tokens.size.x16} width={tokens.size.x256}>
+          <Grid>
             {formulaList.map((config, i) => (
               <FormulaSketch key={i} {...config} />
             ))}
-          </AutoGrid>
+          </Grid>
         </Area>
       </Stack>
     </>
