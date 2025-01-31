@@ -77,12 +77,14 @@ function generateTokensObject(tokenPairs: TokenPair[]) {
   const variablesOutput = `export const tokens = ${variablesJson} as const;`;
 
   // write variables
+  console.log('writing ' + path.join(OUTPUT_TOKENS_DIR, 'tokens.ts'));
   fs.writeFileSync(
-    path.join(OUTPUT_TOKENS_DIR, 'index.ts'),
+    path.join(OUTPUT_TOKENS_DIR, 'tokens.ts'),
     addGeneratedHeader(variablesOutput),
   );
 
   // write flat token object
+  console.log('writing ' + path.join(OUTPUT_POSTCSS_FUNCTIONS_DIR, 'token-reference.json'));
   fs.writeFileSync(
     path.join(OUTPUT_POSTCSS_FUNCTIONS_DIR, 'token-reference.json'),
     JSON.stringify(tokenReference, null, 2),
@@ -124,6 +126,7 @@ function generateTokensCss(tokenPairs: TokenPair[]) {
     '\n}';
 
   // write values
+  console.log('writing ' + path.join(OUTPUT_STYLES_DIR, 'tokens.css'));
   fs.writeFileSync(
     path.join(OUTPUT_STYLES_DIR, 'tokens.css'),
     addGeneratedHeader(cssOutput),
@@ -131,6 +134,10 @@ function generateTokensCss(tokenPairs: TokenPair[]) {
 }
 
 function generateBreakpointsUtilities(tokenPairs: TokenPair[]) {
+  // define the output directory
+  const OUTPUT_TOKENS_DIR = path.join(process.cwd(), 'tokens');
+  fs.mkdirSync(OUTPUT_TOKENS_DIR, { recursive: true });
+
   // define the output directory
   const OUTPUT_UTILS_DIR = path.join(process.cwd(), 'utilities');
   fs.mkdirSync(OUTPUT_UTILS_DIR, { recursive: true });
@@ -156,7 +163,7 @@ function generateBreakpointsUtilities(tokenPairs: TokenPair[]) {
     .sort(([, a], [, b]) => a - b) // sort from smallest to largest
     .map(([name]) => `"${name}"`);
 
-  // generate output
+  // generate ts output
   const output = `import { Breakpoint, Responsive } from './opaque-responsive';
 
 /**
@@ -172,10 +179,18 @@ export const breakpointsInPixels: Required<Responsive<number>> = ${breakpointsIn
 export const breakpointNames: Breakpoint[] = [${breakpointNames.join(', ')}];
 `;
 
-  // write ooutput
+  // write ts output
+  console.log('writing ' + path.join(OUTPUT_UTILS_DIR, 'breakpoints.ts'));
   fs.writeFileSync(
     path.join(OUTPUT_UTILS_DIR, 'breakpoints.ts'),
     addGeneratedHeader(output),
+  );
+
+  // write json output
+  console.log('writing ' + path.join(OUTPUT_TOKENS_DIR, 'breakpoints.json'));
+  fs.writeFileSync(
+    path.join(OUTPUT_TOKENS_DIR, 'breakpoints.json'),
+    breakpointsInPixelsJson,
   );
 }
 

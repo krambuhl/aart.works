@@ -20,7 +20,7 @@ export default function Output() {
     <>
       <HtmlTitle title={meta.title} />
 
-      <Stack gap={tokens.size.x24}>
+      <Stack gap={tokens.space.x24}>
         <PageHeader title={meta.title} date={meta.date} />
         <Area width={tokens.size.x768}>
           <Sketch
@@ -43,16 +43,10 @@ export default function Output() {
               for (let i = 0; i < length; i++) {
                 const offset = store.history[i];
                 const time = start / 1000;
-                const input =
-                  (start - offset) /
-                  p.lerp(30, 45, p.norm(Math.sin(time), -1, 1));
+                const input = (start - offset) / p.lerp(30, 45, p.norm(Math.sin(time), -1, 1));
 
-                const x =
-                  Math.sin(input / 20) * (Math.cos(time * 40) * (size / 9)) +
-                  Math.sin(i) * (size / 4);
-                const y =
-                  Math.cos(input / 20) * (Math.sin(time * 40) * (size / 9)) +
-                  Math.cos(i) * (size / 4);
+                const x = Math.sin(input / 20) * (Math.cos(time * 40) * (size / 9)) + Math.sin(i) * (size / 4);
+                const y = Math.cos(input / 20) * (Math.sin(time * 40) * (size / 9)) + Math.cos(i) * (size / 4);
 
                 p.fill(p.color(p.lerp(90, 300, (i % length) / length), 90, 60));
                 p.circle(x, y, p.lerp(4, 0, (i % length) / length));

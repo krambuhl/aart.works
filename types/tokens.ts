@@ -1,23 +1,15 @@
 import { tokens } from 'tokens';
 
+export type SpaceToken = (typeof tokens.space)[keyof typeof tokens.space];
 export type SizeToken = (typeof tokens.size)[keyof typeof tokens.size];
 export type ShadowToken = (typeof tokens.shadow)[keyof typeof tokens.shadow];
-export type FontSizeHeadingToken =
-  (typeof tokens.fontSize.heading)[keyof typeof tokens.fontSize.heading];
-export type FontSizeBodyToken =
-  (typeof tokens.fontSize.body)[keyof typeof tokens.fontSize.body];
-export type FontSizeDataToken =
-  (typeof tokens.fontSize.data)[keyof typeof tokens.fontSize.data];
-export type FontSizeToken =
-  | FontSizeHeadingToken
-  | FontSizeBodyToken
-  | FontSizeDataToken;
-export type FontFamilyToken =
-  (typeof tokens.fontFamily)[keyof typeof tokens.fontFamily];
-export type FontWeightToken =
-  (typeof tokens.fontWeight)[keyof typeof tokens.fontWeight];
-export type LineHeightToken =
-  (typeof tokens.lineHeight)[keyof typeof tokens.lineHeight];
+export type FontSizeHeadingToken = (typeof tokens.fontSize.heading)[keyof typeof tokens.fontSize.heading];
+export type FontSizeBodyToken = (typeof tokens.fontSize.body)[keyof typeof tokens.fontSize.body];
+export type FontSizeDataToken = (typeof tokens.fontSize.data)[keyof typeof tokens.fontSize.data];
+export type FontSizeToken = FontSizeHeadingToken | FontSizeBodyToken | FontSizeDataToken;
+export type FontFamilyToken = (typeof tokens.fontFamily)[keyof typeof tokens.fontFamily];
+export type FontWeightToken = (typeof tokens.fontWeight)[keyof typeof tokens.fontWeight];
+export type LineHeightToken = (typeof tokens.lineHeight)[keyof typeof tokens.lineHeight];
 
 /* Colors */
 export type BackgroundColorToken =
@@ -63,6 +55,7 @@ export type ColorToken =
   | (typeof tokens.critical.muted)[keyof typeof tokens.critical.muted];
 
 export type AnyToken =
+  | (typeof tokens.space)[keyof typeof tokens.space]
   | (typeof tokens.size)[keyof typeof tokens.size]
   | (typeof tokens.shadow)[keyof typeof tokens.shadow]
   | (typeof tokens.fontSize.heading)[keyof typeof tokens.fontSize.heading]

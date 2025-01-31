@@ -32,7 +32,7 @@ export default function Output() {
     <>
       <HtmlTitle title={meta.title} />
 
-      <Stack gap={tokens.size.x24}>
+      <Stack gap={tokens.space.x24}>
         <PageHeader title={meta.title} date={meta.date} />
         <Area width={tokens.size.x768}>
           <Sketch
@@ -62,12 +62,7 @@ export default function Output() {
                 const color = (pos.x + offset) * (pos.y + offset) + time;
 
                 p.fill(p.color(rainbow[Math.floor(color % rainbow.length)]));
-                p.rect(
-                  (pos.x - sides / 2) * size,
-                  (pos.y - sides / 2) * size,
-                  size - gutter,
-                  size - gutter
-                );
+                p.rect((pos.x - sides / 2) * size, (pos.y - sides / 2) * size, size - gutter, size - gutter);
               }
             }}
           />

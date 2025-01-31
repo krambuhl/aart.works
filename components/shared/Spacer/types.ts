@@ -1,16 +1,16 @@
 import type { CoreComponent } from 'types/core';
-import type { SizeToken } from 'types/tokens';
+import type { SpaceToken } from 'types/tokens';
 
 import { ValueOrResponsive } from 'utilities/opaque-responsive';
 
 export type Directions = 't' | 'r' | 'b' | 'l' | 'h' | 'v' | 'a';
 
 export type MarginProps = {
-  [MarginProperty in `m${Directions}`]?: ValueOrResponsive<SizeToken>;
+  [MarginProperty in `m${Directions}`]?: ValueOrResponsive<SpaceToken>;
 };
 
 export type PaddingProps = {
-  [PaddingProperty in `p${Directions}`]?: ValueOrResponsive<SizeToken>;
+  [PaddingProperty in `p${Directions}`]?: ValueOrResponsive<SpaceToken>;
 };
 
 export interface SpacerProps extends CoreComponent, MarginProps, PaddingProps {

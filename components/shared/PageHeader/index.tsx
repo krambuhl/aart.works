@@ -4,18 +4,13 @@ import { Stack } from 'components/shared/Stack';
 import { DataText, HeadingText } from 'components/shared/Text';
 import { tokens } from 'tokens';
 
-export function PageHeader({
-  title,
-  subtitle,
-  date,
-  ...props
-}: PageHeaderProps) {
+export function PageHeader({ title, subtitle, date, ...props }: PageHeaderProps) {
   return (
     <Stack
       as="header"
       gap={{
-        xs: tokens.size.x8,
-        sm: tokens.size.x12,
+        xs: tokens.space.x8,
+        sm: tokens.space.x12,
       }}
       justify="center"
       {...props}

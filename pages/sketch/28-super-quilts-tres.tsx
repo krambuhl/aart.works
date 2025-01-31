@@ -6,7 +6,6 @@ import { HtmlTitle } from 'components/shared/HtmlTitle';
 import { PageHeader } from 'components/shared/PageHeader';
 import { Stack } from 'components/shared/Stack';
 import { tokens } from 'tokens';
-import { SizeToken } from 'types/tokens';
 
 const bgColor: P5Color = [0 / 255, 0 / 255, 0 / 255, 255];
 const canvasSizeX = 960;
@@ -70,9 +69,7 @@ function spiralGrid(cells: Cell[]) {
   const walkedCells = [] as Cell[];
 
   function getCellIndex({ x, y }: Cords) {
-    return unwalkedCells.findIndex(
-      (cell: Cell) => cell.x === x && cell.y === y
-    );
+    return unwalkedCells.findIndex((cell: Cell) => cell.x === x && cell.y === y);
   }
 
   function popCell({ x, y }: Cords) {
@@ -179,9 +176,9 @@ export default function Output() {
     <>
       <HtmlTitle title={meta.title} />
 
-      <Stack gap={tokens.size.x24}>
+      <Stack gap={tokens.space.x24}>
         {/* <PageHeader title={meta.title} date={meta.date} /> */}
-        <Area width={'700px' as SizeToken}>
+        <Area width={tokens.size.x768}>
           <Sketch
             aspectRatio={aspectRatio}
             setup={(p, store) => {
@@ -218,12 +215,7 @@ export default function Output() {
 
                 p.colorMode(p.RGB, 1);
                 p.fill(1, colorIndex0, colorIndex1);
-                p.rect(
-                  x + padding,
-                  y + padding,
-                  sizeX - gutter,
-                  sizeY - gutter
-                );
+                p.rect(x + padding, y + padding, sizeX - gutter, sizeY - gutter);
               }
             }}
           />

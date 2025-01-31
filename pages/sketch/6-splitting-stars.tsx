@@ -19,7 +19,7 @@ export default function Output() {
   return (
     <>
       <HtmlTitle title={meta.title} />
-      <Stack gap={tokens.size.x24}>
+      <Stack gap={tokens.space.x24}>
         <PageHeader title={meta.title} date={meta.date} />
         <Area width={tokens.size.x768}>
           <Sketch
@@ -71,14 +71,8 @@ export default function Output() {
                   // (cos1 - 0.5) * (size / 8) * p.norm(spin2, -1, 1) +
                   0;
 
-                p.fill(
-                  p.color(p.lerp(90, 300, Math.sin(pos * Math.PI * 32)), 90, 60)
-                );
-                p.circle(
-                  x,
-                  y,
-                  p.lerp(4, 8, p.norm(Math.cos(pos * Math.PI * 2), -1, 1))
-                );
+                p.fill(p.color(p.lerp(90, 300, Math.sin(pos * Math.PI * 32)), 90, 60));
+                p.circle(x, y, p.lerp(4, 8, p.norm(Math.cos(pos * Math.PI * 2), -1, 1)));
               }
             }}
           />

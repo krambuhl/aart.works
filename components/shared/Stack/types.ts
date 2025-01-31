@@ -1,5 +1,5 @@
 import type { CoreComponent } from 'types/core';
-import type { SizeToken } from 'types/tokens';
+import type { SpaceToken } from 'types/tokens';
 
 import { ValueOrResponsive } from 'utilities/opaque-responsive';
 
@@ -12,5 +12,5 @@ export interface StackProps extends CoreComponent {
   direction?: ValueOrResponsive<StackDirection>;
   alignment?: ValueOrResponsive<StackAlignment>;
   justify?: ValueOrResponsive<StackJustify>;
-  gap?: ValueOrResponsive<SizeToken>;
+  gap?: ValueOrResponsive<SpaceToken>;
 }

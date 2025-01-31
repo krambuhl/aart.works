@@ -28,7 +28,7 @@ export function FileListing({ files, ...props }: FileListingProps) {
 
   return (
     <Area width={tokens.size.x384} {...props}>
-      <Stack gap={{ xs: tokens.size.x6, sm: tokens.size.x12 }}>
+      <Stack gap={{ xs: tokens.space.x6, sm: tokens.space.x12 }}>
         {fileList ? (
           fileList
             .filter(({ name }) => name !== 'index')
@@ -36,7 +36,7 @@ export function FileListing({ files, ...props }: FileListingProps) {
             .map(({ title, date, url }) => (
               <NextLink key={title} href={url} className={styles.fileLink}>
                 <Stack
-                  gap={tokens.size.x16}
+                  gap={tokens.space.x16}
                   direction={{ xs: 'vertical', sm: 'horizontal' }}
                   className={styles.fileStack}
                 >

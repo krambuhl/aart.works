@@ -45,9 +45,7 @@ function spiralGrid(cells: Cell[]) {
   const walkedCells = [] as Cell[];
 
   function getCellIndex({ x, y }: Cords) {
-    return unwalkedCells.findIndex(
-      (cell: Cell) => cell.x === x && cell.y === y
-    );
+    return unwalkedCells.findIndex((cell: Cell) => cell.x === x && cell.y === y);
   }
 
   function popCell({ x, y }: Cords) {
@@ -103,7 +101,7 @@ export default function Output() {
     <>
       <HtmlTitle title={meta.title} />
 
-      <Stack gap={tokens.size.x24}>
+      <Stack gap={tokens.space.x24}>
         <PageHeader title={meta.title} date={meta.date} />
         <Area width={tokens.size.x768}>
           <Sketch
@@ -136,14 +134,8 @@ export default function Output() {
                 const x = frame.x * size;
                 const y = frame.y * size;
 
-                const colorIndex1 =
-                  ((i + time * 12 * ((i / length) * Math.sin(x / size))) %
-                    length) /
-                  length;
-                const colorIndex2 =
-                  ((i + time * 11 * ((i / length) * Math.cos(y / size))) %
-                    length) /
-                  length;
+                const colorIndex1 = ((i + time * 12 * ((i / length) * Math.sin(x / size))) % length) / length;
+                const colorIndex2 = ((i + time * 11 * ((i / length) * Math.cos(y / size))) % length) / length;
 
                 p.colorMode(p.RGB, 1);
                 p.fill(colorIndex1, colorIndex2, 1);

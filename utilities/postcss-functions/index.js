@@ -56,9 +56,7 @@ function convertTokensToMap(path) {
 
   // merge the keys and values into a string
   // which we can use with the `@each` at-rule
-  const keysString = `(${values
-    .map((value) => value.replace('var(--', '').replace(')', ''))
-    .join(',')})`;
+  const keysString = `(${values.map((value) => value.replace('var(--', '').replace(')', '')).join(',')})`;
   const valuesString = `(${values.join(',')})`;
 
   // return the combined string
@@ -81,9 +79,7 @@ function getBreakpoints() {
   const keys = Object.keys(tokenGroup);
 
   // get the values of the tokens
-  const values = Object.values(tokenGroup).map(
-    (def) => `(min-width: ${def.value})`
-  );
+  const values = Object.values(tokenGroup).map((def) => `(min-width: ${def.value})`);
 
   // merge the keys and values into a string
   // which we can use with the `@each` at-rule

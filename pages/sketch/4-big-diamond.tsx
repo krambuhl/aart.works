@@ -20,7 +20,7 @@ export default function Output() {
     <>
       <HtmlTitle title={meta.title} />
 
-      <Stack gap={tokens.size.x24}>
+      <Stack gap={tokens.space.x24}>
         <PageHeader title={meta.title} date={meta.date} />
         <Area width={tokens.size.x768}>
           <Sketch
@@ -43,35 +43,17 @@ export default function Output() {
               for (let i = 0; i < length; i++) {
                 const pos = i / length;
                 const offset = store.history[i];
-                const input =
-                  (start - offset) /
-                  p.lerp(44.9, 45.1, p.norm(Math.sin(start / 1000), -1, 1));
+                const input = (start - offset) / p.lerp(44.9, 45.1, p.norm(Math.sin(start / 1000), -1, 1));
 
                 if (input > -20 || i % 4 > 3) {
-                  p.fill(
-                    p.lerpColor(
-                      p.color(0, 100, 60),
-                      p.color(40, 100, 60),
-                      p.norm(Math.sin(input), -1, 1)
-                    )
-                  );
+                  p.fill(p.lerpColor(p.color(0, 100, 60), p.color(40, 100, 60), p.norm(Math.sin(input), -1, 1)));
                 } else {
-                  p.fill(
-                    p.lerpColor(
-                      p.color(200, 100, 60),
-                      p.color(270, 100, 60),
-                      p.norm(Math.cos(input), -1, 1)
-                    )
-                  );
+                  p.fill(p.lerpColor(p.color(200, 100, 60), p.color(270, 100, 60), p.norm(Math.cos(input), -1, 1)));
                 }
 
-                const y =
-                  Math.cos(input) *
-                  (size / 8) *
-                  p.lerp(1, 3, Math.cos(input * 9));
+                const y = Math.cos(input) * (size / 8) * p.lerp(1, 3, Math.cos(input * 9));
 
-                const x =
-                  Math.sin(input) * (size / 2) * p.lerp(0, -1, Math.sin(pos));
+                const x = Math.sin(input) * (size / 2) * p.lerp(0, -1, Math.sin(pos));
                 // p.lerp(0, size / 4, Math.sin(offset * pos))
 
                 p.circle(x, y, p.lerp(4, 32, Math.sin(pos) * Math.cos(pos)));

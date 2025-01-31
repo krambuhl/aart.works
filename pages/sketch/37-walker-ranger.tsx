@@ -99,7 +99,7 @@ export default function Output() {
     <>
       <HtmlTitle title={meta.title} />
 
-      <Stack gap={tokens.size.x24}>
+      <Stack gap={tokens.space.x24}>
         {/* <PageHeader title={meta.title} date={meta.date} /> */}
         <Area width={tokens.size.x640}>
           <Sketch
@@ -140,12 +140,7 @@ export default function Output() {
                   Math.sin(intensity * start * x * y * 1.03),
                 ]);
 
-                p.rect(
-                  posX + padding,
-                  posY + padding,
-                  sizeX - gutter,
-                  sizeY - gutter
-                );
+                p.rect(posX + padding, posY + padding, sizeX - gutter, sizeY - gutter);
               }
             }}
           />

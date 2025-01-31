@@ -20,7 +20,7 @@ export default function ALittleSomething() {
     <>
       <HtmlTitle title={meta.title} />
 
-      <Stack gap={tokens.size.x24}>
+      <Stack gap={tokens.space.x24}>
         <PageHeader title={meta.title} date={meta.date} />
         <Area width={tokens.size.x768}>
           <Sketch
@@ -47,16 +47,8 @@ export default function ALittleSomething() {
 
                 p.fill(
                   p.lerpColor(
-                    p.lerpColor(
-                      p.color(0, 100, 60),
-                      p.color(80, 100, 60),
-                      Math.sin(input / 2)
-                    ),
-                    p.lerpColor(
-                      p.color(200, 100, 60),
-                      p.color(270, 100, 60),
-                      Math.cos(input / 2)
-                    ),
+                    p.lerpColor(p.color(0, 100, 60), p.color(80, 100, 60), Math.sin(input / 2)),
+                    p.lerpColor(p.color(200, 100, 60), p.color(270, 100, 60), Math.cos(input / 2)),
                     (Math.tan(pos * (Math.PI * 2)) + 1) / 2
                   )
                 );
@@ -67,8 +59,7 @@ export default function ALittleSomething() {
                         p.lerp(
                           6,
                           p.lerp(5, 12, Math.cos(pos)),
-                          (Math.cos((offset * i) / 40) *
-                            Math.tan((i * offset) / 60)) /
+                          (Math.cos((offset * i) / 40) * Math.tan((i * offset) / 60)) /
                             p.lerp(2, 4, Math.sin(input / 30))
                         )),
                   Math.cos(input) * (size / 6) +
@@ -77,8 +68,7 @@ export default function ALittleSomething() {
                         p.lerp(
                           6,
                           p.lerp(5, 14, Math.sin(pos)),
-                          (Math.sin((offset * i) / 40) *
-                            Math.tan((i * offset) / 60)) /
+                          (Math.sin((offset * i) / 40) * Math.tan((i * offset) / 60)) /
                             p.lerp(2, 4, Math.sin(input / 30))
                         )) +
                     pos * 36,

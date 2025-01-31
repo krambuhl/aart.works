@@ -21,7 +21,7 @@ export default function Output() {
     <>
       <HtmlTitle title={meta.title} />
 
-      <Stack gap={tokens.size.x24}>
+      <Stack gap={tokens.space.x24}>
         <PageHeader title={meta.title} date={meta.date} />
         <Area width={tokens.size.x768}>
           <Sketch
@@ -46,14 +46,10 @@ export default function Output() {
                 const time = start / 400;
 
                 const x =
-                  Math.sin(time * pos * 8) *
-                    (size /
-                      (pos * p.lerp(0, 4, p.norm(Math.sin(pos), -1, 1)))) +
+                  Math.sin(time * pos * 8) * (size / (pos * p.lerp(0, 4, p.norm(Math.sin(pos), -1, 1)))) +
                   Math.sin(time * pos) * 4;
                 const y =
-                  Math.cos(time * pos * 8) *
-                    (size /
-                      (pos * p.lerp(0, 8, p.norm(Math.cos(pos), -1, 1)))) +
+                  Math.cos(time * pos * 8) * (size / (pos * p.lerp(0, 8, p.norm(Math.cos(pos), -1, 1)))) +
                   Math.cos(time * pos) * time;
 
                 p.fill(p.color(p.lerp(0, 340, pos), 90, 60));

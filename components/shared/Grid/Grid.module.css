@@ -1,6 +1,6 @@
 .grid {
   display: grid;
-  gap: token("size.x24");
+  gap: token("space.x24");
   grid-template-columns:
     repeat(
       auto-fit,

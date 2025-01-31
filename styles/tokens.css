@@ -1,6 +1,6 @@
 /* DO NOT EDIT */
 
-/* This file was automatically generated at 1/22/2025, 1:00:27 AM */
+/* This file was automatically generated at 1/29/2025, 10:41:56 PM */
 
 :root {
   --breakpoint-xs: 0;
@@ -9,22 +9,18 @@
   --breakpoint-lg: 978px;
   --breakpoint-xl: 1280px;
   --breakpoint-xxl: 1440px;
-  --size-x0: 0;
-  --size-x2: 2px;
-  --size-x4: 4px;
-  --size-x6: 6px;
-  --size-x8: 8px;
-  --size-x12: 12px;
-  --size-x16: 16px;
-  --size-x20: 20px;
-  --size-x24: 24px;
-  --size-x32: 32px;
-  --size-x40: 40px;
-  --size-x48: 48px;
-  --size-x56: 56px;
-  --size-x64: 64px;
-  --size-x72: 72px;
-  --size-x96: 96px;
+  --space-x0: 0;
+  --space-x2: 2px;
+  --space-x4: 4px;
+  --space-x6: 6px;
+  --space-x8: 8px;
+  --space-x12: 12px;
+  --space-x16: 16px;
+  --space-x24: 24px;
+  --space-x32: 32px;
+  --space-x40: 40px;
+  --space-x48: 48px;
+  --space-x56: 56px;
   --size-x128: 128px;
   --size-x192: 192px;
   --size-x256: 256px;
@@ -35,8 +31,6 @@
   --size-x1024: 1024px;
   --size-x1280: 1280px;
   --size-x1440: 1440px;
-  --size-x1600: 1600px;
-  --size-x1920: 1920px;
   --shadow-low: 0 0 var(--size-4) hsl(0deg 0 0 / 10%);
   --shadow-mid: 0 var(--size-4) var(--size-8) hsl(0deg 0 0 / 15%);
   --shadow-high: 0 var(--size-8) var(--size-12) hsl(0deg 0 0 / 20%);

@@ -19,10 +19,7 @@ export default function SketchIndex({ entryList }: Props) {
       <HtmlTitle title="Sketches" />
       <Stack>
         <PageHeader title="Sketches" />
-        <Spacer
-          pt={{ xs: tokens.size.x24, sm: tokens.size.x48 }}
-          pb={tokens.size.x24}
-        >
+        <Spacer pt={{ xs: tokens.space.x24, sm: tokens.space.x48 }} pb={tokens.space.x24}>
           <FileListing files={entryList} />
         </Spacer>
       </Stack>

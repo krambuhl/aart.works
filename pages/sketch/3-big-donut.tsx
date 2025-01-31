@@ -20,7 +20,7 @@ export default function Output() {
     <>
       <HtmlTitle title={meta.title} />
 
-      <Stack gap={tokens.size.x24}>
+      <Stack gap={tokens.space.x24}>
         <PageHeader title={meta.title} date={meta.date} />
         <Area width={tokens.size.x768}>
           <Sketch
@@ -52,16 +52,8 @@ export default function Output() {
 
                 p.fill(
                   p.lerpColor(
-                    p.lerpColor(
-                      p.color(0, 100, 60),
-                      p.color(80, 100, 60),
-                      p.norm(Math.sin(input * inside), -1, 1)
-                    ),
-                    p.lerpColor(
-                      p.color(110, 100, 60),
-                      p.color(270, 100, 60),
-                      p.norm(Math.cos(input * inside), -1, 1)
-                    ),
+                    p.lerpColor(p.color(0, 100, 60), p.color(80, 100, 60), p.norm(Math.sin(input * inside), -1, 1)),
+                    p.lerpColor(p.color(110, 100, 60), p.color(270, 100, 60), p.norm(Math.cos(input * inside), -1, 1)),
                     p.norm(Math.sin((x * y) / 1000), -1, 1)
                   )
                 );
@@ -69,15 +61,7 @@ export default function Output() {
                 p.circle(
                   x,
                   y,
-                  p.lerp(
-                    2,
-                    12,
-                    (Math.sin(
-                      ((x * y) / 1000) * Math.cos((start / 100) % (Math.PI * 2))
-                    ) +
-                      1) /
-                      2
-                  )
+                  p.lerp(2, 12, (Math.sin(((x * y) / 1000) * Math.cos((start / 100) % (Math.PI * 2))) + 1) / 2)
                 );
               }
             }}

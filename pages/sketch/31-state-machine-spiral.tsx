@@ -84,8 +84,7 @@ const getCell = (translationList: Translation[], config: Config) => {
   return translationList[currentDirection % translationList.length](config);
 };
 
-const getCellIndex = (cells: Cell[], [x, y]: Cell) =>
-  cells.findIndex(([cx, cy]) => cx === x && cy === y);
+const getCellIndex = (cells: Cell[], [x, y]: Cell) => cells.findIndex(([cx, cy]) => cx === x && cy === y);
 
 function spiralGrid(cells: Cell[]) {
   const unwalkedCells = [...cells] as Cell[];
@@ -133,23 +132,12 @@ function spiralGrid(cells: Cell[]) {
   };
 
   const detect = (config: Config) => () => {
-    const {
-      isFirstPass,
-      currentTurnCount,
-      maxTurnCount,
-      bandCount,
-      currentLength,
-      detectorSize,
-      bandSize,
-    } = config;
+    const { isFirstPass, currentTurnCount, maxTurnCount, bandCount, currentLength, detectorSize, bandSize } = config;
 
     const [nx, ny] = getCell(walks, config);
     const [dx, dy] = getCell(detectors, {
       ...config,
-      detectorSize:
-        !isFirstPass && currentTurnCount < maxTurnCount
-          ? 1
-          : bandSize - bandCount,
+      detectorSize: !isFirstPass && currentTurnCount < maxTurnCount ? 1 : bandSize - bandCount,
     });
 
     const nextIndex = getCellIndex(unwalkedCells, [nx, ny]);
@@ -172,8 +160,7 @@ function spiralGrid(cells: Cell[]) {
   };
 
   const rotate = (config: Config) => () => {
-    const { currentDirection, currentTurnCount, isFirstPass, maxTurnCount } =
-      config;
+    const { currentDirection, currentTurnCount, isFirstPass, maxTurnCount } = config;
 
     const [rx, ry] = getCell(rotations, config);
     const nextIndex = getCellIndex(unwalkedCells, [rx, ry]);
@@ -210,7 +197,7 @@ export default function Output() {
     <>
       <HtmlTitle title={meta.title} />
 
-      <Stack gap={tokens.size.x24}>
+      <Stack gap={tokens.space.x24}>
         {/* <PageHeader title={meta.title} date={meta.date} /> */}
         <Area width={tokens.size.x512}>
           <Sketch
@@ -240,20 +227,14 @@ export default function Output() {
                 const x = fx * sizeX;
                 const y = fy * sizeY;
 
-                const linearColor1 =
-                  ((i * time * 0.3 + time * x * 0.01) % length) / length;
+                const linearColor1 = ((i * time * 0.3 + time * x * 0.01) % length) / length;
                 const linearColor2 = ((i * time) % length) / length;
                 const colorIndex0 = (((i * 7 + x) * time) % length) / length;
                 const colorIndex1 = (((i * 8 + y) * time) % length) / length;
 
                 p.colorMode(p.RGB, 1);
                 p.fill(1, linearColor1, linearColor2);
-                p.rect(
-                  x + padding,
-                  y + padding,
-                  sizeX - gutter,
-                  sizeY - gutter
-                );
+                p.rect(x + padding, y + padding, sizeX - gutter, sizeY - gutter);
               }
             }}
           />

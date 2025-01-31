@@ -98,7 +98,7 @@ export default function Output() {
     <>
       <HtmlTitle title={meta.title} />
 
-      <Stack gap={tokens.size.x24}>
+      <Stack gap={tokens.space.x24}>
         {/* <PageHeader title={meta.title} date={meta.date} /> */}
         <Area width={tokens.size.x640}>
           <Sketch
@@ -124,9 +124,7 @@ export default function Output() {
                 const posY = fy * sizeY;
 
                 if (cellData.walked) {
-                  const res =
-                    (cellData.relative.stepCount + 1) /
-                    cellData.relative.totalStepCount;
+                  const res = (cellData.relative.stepCount + 1) / cellData.relative.totalStepCount;
 
                   p.colorMode(p.HSL);
                   p.fill([0, 100, res * 100]);
@@ -136,12 +134,7 @@ export default function Output() {
                   p.fill([0, 0, res * 100]);
                 }
 
-                p.rect(
-                  posX + padding,
-                  posY + padding,
-                  sizeX - gutter,
-                  sizeY - gutter
-                );
+                p.rect(posX + padding, posY + padding, sizeX - gutter, sizeY - gutter);
               }
             }}
           />

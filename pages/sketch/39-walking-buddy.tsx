@@ -99,7 +99,7 @@ export default function Output() {
     <>
       <HtmlTitle title={meta.title} />
 
-      <Stack gap={tokens.size.x24}>
+      <Stack gap={tokens.space.x24}>
         {/* <PageHeader title={meta.title} date={meta.date} /> */}
         <Area width={tokens.size.x640}>
           <Sketch
@@ -125,21 +125,13 @@ export default function Output() {
                 const posY = fy * sizeY;
 
                 if (cellData.walked) {
-                  const res =
-                    (cellData.relative.stepCount + 1) /
-                    cellData.relative.totalStepCount;
+                  const res = (cellData.relative.stepCount + 1) / cellData.relative.totalStepCount;
 
                   p.colorMode(p.RGB, 1);
                   p.fill([
-                    Math.abs(
-                      Math.sin(Math.log(res ** start) * Math.sin(x * y) * 1.01)
-                    ),
-                    Math.abs(
-                      Math.sin(Math.log(res ** start) * Math.sin(x * y) * 1.02)
-                    ),
-                    Math.abs(
-                      Math.sin(Math.log(res ** start) * Math.sin(x * y) * 1.03)
-                    ),
+                    Math.abs(Math.sin(Math.log(res ** start) * Math.sin(x * y) * 1.01)),
+                    Math.abs(Math.sin(Math.log(res ** start) * Math.sin(x * y) * 1.02)),
+                    Math.abs(Math.sin(Math.log(res ** start) * Math.sin(x * y) * 1.03)),
                   ]);
                 } else {
                   const res = cellData.index / cellData.totalCellCount;
@@ -147,12 +139,7 @@ export default function Output() {
                   p.fill([0, 0, res * 100]);
                 }
 
-                p.rect(
-                  posX + padding,
-                  posY + padding,
-                  sizeX - gutter,
-                  sizeY - gutter
-                );
+                p.rect(posX + padding, posY + padding, sizeX - gutter, sizeY - gutter);
               }
             }}
           />

@@ -1,8 +1,5 @@
-import {
-  Breakpoint,
-  OpaqueResponsive,
-  reduceResponsive,
-} from 'utilities/opaque-responsive';
+import { breakpoints } from 'tokens';
+import { Breakpoint, OpaqueResponsive, reduceResponsive } from 'utilities/opaque-responsive';
 
 /**
  * Returns a css-module style name from a namespace and a token value.
@@ -33,19 +30,19 @@ export function responsiveClassList<T extends string>(
   styles: Record<string, string>,
   name: string,
   responsiveValues: OpaqueResponsive<T>,
-  transform?: (value: T) => string
+  transform?: (value: T) => string,
 ): string;
 export function responsiveClassList<T>(
   styles: Record<string, string>,
   name: string,
   responsiveValues: OpaqueResponsive<T>,
-  transform: (value: T) => string
+  transform: (value: T) => string,
 ): string;
 export function responsiveClassList<T>(
   styles: Record<string, string>,
   name: string,
   responsiveValues: OpaqueResponsive<T>,
-  transform?: (value: T) => string
+  transform?: (value: T) => string,
 ) {
   return reduceResponsive(
     responsiveValues,
@@ -58,6 +55,46 @@ export function responsiveClassList<T>(
       });
       return [...acc, styles[styleKey]];
     },
-    [] as string[]
+    [] as string[],
   ).join(' ');
+}
+
+export function responsiveStyleList<T>(
+  responsiveValues: OpaqueResponsive<T>,
+  transform: (value: T, breakpoint: Breakpoint) => string,
+) {
+  return reduceResponsive(
+    responsiveValues,
+    (acc, value, breakpoint) => {
+      const transformedValue = transform(value, breakpoint);
+      if (transformedValue) {
+        return acc + ' ' + transformedValue;
+      }
+      return acc;
+    },
+    '',
+  );
+}
+
+export function generateRules(ruleset: Record<string, string>, tokenset: Record<string, string>) {
+  // Generate base padding/margin utilities
+  const baseRules = Object.entries(tokenset).flatMap(([tokenKey, tokenValue]) =>
+    Object.entries(ruleset).map(([rule, prop]) => [`${rule}-${tokenKey}`, { [prop]: tokenValue }]),
+  );
+
+  // Generate responsive padding/margin utilities
+  const responsiveRules = Object.entries(breakpoints).flatMap(([bpKey, bpValue]) =>
+    Object.entries(tokenset).flatMap(([tokenKey, tokenValue]) =>
+      Object.entries(ruleset).map(([rule, prop]) => [
+        `${bpKey}:${rule}-${tokenKey}`,
+        {
+          [`@media (min-width: ${bpValue}px)`]: {
+            [prop]: tokenValue,
+          },
+        },
+      ]),
+    ),
+  );
+
+  return [...baseRules, ...responsiveRules];
 }

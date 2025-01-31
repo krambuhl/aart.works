@@ -110,11 +110,9 @@ const getCell = (translationList: Translation[], config: Config) => {
   return translationList[currentDirection % translationList.length](config);
 };
 
-const isInteriorCell = ({ cell: [x, y], stepsX, stepsY }: Config) =>
-  x >= 0 && x < stepsX && y >= 0 && y < stepsY;
+const isInteriorCell = ({ cell: [x, y], stepsX, stepsY }: Config) => x >= 0 && x < stepsX && y >= 0 && y < stepsY;
 
-const getCellIndex = (cells: Cell[], [x, y]: Cell) =>
-  cells.findIndex(([cx, cy]) => cx === x && cy === y);
+const getCellIndex = (cells: Cell[], [x, y]: Cell) => cells.findIndex(([cx, cy]) => cx === x && cy === y);
 
 function spiralGrid(cells: Cell[]) {
   const unwalkedCells = [...cells] as Cell[];
@@ -143,14 +141,7 @@ function spiralGrid(cells: Cell[]) {
   };
 
   const pop = (config: Config) => () => {
-    const {
-      cell,
-      bandCount,
-      bandSize,
-      bandGap,
-      currentArmLength,
-      currentSnakeLength,
-    } = config;
+    const { cell, bandCount, bandSize, bandGap, currentArmLength, currentSnakeLength } = config;
 
     const index = getCellIndex(unwalkedCells, cell);
 
@@ -174,15 +165,7 @@ function spiralGrid(cells: Cell[]) {
   };
 
   const detect = (config: Config) => () => {
-    const {
-      isFirstPass,
-      currentTurnCount,
-      maxTurnCount,
-      bandCount,
-      currentArmLength,
-      detectorSize,
-      bandSize,
-    } = config;
+    const { isFirstPass, currentTurnCount, maxTurnCount, bandCount, currentArmLength, detectorSize, bandSize } = config;
 
     let computedDetectorSize = detectorSize + bandSize;
     if (isFirstPass && currentTurnCount < 3) {
@@ -223,8 +206,7 @@ function spiralGrid(cells: Cell[]) {
   };
 
   const rotate = (config: Config) => () => {
-    const { currentDirection, currentTurnCount, isFirstPass, maxTurnCount } =
-      config;
+    const { currentDirection, currentTurnCount, isFirstPass, maxTurnCount } = config;
 
     const [rx, ry] = getCell(rotations, config);
     const nextIndex = getCellIndex(unwalkedCells, [rx, ry]);
@@ -265,7 +247,7 @@ export default function Output() {
     <>
       <HtmlTitle title={meta.title} />
 
-      <Stack gap={tokens.size.x24}>
+      <Stack gap={tokens.space.x24}>
         {/* <PageHeader title={meta.title} date={meta.date} /> */}
         <Area width={tokens.size.x640}>
           <Sketch
@@ -312,8 +294,7 @@ export default function Output() {
 
                 const res =
                   ((time +
-                    time *
-                      ((bandSize + 1) * 8 + (currentTurnCount + x / time) * 2) +
+                    time * ((bandSize + 1) * 8 + (currentTurnCount + x / time) * 2) +
                     (currentTurnCount + 1) * 0.1 * (time * 0.29) +
                     // x * (currentTurnCount + 1) +
                     // y * currentTurnCount +
@@ -323,17 +304,11 @@ export default function Output() {
                     offset) %
                   rainbow.length;
 
-                const color =
-                  rainbow2[Math.floor(Math.abs(res) % rainbow.length)];
+                const color = rainbow2[Math.floor(Math.abs(res) % rainbow.length)];
 
                 p.colorMode(p.RGB, 1);
                 p.fill(color);
-                p.rect(
-                  x + padding,
-                  y + padding,
-                  sizeX - gutter,
-                  sizeY - gutter
-                );
+                p.rect(x + padding, y + padding, sizeX - gutter, sizeY - gutter);
               }
 
               const checkersLength = store.checkers.length;
@@ -345,12 +320,7 @@ export default function Output() {
 
                 p.colorMode(p.RGB, 1);
                 p.fill((fy % 2 ? fx % 2 : (fx + 1) % 2) ? 'white' : 'black');
-                p.rect(
-                  x + padding,
-                  y + padding,
-                  sizeX - gutter,
-                  sizeY - gutter
-                );
+                p.rect(x + padding, y + padding, sizeX - gutter, sizeY - gutter);
               }
             }}
           />

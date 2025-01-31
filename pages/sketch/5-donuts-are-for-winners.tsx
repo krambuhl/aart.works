@@ -20,7 +20,7 @@ export default function Output() {
     <>
       <HtmlTitle title={meta.title} />
 
-      <Stack gap={tokens.size.x24}>
+      <Stack gap={tokens.space.x24}>
         <PageHeader title={meta.title} date={meta.date} />
         <Area width={tokens.size.x768}>
           <Sketch
@@ -44,16 +44,10 @@ export default function Output() {
                 const pos = i / length;
                 const offset = store.history[i];
                 const time = start / 5000;
-                const input =
-                  (start - offset) /
-                  p.lerp(30, 45, p.norm(Math.sin(time), -1, 1));
+                const input = (start - offset) / p.lerp(30, 45, p.norm(Math.sin(time), -1, 1));
 
-                const x =
-                  Math.sin(input) * (Math.cos(time) * (size / 4)) +
-                  Math.sin(i) * (size / 6);
-                const y =
-                  Math.cos(input) * (Math.sin(time) * (size / 4)) +
-                  Math.cos(i) * (size / 6);
+                const x = Math.sin(input) * (Math.cos(time) * (size / 4)) + Math.sin(i) * (size / 6);
+                const y = Math.cos(input) * (Math.sin(time) * (size / 4)) + Math.cos(i) * (size / 6);
 
                 p.fill(
                   p.color(
@@ -62,8 +56,7 @@ export default function Output() {
                       300,
                       p.norm(
                         Math.sqrt(
-                          Math.pow(x + (Math.sin(y) * size) / 16, 2) +
-                            Math.pow(y + (Math.sin(x) * size) / 16, 2)
+                          Math.pow(x + (Math.sin(y) * size) / 16, 2) + Math.pow(y + (Math.sin(x) * size) / 16, 2)
                         ),
                         0,
                         size / 3

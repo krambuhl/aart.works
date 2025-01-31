@@ -34,7 +34,7 @@ export default function Output() {
     <>
       <HtmlTitle title={meta.title} />
 
-      <Stack gap={tokens.size.x24}>
+      <Stack gap={tokens.space.x24}>
         <PageHeader title={meta.title} date={meta.date} />
         <Area width={tokens.size.x768}>
           <Sketch
@@ -78,12 +78,7 @@ export default function Output() {
                 shader.setUniform('x', x);
                 shader.setUniform('y', y);
 
-                p.translate(
-                  x,
-                  y,
-                  p.sin(x * y + time / 10) *
-                    (p.sin(x * 0.2) * p.cos(y * 0.1) * 4)
-                );
+                p.translate(x, y, p.sin(x * y + time / 10) * (p.sin(x * 0.2) * p.cos(y * 0.1) * 4));
                 p.rotateX(p.sin(x / size / 4) + p.cos(time / 12));
                 p.rotateY(p.sin(y / size / 8) + p.cos(time / 16));
                 p.rotateZ(x * y + time / 10);

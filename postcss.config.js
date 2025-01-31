@@ -1,9 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const {
-  getTokenVariable,
-  convertTokensToMap,
-  getBreakpoints,
-} = require('./utilities/postcss-functions');
+const { getTokenVariable, convertTokensToMap, getBreakpoints } = require('./utilities/postcss-functions');
 
 const plugins = [
   [
@@ -33,10 +29,10 @@ const plugins = [
       stage: 3,
       features: {
         'custom-properties': false,
-        'nesting-rules': true,
       },
     },
   ],
+  '@unocss/postcss',
 ];
 
 module.exports = { plugins };

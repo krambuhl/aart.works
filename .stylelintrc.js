@@ -16,7 +16,7 @@ module.exports = {
     'at-rule-no-unknown': [
       true,
       {
-        ignoreAtRules: ['each'],
+        ignoreAtRules: ['each', 'unocss'],
       },
     ],
   },

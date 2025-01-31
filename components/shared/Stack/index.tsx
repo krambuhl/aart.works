@@ -14,7 +14,7 @@ export function Stack({
   direction = 'vertical',
   alignment = 'center',
   justify = 'start',
-  gap = tokens.size.x0,
+  gap = tokens.space.x0,
   className,
   children,
   ...props

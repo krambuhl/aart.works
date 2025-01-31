@@ -1,6 +1,6 @@
 .root {
-  border: token("size.x2") solid token("bg.inverted.default");
-  border-radius: token("size.x12");
+  border: token("space.x2") solid token("bg.inverted.default");
+  border-radius: token("space.x12");
   box-shadow: token("shadow.mid");
   color: token("fg.inverted.default");
 }
@@ -10,5 +10,5 @@
 }
 
 .paddingDefault {
-  padding: token("size.x16");
+  padding: token("space.x16");
 }

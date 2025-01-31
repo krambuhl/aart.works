@@ -111,7 +111,7 @@ export default function Output() {
     <>
       <HtmlTitle title={meta.title} />
 
-      <Stack gap={tokens.size.x24}>
+      <Stack gap={tokens.space.x24}>
         {/* <PageHeader title={meta.title} date={meta.date} /> */}
         <Area width={tokens.size.x640}>
           <Sketch
@@ -144,25 +144,15 @@ export default function Output() {
 
                 // eslint-disable-next-line no-constant-condition
                 if (true) {
-                  const res =
-                    Math.tan(time * yo + 10) *
-                    Math.tan(time * xo + 8) *
-                    rainbow.length *
-                    8;
-                  const color =
-                    rainbow[Math.floor(Math.abs(res) % rainbow.length)];
+                  const res = Math.tan(time * yo + 10) * Math.tan(time * xo + 8) * rainbow.length * 8;
+                  const color = rainbow[Math.floor(Math.abs(res) % rainbow.length)];
                   p.fill(color);
                 } else {
                   // fill the unwalked cells with b/w checkerboard
                   p.fill((fy % 2 ? fx % 2 : (fx + 1) % 2) ? Black : White);
                 }
 
-                p.rect(
-                  x + padding,
-                  y + padding,
-                  sizeX - gutter,
-                  sizeY - gutter
-                );
+                p.rect(x + padding, y + padding, sizeX - gutter, sizeY - gutter);
               }
             }}
           />
