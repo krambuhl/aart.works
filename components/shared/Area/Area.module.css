@@ -6,7 +6,7 @@
 @each $breakpointName, $mediaQuery in map-breakpoints() {
   @media $mediaQuery {
     @each $tokenName, $tokenValue in map-tokens("size") {
-      .width--$(tokenName)--$(breakpointName) {
+      .w-$(tokenName)-$(breakpointName) {
         max-width: $tokenValue;
         width: 100%;
       }

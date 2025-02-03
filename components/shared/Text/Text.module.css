@@ -19,19 +19,19 @@
 @each $breakpointName, $mediaQuery in map-breakpoints() {
   @media $mediaQuery {
     @each $tokenName, $tokenValue in map-tokens("fontSize.heading") {
-      .heading-size--$(tokenName)--$(breakpointName) {
+      .heading-size-$(tokenName)-$(breakpointName) {
         font-size: $tokenValue;
       }
     }
 
     @each $tokenName, $tokenValue in map-tokens("fontSize.body") {
-      .body-size--$(tokenName)--$(breakpointName) {
+      .body-size-$(tokenName)-$(breakpointName) {
         font-size: $tokenValue;
       }
     }
 
     @each $tokenName, $tokenValue in map-tokens("fontSize.data") {
-      .data-size--$(tokenName)--$(breakpointName) {
+      .data-size-$(tokenName)-$(breakpointName) {
         font-size: $tokenValue;
       }
     }

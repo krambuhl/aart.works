@@ -1,8 +1,13 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const getValue = require('get-value');
 
-const tokenReference = require('./token-reference.json');
-const tokens = require('../../tokens/design-tokens.json');
+const tokenReferenceObject = require('./token-reference-object.json');
+const tokenReferences = require('./token-reference.json');
+const tokenValuesObject = require('./token-values-object.json');
+
+function getTokenKey(path) {
+  return path.replace(/"/g, '');
+}
 
 /**
  * Gets the css variable for the token at the given path. If the path provided
@@ -13,9 +18,12 @@ const tokens = require('../../tokens/design-tokens.json');
  *
  * Example output: "var(--primary-action-default)"
  */
-function getTokenVariable(path) {
+function getTokenVariable(keyPath) {
+  // parse the path to remove any quotes
+  const referenceKey = getTokenKey(keyPath);
+
   // get the token value object for the given path
-  const tokenValue = getValue(tokenReference, path.replace(/"/g, ''));
+  const tokenValue = tokenReferences[referenceKey];
 
   // if the token value is a valid variable, return it
   if (tokenValue) {
@@ -23,19 +31,7 @@ function getTokenVariable(path) {
   }
 
   // otherwise we should throw an error
-  throw new Error(`No variable found for token at path: ${path}`);
-}
-
-function filterTokens(path) {
-  return Object.entries(tokenReference)
-    .filter(([key]) => key.startsWith(path))
-    .reduce(
-      (acc, [key, value]) => ({
-        ...acc,
-        [key]: value,
-      }),
-      {}
-    );
+  throw new Error(`No variable found for token at path: ${keyPath}`);
 }
 
 /**
@@ -47,16 +43,20 @@ function filterTokens(path) {
  *
  * Example output: "(path-key1,path-key2),(value1,value2)"
  */
-function convertTokensToMap(path) {
-  // get the group of tokens for the given path
-  const tokenGroup = filterTokens(path.replace(/"/g, ''));
+function convertTokensToMap(keyPath) {
+  // parse the path to remove any quotes
+  const referenceKey = getTokenKey(keyPath);
+
+  // get the group of tokens for the given keyPath
+  const tokenGroup = getValue(tokenReferenceObject, referenceKey);
 
   // get the values of the tokens
+  const keys = Object.keys(tokenGroup);
   const values = Object.values(tokenGroup);
 
   // merge the keys and values into a string
   // which we can use with the `@each` at-rule
-  const keysString = `(${values.map((value) => value.replace('var(--', '').replace(')', '')).join(',')})`;
+  const keysString = `(${keys.join(',')})`;
   const valuesString = `(${values.join(',')})`;
 
   // return the combined string
@@ -73,13 +73,13 @@ function convertTokensToMap(path) {
  */
 function getBreakpoints() {
   // get the group of tokens for the given path
-  const tokenGroup = tokens.breakpoint;
+  const tokenGroup = tokenValuesObject.breakpoint;
 
   // get the keys with the path prefixing the names
   const keys = Object.keys(tokenGroup);
 
   // get the values of the tokens
-  const values = Object.values(tokenGroup).map((def) => `(min-width: ${def.value})`);
+  const values = Object.values(tokenGroup).map((def) => `(min-width: ${def})`);
 
   // merge the keys and values into a string
   // which we can use with the `@each` at-rule

@@ -4,10 +4,12 @@ import cx from 'classnames';
 import React from 'react';
 
 import { tokens } from 'tokens';
-import { responsiveClassList } from 'utilities/css-utils';
+import { buildTokenKeyMap, responsiveStyleList } from 'utilities/css-utils';
 import { wrapResponsive } from 'utilities/opaque-responsive';
 
 import * as styles from './Stack.module.css';
+
+const spaceTokenMap = buildTokenKeyMap(tokens.space);
 
 export function Stack({
   as: Component = 'div',
@@ -25,11 +27,11 @@ export function Stack({
   const responsiveGap = wrapResponsive(gap);
   const classList = cx(
     styles.root,
-    responsiveClassList(styles, 'direction', responsiveDirection),
-    responsiveClassList(styles, 'alignment', responsiveAlignment),
-    responsiveClassList(styles, 'justify', responsiveJustify),
-    responsiveClassList(styles, 'gap', responsiveGap),
-    className
+    responsiveStyleList(responsiveDirection, (value, bp) => styles[`direction-${value}-${bp}`]),
+    responsiveStyleList(responsiveAlignment, (value, bp) => styles[`alignment-${value}-${bp}`]),
+    responsiveStyleList(responsiveJustify, (value, bp) => styles[`justify-${value}-${bp}`]),
+    responsiveStyleList(responsiveGap, (value, bp) => styles[`gap-${spaceTokenMap[value]}-${bp}`]),
+    className,
   );
 
   return (

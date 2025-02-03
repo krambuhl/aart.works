@@ -1,5 +1,5 @@
 import { SpaceToken } from 'types/tokens';
-import { mergeResponsivePreferringLastValue, ValueOrResponsive, wrapResponsive } from 'utilities/opaque-responsive';
+import { mergeResponsive, ValueOrResponsive, wrapResponsive } from 'utilities/opaque-responsive';
 
 interface SpacingProps {
   a?: ValueOrResponsive<SpaceToken>;
@@ -27,9 +27,9 @@ export function wrapAndMergeResponsiveSides({ a, v, h, t, b, l, r }: SpacingProp
   // Cascade the responsive values to get the final responsive value
   // for each side: start with all, then override with vertical/horizontal, then the specfic side
   return {
-    top: mergeResponsivePreferringLastValue([responsiveA, responsiveV, responsiveT]),
-    bottom: mergeResponsivePreferringLastValue([responsiveA, responsiveV, responsiveB]),
-    left: mergeResponsivePreferringLastValue([responsiveA, responsiveH, responsiveL]),
-    right: mergeResponsivePreferringLastValue([responsiveA, responsiveH, responsiveR]),
+    top: mergeResponsive([responsiveA, responsiveV, responsiveT]),
+    bottom: mergeResponsive([responsiveA, responsiveV, responsiveB]),
+    left: mergeResponsive([responsiveA, responsiveH, responsiveL]),
+    right: mergeResponsive([responsiveA, responsiveH, responsiveR]),
   };
 }

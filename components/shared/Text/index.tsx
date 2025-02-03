@@ -3,29 +3,17 @@ import type { HeadingTextProps, BodyTextProps, DataTextProps } from './types';
 import cx from 'classnames';
 import React from 'react';
 
-import { tokens } from 'tokens';
-import { responsiveClassList } from 'utilities/css-utils';
+import { responsiveStyleList } from 'utilities/css-utils';
 import { wrapResponsive } from 'utilities/opaque-responsive';
 
 import * as styles from './Text.module.css';
 
-export function HeadingText({
-  as: Component = 'h3',
-  size = 'md',
-  className,
-  children,
-  ...props
-}: HeadingTextProps) {
+export function HeadingText({ as: Component = 'h3', size = 'md', className, children, ...props }: HeadingTextProps) {
   const responsiveSize = wrapResponsive(size);
   const classList = cx(
     styles.heading,
-    responsiveClassList(
-      styles,
-      'heading-size',
-      responsiveSize,
-      (size) => tokens.fontSize.heading[size]
-    ),
-    className
+    responsiveStyleList(responsiveSize, (value, bp) => styles[`heading-size-${value}-${bp}`]),
+    className,
   );
 
   return (
@@ -35,23 +23,12 @@ export function HeadingText({
   );
 }
 
-export function BodyText({
-  as: Component = 'p',
-  size = 'md',
-  className,
-  children,
-  ...props
-}: BodyTextProps) {
+export function BodyText({ as: Component = 'p', size = 'md', className, children, ...props }: BodyTextProps) {
   const responsiveSize = wrapResponsive(size);
   const classList = cx(
     styles.body,
-    responsiveClassList(
-      styles,
-      'body-size',
-      responsiveSize,
-      (size) => tokens.fontSize.body[size]
-    ),
-    className
+    responsiveStyleList(responsiveSize, (value, bp) => styles[`body-size-${value}-${bp}`]),
+    className,
   );
 
   return (
@@ -61,23 +38,12 @@ export function BodyText({
   );
 }
 
-export function DataText({
-  as: Component = 'p',
-  size = 'md',
-  className,
-  children,
-  ...props
-}: DataTextProps) {
+export function DataText({ as: Component = 'p', size = 'md', className, children, ...props }: DataTextProps) {
   const responsiveSize = wrapResponsive(size);
   const classList = cx(
     styles.data,
-    responsiveClassList(
-      styles,
-      'data-size',
-      responsiveSize,
-      (size) => tokens.fontSize.data[size]
-    ),
-    className
+    responsiveStyleList(responsiveSize, (value, bp) => styles[`data-size-${value}-${bp}`]),
+    className,
   );
 
   return (

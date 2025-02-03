@@ -1,0 +1,161 @@
+{
+  "breakpoint": {
+    "xs": "0",
+    "sm": "588px",
+    "md": "796px",
+    "lg": "978px",
+    "xl": "1280px",
+    "xxl": "1440px"
+  },
+  "space": {
+    "x0": "0",
+    "x2": "2px",
+    "x4": "4px",
+    "x6": "6px",
+    "x8": "8px",
+    "x12": "12px",
+    "x16": "16px",
+    "x24": "24px",
+    "x32": "32px",
+    "x40": "40px",
+    "x48": "48px",
+    "x56": "56px"
+  },
+  "size": {
+    "x128": "128px",
+    "x192": "192px",
+    "x256": "256px",
+    "x384": "384px",
+    "x512": "512px",
+    "x640": "640px",
+    "x768": "768px",
+    "x1024": "1024px",
+    "x1280": "1280px",
+    "x1440": "1440px"
+  },
+  "shadow": {
+    "low": "0 0 var(--size-4) hsl(0deg 0 0 / 10%)",
+    "mid": "0 var(--size-4) var(--size-8) hsl(0deg 0 0 / 15%)",
+    "high": "0 var(--size-8) var(--size-12) hsl(0deg 0 0 / 20%)"
+  },
+  "fontSize": {
+    "heading": {
+      "xs": "clamp(0.85em, 1.2vw, 1em)",
+      "sm": "clamp(1em, 1.5vw, 1.2em)",
+      "md": "clamp(1.2em, 2vw, 1.6em)",
+      "lg": "clamp(1.45em, 2.6vw, 2.2em)",
+      "xl": "clamp(1.8em, 3.6vw, 3.2em)"
+    },
+    "body": {
+      "xs": "clamp(0.7em, 1vw, 0.8em)",
+      "sm": "clamp(0.9em, 1.2vw, 1em)",
+      "md": "clamp(1em, 1.5vw, 1.2em)",
+      "lg": "clamp(1.15em, 2vw, 1.6em)",
+      "xl": "clamp(1.4em, 3vw, 2.4em)"
+    },
+    "data": {
+      "xs": "clamp(0.7em, 1vw, 0.9em)",
+      "sm": "clamp(0.85em, 1.2vw, 1em)",
+      "md": "clamp(1em, 1.5vw, 1.2em)",
+      "lg": "clamp(1.15em, 2vw, 1.6em)",
+      "xl": "clamp(1.4em, 3vw, 2.4em)"
+    }
+  },
+  "fontWeight": {
+    "heading": "700",
+    "body": "400",
+    "data": "400"
+  },
+  "fontFamily": {
+    "heading": "menlo, consolas, monaco, \"liberation mono\", \"lucida console\", monospace",
+    "body": "menlo, consolas, monaco, \"liberation mono\", \"lucida console\", monospace",
+    "data": "menlo, consolas, monaco, \"liberation mono\", \"lucida console\", monospace"
+  },
+  "lineHeight": {
+    "heading": "1.4",
+    "body": "1.4",
+    "data": "1.4"
+  },
+  "bg": {
+    "base": {
+      "default": "hsl(0deg 2% 100%)",
+      "hover": "hsl(0deg 2% 93%)",
+      "pressed": "hsl(0deg 2% 88%)"
+    },
+    "alt": {
+      "default": "hsl(0deg 2% 93%)",
+      "hover": "hsl(0deg 2% 88%)",
+      "pressed": "hsl(0deg 2% 80%)"
+    },
+    "inverted": {
+      "default": "hsl(0deg 0% 8%)",
+      "hover": "hsl(0deg 0% 12%)",
+      "pressed": "hsl(0deg 0% 17%)"
+    }
+  },
+  "fg": {
+    "regular": {
+      "default": "hsl(0deg 0% 8%)",
+      "hover": "hsl(0deg 0% 12%)",
+      "pressed": "hsl(0deg 0% 17%)"
+    },
+    "muted": {
+      "default": "hsl(0deg 0% 22%)",
+      "hover": "hsl(0deg 0% 17%)",
+      "pressed": "hsl(0deg 0% 12%)"
+    },
+    "inverted": {
+      "default": "hsl(0deg 0% 97%)",
+      "hover": "hsl(0deg 0% 93%)",
+      "pressed": "hsl(0deg 0% 89%)"
+    }
+  },
+  "primary": {
+    "action": {
+      "default": "hsl(200deg 85% 40%)",
+      "hover": "hsl(200deg 90% 32%)",
+      "pressed": "hsl(200deg 95% 24%)"
+    },
+    "muted": {
+      "default": "hsl(200deg 30% 80%)",
+      "hover": "hsl(200deg 30% 65%)",
+      "pressed": "hsl(200deg 30% 50%)"
+    }
+  },
+  "success": {
+    "action": {
+      "default": "hsl(150deg 84% 18%)",
+      "hover": "hsl(150deg 90% 13%)",
+      "pressed": "hsl(150deg 95% 8%)"
+    },
+    "muted": {
+      "default": "hsl(150deg 30% 80%)",
+      "hover": "hsl(150deg 30% 65%)",
+      "pressed": "hsl(150deg 30% 50%)"
+    }
+  },
+  "warning": {
+    "action": {
+      "default": "hsl(40deg 100% 36%)",
+      "hover": "hsl(40deg 100% 32%)",
+      "pressed": "hsl(40deg 100% 26%)"
+    },
+    "muted": {
+      "default": "hsl(40deg 30% 80%)",
+      "hover": "hsl(40deg 30% 65%)",
+      "pressed": "hsl(40deg 30% 50%)"
+    }
+  },
+  "critical": {
+    "action": {
+      "default": "hsl(350deg 85% 35%)",
+      "hover": "hsl(350deg 90% 20%)",
+      "pressed": "hsl(350deg 95% 15%)"
+    },
+    "muted": {
+      "default": "hsl(350deg 30% 80%)",
+      "hover": "hsl(350deg 30% 65%)",
+      "pressed": "hsl(350deg 30% 50%)"
+    }
+  }
+}

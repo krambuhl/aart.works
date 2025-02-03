@@ -32,7 +32,6 @@ const plugins = [
       },
     },
   ],
-  '@unocss/postcss',
 ];
 
 module.exports = { plugins };

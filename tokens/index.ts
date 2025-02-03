@@ -1,4 +1,2 @@
-import breakpointsJson from './breakpoints.json' with { type: 'json' };
-
-export const breakpoints = breakpointsJson;
+export { breakpoints } from './breakpoints';
 export { tokens } from './tokens';

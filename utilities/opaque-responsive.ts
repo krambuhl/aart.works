@@ -33,9 +33,7 @@ export type ValueOrResponsive<T> = T | Responsive<T>;
 /**
  * Creates an opaque object that wraps a responsive value
  */
-export function wrapResponsive<T>(
-  value?: ValueOrResponsive<T> | OpaqueResponsive<T>,
-): OpaqueResponsive<T> {
+export function wrapResponsive<T>(value?: ValueOrResponsive<T> | OpaqueResponsive<T>): OpaqueResponsive<T> {
   // if the value is undefined, we create a responsive object with the value set to undefined
   if (value === undefined || value === null || value === false) {
     return new OpaqueResponsive({});
@@ -61,20 +59,14 @@ export function wrapResponsive<T>(
  * if the value is not a OpaqueResponsive object.
  */
 export function unwrapResponsive<T>(value: OpaqueResponsive<T>): Responsive<T> {
-  if (
-    !(isResponsiveKey in value) ||
-    value[isResponsiveKey] !== isResponsiveValue
-  ) {
+  if (!(isResponsiveKey in value) || value[isResponsiveKey] !== isResponsiveValue) {
     throw new Error(`Invalid responsive value: ${value}`);
   }
 
   return value[responsiveValue];
 }
 
-export function mapResponsive<T, U>(
-  value: OpaqueResponsive<T>,
-  fn: (value: T) => U,
-): Responsive<U> {
+export function mapResponsive<T, U>(value: OpaqueResponsive<T>, fn: (value: T) => U): Responsive<U> {
   const unwrapped = unwrapResponsive(value);
   const mapped: Responsive<U> = {};
 
@@ -108,9 +100,7 @@ export function reduceResponsive<T, U>(
  * Merge multiple responsive values into a single responsive value
  * where the values are merged together
  */
-export function mergeResponsive<T>(
-  values: Array<OpaqueResponsive<T>>,
-): OpaqueResponsive<T> {
+export function mergeResponsive<T>(values: Array<OpaqueResponsive<T>>): OpaqueResponsive<T> {
   const merged: Responsive<T> = {};
 
   for (const opaqueResponsiveValue of values) {
@@ -183,9 +173,7 @@ export function mergeNamedResponsive<T>(values: {
  * we would get the following merged values:
  * - { xs: 5, sm: 5, md: 15, lg: 15, xl: 15, xxl: 15 }
  */
-export function mergeResponsivePreferringLastValue<T>(
-  values: Array<OpaqueResponsive<T>>,
-): OpaqueResponsive<T> {
+export function mergeResponsivePreferringLastValue<T>(values: Array<OpaqueResponsive<T>>): OpaqueResponsive<T> {
   const merged: Responsive<T> = {};
   const unwrappedValues = values.map(unwrapResponsive);
   const latestValues = [];

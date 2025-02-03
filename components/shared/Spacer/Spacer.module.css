@@ -5,16 +5,15 @@
 
 @each $breakpointName, $mediaQuery in map-breakpoints() {
   @media $mediaQuery {
-    @each $direction in (top, bottom, left, right) {
-      @each $tokenName, $tokenValue in map-tokens("size") {
-        .padding-$(direction)--$(tokenName)--$(breakpointName) {
-          padding-$(direction): $tokenValue;
-        }
-
-        .margin-$(direction)--$(tokenName)--$(breakpointName) {
-          margin-$(direction): $tokenValue;
-        }
-      }
+    @each $tokenKey, $tokenValue in map-tokens("space") {
+      .pt-$(tokenKey)-$(breakpointName) { padding-top: $tokenValue; }
+      .pr-$(tokenKey)-$(breakpointName) { padding-right: $tokenValue; }
+      .pb-$(tokenKey)-$(breakpointName) { padding-bottom: $tokenValue; }
+      .pl-$(tokenKey)-$(breakpointName) { padding-left: $tokenValue; }
+      .mt-$(tokenKey)-$(breakpointName) { margin-top: $tokenValue; }
+      .mr-$(tokenKey)-$(breakpointName) { margin-right: $tokenValue; }
+      .mb-$(tokenKey)-$(breakpointName) { margin-bottom: $tokenValue; }
+      .ml-$(tokenKey)-$(breakpointName) { margin-left: $tokenValue; }
     }
   }
 }

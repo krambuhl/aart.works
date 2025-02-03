@@ -4,26 +4,12 @@ import cx from 'classnames';
 import React from 'react';
 
 import { tokens } from 'tokens';
-import { SpaceToken } from 'types/tokens';
-import { responsiveStyleList } from 'utilities/css-utils';
+import { buildTokenKeyMap, responsiveStyleList } from 'utilities/css-utils';
 
 import * as styles from './Spacer.module.css';
 import { wrapAndMergeResponsiveSides } from './lib';
 
-const tokenToClassName: Record<SpaceToken, string> = {
-  [tokens.space.x0]: 'x0',
-  [tokens.space.x2]: 'x2',
-  [tokens.space.x4]: 'x4',
-  [tokens.space.x6]: 'x6',
-  [tokens.space.x8]: 'x8',
-  [tokens.space.x12]: 'x12',
-  [tokens.space.x16]: 'x16',
-  [tokens.space.x24]: 'x24',
-  [tokens.space.x32]: 'x32',
-  [tokens.space.x40]: 'x40',
-  [tokens.space.x48]: 'x48',
-  [tokens.space.x56]: 'x56',
-};
+const spaceTokenMap = buildTokenKeyMap(tokens.space);
 
 export function Spacer({
   as: Component = 'div',
@@ -66,14 +52,14 @@ export function Spacer({
 
   const classList = cx(
     styles.root,
-    responsiveStyleList(padding.top, (value, bp) => `${bp}:stu-pt-${tokenToClassName[value]}`),
-    responsiveStyleList(padding.bottom, (value, bp) => `${bp}:stu-pb-${tokenToClassName[value]}`),
-    responsiveStyleList(padding.left, (value, bp) => `${bp}:stu-pl-${tokenToClassName[value]}`),
-    responsiveStyleList(padding.right, (value, bp) => `${bp}:stu-pr-${tokenToClassName[value]}`),
-    responsiveStyleList(margin.top, (value, bp) => `${bp}:stu-mt-${tokenToClassName[value]}`),
-    responsiveStyleList(margin.bottom, (value, bp) => `${bp}:stu-mb-${tokenToClassName[value]}`),
-    responsiveStyleList(margin.left, (value, bp) => `${bp}:stu-ml-${tokenToClassName[value]}`),
-    responsiveStyleList(margin.right, (value, bp) => `${bp}:stu-mr-${tokenToClassName[value]}`),
+    responsiveStyleList(padding.top, (value, bp) => styles[`pt-${spaceTokenMap[value]}-${bp}`]),
+    responsiveStyleList(padding.bottom, (value, bp) => styles[`pb-${spaceTokenMap[value]}-${bp}`]),
+    responsiveStyleList(padding.left, (value, bp) => styles[`pl-${spaceTokenMap[value]}-${bp}`]),
+    responsiveStyleList(padding.right, (value, bp) => styles[`pr-${spaceTokenMap[value]}-${bp}`]),
+    responsiveStyleList(margin.top, (value, bp) => styles[`mt-${spaceTokenMap[value]}-${bp}`]),
+    responsiveStyleList(margin.bottom, (value, bp) => styles[`mb-${spaceTokenMap[value]}-${bp}`]),
+    responsiveStyleList(margin.left, (value, bp) => styles[`ml-${spaceTokenMap[value]}-${bp}`]),
+    responsiveStyleList(margin.right, (value, bp) => styles[`mr-${spaceTokenMap[value]}-${bp}`]),
     className,
   );
 
@@ -83,3 +69,5 @@ export function Spacer({
     </Component>
   );
 }
+
+<Spacer mt={tokens.space.x24} mb={{ xs: tokens.space.x32, sm: tokens.space.x48 }} />;

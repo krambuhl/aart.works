@@ -18,10 +18,7 @@ interface TokenOutput {
 function extractFlattenedTokens(input: TokenInput<ValueObject>): TokenPair[] {
   const flatPairs: TokenPair[] = [];
 
-  const buildVariables = (
-    tokens: TokenInput<ValueObject>,
-    prevNamespace = '',
-  ) => {
+  const buildVariables = (tokens: TokenInput<ValueObject>, prevNamespace = '') => {
     for (const key in tokens) {
       const value = tokens[key];
 
@@ -45,125 +42,69 @@ function generateTokenName(key: string) {
   return `--${key.replace(/\./g, '-')}`;
 }
 
-function addGeneratedHeader(value: string) {
-  return (
-    '/* DO NOT EDIT */\n' +
-    `/* This file was automatically generated at ${new Date().toLocaleString()} */\n\n` +
-    value
-  );
-}
-
-function generateTokensObject(tokenPairs: TokenPair[]) {
-  // define the output directory
-  const OUTPUT_TOKENS_DIR = path.join(process.cwd(), 'tokens');
-  fs.mkdirSync(OUTPUT_TOKENS_DIR, { recursive: true });
-
-  // define the postcss function directory
-  const OUTPUT_POSTCSS_FUNCTIONS_DIR = path.join(process.cwd(), 'utilities', 'postcss-functions');
-  fs.mkdirSync(OUTPUT_POSTCSS_FUNCTIONS_DIR, { recursive: true });
-
-  // create the token variables object
-  const tokenVariables: TokenOutput = {};
+function generateTokenReferenceObject(tokenPairs: TokenPair[]) {
   const tokenReference: Record<string, string> = {};
 
-  // loop through the token pairs and build the token variables object
   tokenPairs.forEach(([key]) => {
-    setValue(tokenVariables, key, `var(${generateTokenName(key)})`);
     tokenReference[key] = `var(${generateTokenName(key)})`;
   });
 
-  // generate variable output
-  const variablesJson = JSON.stringify(tokenVariables, null, 2);
-  const variablesOutput = `export const tokens = ${variablesJson} as const;`;
-
-  // write variables
-  console.log('writing ' + path.join(OUTPUT_TOKENS_DIR, 'tokens.ts'));
-  fs.writeFileSync(
-    path.join(OUTPUT_TOKENS_DIR, 'tokens.ts'),
-    addGeneratedHeader(variablesOutput),
-  );
-
-  // write flat token object
-  console.log('writing ' + path.join(OUTPUT_POSTCSS_FUNCTIONS_DIR, 'token-reference.json'));
-  fs.writeFileSync(
-    path.join(OUTPUT_POSTCSS_FUNCTIONS_DIR, 'token-reference.json'),
-    JSON.stringify(tokenReference, null, 2),
-  );
+  return tokenReference;
 }
 
-function generateTokensCss(tokenPairs: TokenPair[]) {
-  // define the output directory
-  const OUTPUT_STYLES_DIR = path.join(process.cwd(), 'styles');
-  fs.mkdirSync(OUTPUT_STYLES_DIR, { recursive: true });
+function generateTokenValueObject(tokenPairs: TokenPair[]) {
+  const tokenValues: TokenOutput = {};
 
-  // create the token variables object
-  const tokenValues: Array<[string, string]> = [];
-  const tokenDarkValues: Array<[string, string]> = [];
-
-  // loop through the token pairs and build the token variables object
   tokenPairs.forEach(([key, value]) => {
-    const tokenName = generateTokenName(key);
-
-    tokenValues.push([tokenName, value.value]);
-    if (value['value@dark']) {
-      tokenDarkValues.push([tokenName, value['value@dark']]);
-    }
+    setValue(tokenValues, key, value.value);
   });
 
-  // generate css output
-  const cssOutput =
-    ':root {\n' +
-    tokenValues
-      .map(([key, value]) => `  ${key}: ${value};`)
-      .join('\n') +
-    '\n}' +
-    '@media (prefers-color-scheme: dark) {\n' +
-    '  :root {\n' +
-    tokenDarkValues
-      .map(([key, value]) => `  ${key}: ${value};`)
-      .join('\n') +
-    '  \n}' +
-    '\n}';
-
-  // write values
-  console.log('writing ' + path.join(OUTPUT_STYLES_DIR, 'tokens.css'));
-  fs.writeFileSync(
-    path.join(OUTPUT_STYLES_DIR, 'tokens.css'),
-    addGeneratedHeader(cssOutput),
-  );
+  return tokenValues;
 }
 
-function generateBreakpointsUtilities(tokenPairs: TokenPair[]) {
-  // define the output directory
-  const OUTPUT_TOKENS_DIR = path.join(process.cwd(), 'tokens');
-  fs.mkdirSync(OUTPUT_TOKENS_DIR, { recursive: true });
-
-  // define the output directory
-  const OUTPUT_UTILS_DIR = path.join(process.cwd(), 'utilities');
-  fs.mkdirSync(OUTPUT_UTILS_DIR, { recursive: true });
-
-  // create the token variables object
+function generateTokenVariableObject(tokenPairs: TokenPair[]) {
   const tokenVariables: TokenOutput = {};
 
-  // loop through the token pairs and build the token variables object
-  tokenPairs.forEach(([key, value]) => {
-    setValue(tokenVariables, key, value.value);
+  tokenPairs.forEach(([key]) => {
+    setValue(tokenVariables, key, `var(${generateTokenName(key)})`);
   });
 
-  // generate breakpointsInPixels object
-  const breakpointsInPixels = Object.entries(tokenVariables.breakpoint).reduce<
-    Record<string, number>
-  >((acc, [key, value]) => {
+  return tokenVariables;
+}
+
+function generateTokensObjectString(tokenVariables: TokenOutput) {
+  const variablesJson = JSON.stringify(tokenVariables, null, 2);
+  const variablesOutput = `export const tokens = ${variablesJson} as const;`;
+  return variablesOutput;
+}
+
+function generateBreakpointsInPixelsObject(tokenVariables: TokenOutput) {
+  return Object.entries(tokenVariables.breakpoint).reduce<Record<string, number>>((acc, [key, value]) => {
     acc[key] = parseInt(value);
     return acc;
   }, {});
-  const breakpointsInPixelsJson = JSON.stringify(breakpointsInPixels, null, 2);
+}
 
-  const breakpointNames = Object.entries(breakpointsInPixels)
+function generateBreakpointNamesArray(breakpointsInPixels: Record<string, number>) {
+  return Object.entries(breakpointsInPixels)
     .sort(([, a], [, b]) => a - b) // sort from smallest to largest
     .map(([name]) => `"${name}"`);
+}
 
-  // generate ts output
+function generateBreakpointsObjectString(tokenVariables: TokenOutput) {
+  const breakpointsInPixels = generateBreakpointsInPixelsObject(tokenVariables);
+  const breakpointsInPixelsJson = JSON.stringify(breakpointsInPixels, null, 2);
+  return `import { Responsive } from "utilities/opaque-responsive";
+  
+export const breakpoints: Required<Responsive<number>> = ${breakpointsInPixelsJson};`;
+}
+
+function generateBreakpointsUtilitiesString(tokenVariables: TokenOutput) {
+  const breakpointsInPixels = generateBreakpointsInPixelsObject(tokenVariables);
+  const breakpointNames = generateBreakpointNamesArray(breakpointsInPixels);
+
+  const breakpointsInPixelsJson = JSON.stringify(breakpointsInPixels, null, 2);
+
   const output = `import { Breakpoint, Responsive } from './opaque-responsive';
 
 /**
@@ -179,30 +120,80 @@ export const breakpointsInPixels: Required<Responsive<number>> = ${breakpointsIn
 export const breakpointNames: Breakpoint[] = [${breakpointNames.join(', ')}];
 `;
 
-  // write ts output
-  console.log('writing ' + path.join(OUTPUT_UTILS_DIR, 'breakpoints.ts'));
-  fs.writeFileSync(
-    path.join(OUTPUT_UTILS_DIR, 'breakpoints.ts'),
-    addGeneratedHeader(output),
-  );
+  return output;
+}
 
-  // write json output
-  console.log('writing ' + path.join(OUTPUT_TOKENS_DIR, 'breakpoints.json'));
-  fs.writeFileSync(
-    path.join(OUTPUT_TOKENS_DIR, 'breakpoints.json'),
-    breakpointsInPixelsJson,
+function generateCssTokenString(tokenPairs: TokenPair[]) {
+  // create the token variables object
+  const tokenValues: Array<[string, string]> = [];
+  const tokenDarkValues: Array<[string, string]> = [];
+
+  // loop through the token pairs and build the token variables object
+  tokenPairs.forEach(([key, value]) => {
+    const tokenName = generateTokenName(key);
+
+    tokenValues.push([tokenName, value.value]);
+    if (value['value@dark']) {
+      tokenDarkValues.push([tokenName, value['value@dark']]);
+    }
+  });
+
+  // generate css output
+  return (
+    ':root {\n' +
+    tokenValues.map(([key, value]) => `  ${key}: ${value};`).join('\n') +
+    '\n}\n\n' +
+    '@media (prefers-color-scheme: dark) {\n' +
+    '  :root {\n' +
+    tokenDarkValues.map(([key, value]) => `    ${key}: ${value};`).join('\n') +
+    '\n  }' +
+    '\n}\n'
   );
+}
+
+function addGeneratedHeader(value: string) {
+  return (
+    '/* DO NOT EDIT */\n' + `/* This file was automatically generated at ${new Date().toLocaleString()} */\n\n` + value
+  );
+}
+
+function writeFile(filepath: string, content: string) {
+  const directory = path.dirname(filepath);
+  fs.mkdirSync(directory, { recursive: true });
+
+  console.log('writing ' + path.relative(process.cwd(), filepath));
+  fs.writeFileSync(filepath, content);
 }
 
 // program:
-async function program() {
+(async function program() {
+  // define the output directories
+  const OUTPUT_TOKENS_DIR = path.join(process.cwd(), 'tokens');
+  const OUTPUT_POSTCSS_FUNCTIONS_DIR = path.join(process.cwd(), 'utilities', 'postcss-functions');
+  const OUTPUT_STYLES_DIR = path.join(process.cwd(), 'styles');
+  const OUTPUT_UTILS_DIR = path.join(process.cwd(), 'utilities');
+
   // extract the flattened tokens as an array of [path, { value, value@dark }] pairs
-  const flatTokens = extractFlattenedTokens(designTokens);
+  const tokenPairs = extractFlattenedTokens(designTokens);
 
-  await generateTokensObject(flatTokens);
-  await generateTokensCss(flatTokens);
-  await generateBreakpointsUtilities(flatTokens);
-}
+  // generate output strings
+  const tokenVariables = generateTokenVariableObject(tokenPairs);
+  const tokenReference = generateTokenReferenceObject(tokenPairs);
+  const tokenValues = generateTokenValueObject(tokenPairs);
+  const tokenObject = generateTokensObjectString(tokenVariables);
+  const breakpointsObject = generateBreakpointsObjectString(tokenValues);
+  const breakpointsUtility = generateBreakpointsUtilitiesString(tokenValues);
+  const cssOutput = generateCssTokenString(tokenPairs);
 
-// run the program
-program();
+  // write ts output
+  writeFile(path.join(OUTPUT_STYLES_DIR, 'tokens.css'), addGeneratedHeader(cssOutput));
+  writeFile(path.join(OUTPUT_TOKENS_DIR, 'tokens.ts'), addGeneratedHeader(tokenObject));
+  writeFile(path.join(OUTPUT_TOKENS_DIR, 'breakpoints.ts'), addGeneratedHeader(breakpointsObject));
+  writeFile(path.join(OUTPUT_UTILS_DIR, 'breakpoints.ts'), addGeneratedHeader(breakpointsUtility));
+  writeFile(path.join(OUTPUT_POSTCSS_FUNCTIONS_DIR, 'token-reference.json'), JSON.stringify(tokenReference, null, 2));
+  writeFile(path.join(OUTPUT_POSTCSS_FUNCTIONS_DIR, 'token-values-object.json'), JSON.stringify(tokenValues, null, 2));
+  writeFile(
+    path.join(OUTPUT_POSTCSS_FUNCTIONS_DIR, 'token-reference-object.json'),
+    JSON.stringify(tokenVariables, null, 2),
+  );
+})();
